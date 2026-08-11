@@ -1,7 +1,0 @@
-# sharp powers next/image optimisation in production; unrs-resolver backs the
-# ESLint import resolver. pnpm 11 blocks dependency build scripts unless they
-# are explicitly allowed here, and it exits non-zero until you decide, which
-# fails the whole pipeline on a CI or Coolify build.
-allowBuilds:
-  sharp: true
-  unrs-resolver: true

@@ -1,0 +1,151 @@
+/* ============================================================================
+   Eco-Tick Solutions — Design Tokens
+   Tailwind CSS 4 (CSS-first config). Drop in at src/app/globals.css.
+
+   Hex values are sampled from the approved homepage mockup. Verify against
+   the real brand assets (logo SVG / brand guide) before shipping — screen
+   sampling is close, not exact.
+   ========================================================================= */
+
+@import "tailwindcss";
+
+@theme {
+  /* --- Forest: primary brand, dark surfaces, headings ------------------- */
+  --color-forest-950: #0a2314;
+  --color-forest-900: #12331e; /* footer, dark panels, H1 on light bg */
+  --color-forest-800: #1a4526;
+  --color-forest-700: #235a31;
+
+  /* --- Moss: CTA green. moss-600 is the only button fill for primary CTAs */
+  --color-moss-700: #3d6425; /* hover / active */
+  --color-moss-600: #4c7a2f; /* default — 5.08:1 with white, passes AA */
+  --color-moss-500: #5e9040;
+
+  /* --- Sage: secondary accents, icon strokes, quiet dividers ------------ */
+  --color-sage-500: #7c9a6b;
+  --color-sage-300: #afc3a2;
+  --color-sage-100: #dde6d6;
+
+  /* --- Clay: earth accent. Large-property tier, eyebrows, seasonal marks -
+     clay-500 is the mockup value but only clears 3.2:1 with white — large
+     text (18px+ / 14px bold) only. Use clay-600 for buttons and small text. */
+  --color-clay-600: #8a6e45; /* 4.85:1 with white, passes AA */
+  --color-clay-500: #a98b63;
+  --color-clay-300: #c9b295;
+  --color-clay-100: #eae2d3;
+
+  /* --- Bone: warm neutral surfaces ------------------------------------- */
+  --color-bone-50: #faf8f3; /* page background */
+  --color-bone-100: #f3efe5;
+  --color-bone-200: #e8e2d3; /* alternating band, e.g. How It Works */
+
+  /* --- Ink: text --------------------------------------------------------*/
+  --color-ink-900: #1f241f; /* body copy */
+  --color-ink-700: #3d443c;
+  --color-ink-500: #6b7268; /* captions, meta, disclaimers */
+
+  /* --- Typography -------------------------------------------------------
+     Display face: mockup uses a transitional serif. Two candidates —
+       Fraunces      (variable optical size + soft axis; organic, less common)
+       Source Serif 4 (conservative, excellent at text sizes)
+     Confirm which one the brand actually owns before locking this in. */
+  --font-display: var(--font-display-loaded), ui-serif, Georgia, serif;
+  --font-sans: var(--font-sans-loaded), ui-sans-serif, system-ui, sans-serif;
+
+  /* Type scale — 1.25 major third, clamped for fluid sizing */
+  --text-eyebrow: 0.75rem; /* uppercase, tracked +0.12em, clay-600 */
+  --text-eyebrow--line-height: 1.2;
+  --text-eyebrow--letter-spacing: 0.12em;
+  --text-body: 1rem;
+  --text-body--line-height: 1.65;
+  --text-lead: 1.125rem;
+  --text-lead--line-height: 1.6;
+  --text-h3: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --text-h2: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
+  --text-h1: clamp(2.25rem, 1.6rem + 3vw, 3.75rem);
+  --text-hero: clamp(2.75rem, 1.8rem + 4.5vw, 5rem);
+  --text-hero--line-height: 1.02;
+  --text-hero--letter-spacing: -0.02em;
+
+  /* --- Radius / elevation ---------------------------------------------- */
+  --radius-card: 0.5rem;
+  --radius-pill: 999px;
+  --shadow-card: 0 1px 2px rgb(31 36 31 / 0.04), 0 8px 24px rgb(31 36 31 / 0.06);
+  --shadow-lift: 0 2px 4px rgb(31 36 31 / 0.06), 0 16px 40px rgb(31 36 31 / 0.1);
+
+  /* --- Motion ----------------------------------------------------------- */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ============================================================================
+   Semantic aliases — prefer these in components over raw ramp values, so a
+   palette change is a one-line edit rather than a find-and-replace.
+   ========================================================================= */
+@theme inline {
+  --color-surface: var(--color-bone-50);
+  --color-surface-alt: var(--color-bone-200);
+  --color-surface-inverse: var(--color-forest-900);
+  --color-brand: var(--color-forest-900);
+  --color-accent: var(--color-clay-600);
+  --color-cta: var(--color-moss-600);
+  --color-cta-hover: var(--color-moss-700);
+  --color-text: var(--color-ink-900);
+  --color-text-muted: var(--color-ink-500);
+  --color-border: rgb(18 51 30 / 0.12);
+}
+
+/* ============================================================================
+   Base layer
+   ========================================================================= */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    color: var(--color-brand);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Visible focus everywhere — required by the accessibility brief (§27).
+     Do not remove; style it instead. */
+  :focus-visible {
+    outline: 2px solid var(--color-moss-600);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Hero and any text sitting on photography needs a scrim, not hope.
+     Apply .on-image to the text container over background imagery. */
+  .on-image {
+    text-shadow: 0 1px 3px rgb(10 35 20 / 0.25);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,44 @@
+# Why this file exists
+# ---------------------
+# Nixpacks' Node provider hardcodes `npm install -g corepack@0.24.1` whenever
+# package.json contains a `packageManager` field. Corepack 0.24.1 was released
+# in January 2024 and cannot execute pnpm 11.
+#
+# Corepack loads the downloaded package manager through its own vm-based module
+# loader. pnpm 11's entry point (`bin/pnpm.cjs`) uses a top-level dynamic
+# import, and 0.24.1 builds that vm context without an `importModuleDynamically`
+# callback, so Node throws before a single package is installed:
+#
+#   TypeError [ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING]
+#     at /root/.cache/node/corepack/pnpm/11.20.0/bin/pnpm.cjs:3:1
+#
+# Verified against real corepack builds: 0.24.1 fails, 0.28.2 and every later
+# release succeed. Pinning 0.34.6 rather than `latest` keeps builds reproducible.
+#
+# Overriding [phases.install] replaces the generated corepack line. Even if a
+# future Nixpacks keeps its own line, ours runs afterwards and overwrites the
+# global install, so the sequence is self-correcting either way.
+#
+# NOTE: leave Coolify's "Install Command" field EMPTY. Filling it in overrides
+# this phase entirely and the corepack fix never runs.
+
+providers = ["node"]
+
+[variables]
+# Docker builds have no TTY. Without this, corepack can block on the
+# "download and execute?" confirmation instead of proceeding.
+COREPACK_ENABLE_DOWNLOAD_PROMPT = "0"
+
+[phases.install]
+dependsOn = ["setup"]
+cmds = [
+  # A corepack new enough to run pnpm 11.
+  "npm install -g corepack@0.34.6",
+  "corepack enable",
+  # Reads the exact version from package.json's `packageManager` field, so the
+  # pnpm version is declared in exactly one place and cannot drift.
+  "corepack install",
+  # --frozen-lockfile: fail loudly if pnpm-lock.yaml and package.json disagree,
+  # rather than silently resolving something different from local.
+  "pnpm install --frozen-lockfile",
+]

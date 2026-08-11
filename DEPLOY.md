@@ -87,14 +87,32 @@ automatic redeploys on push.
 | Field | Value |
 |---|---|
 | Build Pack | **Nixpacks** |
-| Install Command | `pnpm install --frozen-lockfile` |
+| Install Command | **leave empty** |
 | Build Command | `pnpm build` |
 | Start Command | `pnpm start` |
 | Port | `3000` |
 | Base Directory | `/` |
 
-Nixpacks reads `packageManager` and `engines` from `package.json`, so it picks
-pnpm 11 and Node 22 without further configuration.
+**Leave Install Command empty.** This repo ships a `nixpacks.toml` that owns the
+install phase, and filling that field in Coolify overrides the whole phase —
+which would reintroduce the corepack failure described below.
+
+### Why `nixpacks.toml` exists
+
+Nixpacks' Node provider hardcodes `npm install -g corepack@0.24.1` whenever
+`package.json` has a `packageManager` field. Corepack 0.24.1 (January 2024)
+cannot execute pnpm 11: it loads the package manager through a vm context built
+without an `importModuleDynamically` callback, and pnpm 11's entry point uses a
+top-level dynamic import. The build dies before installing anything:
+
+```
+TypeError [ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING]
+  at /root/.cache/node/corepack/pnpm/11.20.0/bin/pnpm.cjs:3:1
+```
+
+`nixpacks.toml` replaces that phase with a pinned corepack 0.34.6, then
+`corepack install` reads the exact pnpm version from `packageManager`, so the
+version is declared in one place only.
 
 ### 8. Environment variables — read this bit carefully
 
@@ -161,6 +179,12 @@ Coolify redeploys automatically on push to `main`.
 ---
 
 ## Troubleshooting
+
+**Build fails with `ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING` at `pnpm.cjs`**
+Nixpacks installed corepack 0.24.1, which cannot run pnpm 11. `nixpacks.toml`
+fixes this — confirm the file reached the server, and confirm Coolify's
+**Install Command** field is empty. A value there overrides the phase and the
+old corepack comes back.
 
 **Build fails at install with `ERR_PNPM_IGNORED_BUILDS`**
 `pnpm-workspace.yaml` should contain an `allowBuilds` block listing `sharp` and

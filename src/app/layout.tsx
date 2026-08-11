@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
+import { Fraunces, Inter } from "next/font/google";
 
 
 
@@ -15,9 +16,18 @@ import "./globals.css";
  * Self-hosted at build time by next/font: no render-blocking request to
  * Google, no layout shift, and no third-party connection at runtime.
  */
-const display = { variable: "--font-display-loaded" };
+const display = Fraunces({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-display-loaded",
+  display: "swap",
+});
 
-const body = { variable: "--font-sans-loaded" };
+const body = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans-loaded",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),

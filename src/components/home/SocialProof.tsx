@@ -1,47 +1,50 @@
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { testimonials } from "@/content/home";
+import { TestimonialCard } from "@/components/ui/TestimonialCard";
+import { resultsDisclaimer, testimonials } from "@/content/testimonials";
 
 /**
- * Renders nothing while `testimonials` is empty, which is the intended state.
+ * Real, attributable reviews supplied by Eco-Tick — this section was rendering
+ * nothing until they arrived, rather than shipping an invented quote.
  *
- * The mockup showed a five-star review from "Sarah J., Cottage Owner". Brief
- * section 30 forbids fabricated testimonials, so rather than ship invented
- * social proof this section stays absent until Eco-Tick supplies real,
- * attributable reviews (see ARCHITECTURE.md section 5, item 5).
- *
- * When real reviews land, add AggregateRating schema only if the ratings are
- * genuine AND visible on the page.
+ * Still no AggregateRating schema: that needs the genuine review count and
+ * average from the Google Business Profile, with the ratings visible on the page.
  */
 export function SocialProof() {
   if (testimonials.length === 0) return null;
+  const featured = testimonials.slice(0, 3);
 
   return (
     <Section labelledBy="proof-heading">
       <Container>
-        <Eyebrow>Client feedback</Eyebrow>
-        <h2 id="proof-heading" className="mt-3 text-h2 font-display">
-          What our clients say.
-        </h2>
-        <ul className="mt-10 grid gap-6 md:grid-cols-3">
-          {testimonials.map((t) => (
-            <li
-              key={t.name}
-              className="rounded-card border border-border bg-white p-6 shadow-card"
-            >
-              <blockquote className="text-ink-900">
-                <p className="leading-relaxed">{t.quote}</p>
-              </blockquote>
-              <footer className="mt-4 text-sm text-ink-500">
-                <cite className="not-italic font-semibold text-ink-700">
-                  {t.name}
-                </cite>
-                , {t.context} &middot; {t.source}
-              </footer>
+        <div className="max-w-xl">
+          <Eyebrow>Client feedback</Eyebrow>
+          <h2 id="proof-heading" className="mt-3 text-h2 font-display">
+            What our customers say.
+          </h2>
+        </div>
+
+        <ul className="mt-12 grid gap-6 lg:grid-cols-3">
+          {featured.map((t) => (
+            <li key={t.name}>
+              <TestimonialCard t={t} />
             </li>
           ))}
         </ul>
+
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
+          <p className="max-w-xl text-xs leading-relaxed text-ink-500">
+            {resultsDisclaimer}
+          </p>
+          <Link
+            href="/testimonials"
+            className="text-sm font-semibold text-cta hover:underline"
+          >
+            Read all reviews <span aria-hidden="true">&rarr;</span>
+          </Link>
+        </div>
       </Container>
     </Section>
   );

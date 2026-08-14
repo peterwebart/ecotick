@@ -6,6 +6,11 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { buildMetadata } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/schema";
 import { commercial, largeProperty, residential } from "@/content/services";
+import { BadgeRow } from "@/components/home/BadgeRow";
+import { Photo } from "@/components/ui/Photo";
+import { TestimonialCard } from "@/components/ui/TestimonialCard";
+import { images } from "@/content/images";
+import { commercialTestimonials, resultsDisclaimer } from "@/content/testimonials";
 
 export const metadata = buildMetadata({
   title: "Tick & Mosquito Control Services",
@@ -37,8 +42,16 @@ export default function ServicesPage() {
         <p className="mt-6 max-w-2xl border-l-2 border-moss-600 pl-5 text-lead text-ink-700">
           Eco-Tick provides seasonal outdoor tick and mosquito control for three
           kinds of property: homes and cottages, commercial sites, and large
-          properties measured in acres. Each is treated by zone, not uniformly.
+          properties measured in acres. Every programme runs off truck-mounted
+          spray equipment, which is what lets treatment reach treelines and
+          woodland instead of stopping at the lawn edge.
         </p>
+        <Photo
+          image={images.truckFrontGarden}
+          ratio="21 / 9"
+          sizes="(max-width: 1280px) 100vw, 1200px"
+          className="mt-10"
+        />
       </Container>
 
       <Container className="pb-16">
@@ -92,6 +105,28 @@ export default function ServicesPage() {
           </ul>
         </div>
       </Container>
+
+      <BadgeRow heading="What every programme includes" />
+
+      {commercialTestimonials.length > 0 && (
+        <Container className="py-16">
+          <Eyebrow>In their words</Eyebrow>
+          <h2 className="mt-2 max-w-2xl text-h2 font-display">
+            A campground operator on why the equipment matters.
+          </h2>
+          <div className="mt-8 grid gap-8 lg:grid-cols-[1.3fr_1fr] lg:items-start">
+            <TestimonialCard t={commercialTestimonials[0]!} />
+            <Photo
+              image={images.truckSprayingLawn}
+              ratio="4 / 3"
+              sizes="(max-width: 1024px) 100vw, 40vw"
+            />
+          </div>
+          <p className="mt-6 max-w-2xl text-xs leading-relaxed text-ink-500">
+            {resultsDisclaimer}
+          </p>
+        </Container>
+      )}
 
       <CtaBand
         heading="Not sure which fits?"

@@ -120,7 +120,7 @@ export const largeProperty: ServicePage = {
       faqs: [
         {
           q: "What size property do you consider large?",
-          a: "PLACEHOLDER — requires Eco-Tick's actual acreage thresholds and where large-property pricing begins.",
+          a: "There is no fixed cutoff. What matters is how much of the land is actually used and how far treatment needs to reach. The truck-mounted rig covers acreage in a single visit, so large sites are routine rather than exceptional.",
         },
         {
           q: "Do you treat the entire property?",
@@ -136,7 +136,7 @@ export const largeProperty: ServicePage = {
         },
         {
           q: "What equipment do you use on large sites?",
-          a: "PLACEHOLDER — requires confirmation of Eco-Tick's equipment capability and maximum practical treatment area per visit.",
+          a: "Truck-mounted spray equipment: a tank, pump and hose reel built into the truck bed. It reaches well beyond where an operator can walk with a backpack unit, which is what makes treelines and woodland practical to treat.",
         },
       ],
     },

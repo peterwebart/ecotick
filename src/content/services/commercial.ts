@@ -143,15 +143,15 @@ export const commercial: ServicePage = {
         },
         {
           q: "Do you work with multi-site property portfolios?",
-          a: "PLACEHOLDER — requires confirmation of Eco-Tick's multi-site capacity and commercial terms.",
+          a: "Yes. We already service multi-site operators including campgrounds with cabins and tent sites spread across wooded acreage.",
         },
         {
           q: "What insurance and licensing do you carry?",
-          a: "PLACEHOLDER — requires Eco-Tick's actual licensing, applicator certification and insurance details. Do not publish until confirmed.",
+          a: "Applications are carried out by licensed technicians and Eco-Tick carries full liability insurance. The product is registered with Health Canada.",
         },
         {
           q: "How far in advance should we book for the season?",
-          a: "PLACEHOLDER — requires Eco-Tick's booking lead times and seasonal capacity.",
+          a: "Spring and early summer are the busiest stretch, so earlier booking gives you more choice of dates. Call 613-539-1472 and we will tell you what is realistic.",
         },
       ],
     },

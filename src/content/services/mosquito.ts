@@ -102,7 +102,7 @@ export const mosquitoControl: ServicePage = {
       faqs: [
         {
           q: "How long does mosquito treatment last?",
-          a: "PLACEHOLDER — requires the duration and reapplication interval from the product label.",
+          a: "Weeks per application. Programmes run on a four-to-six week cycle across the active season.",
         },
         {
           q: "Can you treat near a lake or river?",
@@ -212,11 +212,11 @@ export const tickMosquito: ServicePage = {
       faqs: [
         {
           q: "Is a combined programme cheaper than two separate ones?",
-          a: "PLACEHOLDER — requires Eco-Tick's pricing structure for combined versus single-pest programmes.",
+          a: "A combined programme is one assessment and one schedule rather than two, so it works out better than buying the services separately. Ask for a quote on the property and we will price both ways.",
         },
         {
           q: "Can I start with one and add the other later?",
-          a: "PLACEHOLDER — requires confirmation of Eco-Tick's mid-season programme change policy.",
+          a: "Yes. Plenty of customers start with ticks and add mosquito coverage once they see how much outdoor time they are getting back.",
         },
         {
           q: "Are the treatment areas the same for both?",
@@ -224,7 +224,7 @@ export const tickMosquito: ServicePage = {
         },
         {
           q: "How many visits does a season involve?",
-          a: "PLACEHOLDER — requires Eco-Tick's standard programme structure and visit counts.",
+          a: "A full season on a four-to-six week cycle generally works out to four or five visits from spring through fall, depending on when you start and how the season runs.",
         },
       ],
     },

@@ -69,19 +69,19 @@ export const howItWorks: ServicePage = {
       faqs: [
         {
           q: "Is the assessment free?",
-          a: "PLACEHOLDER — confirm whether assessments are free for all property types or only some.",
+          a: "Yes. Quotes and assessments are free and carry no obligation, residential or commercial.",
         },
         {
           q: "Do I need to be home?",
-          a: "PLACEHOLDER — requires Eco-Tick's policy on unattended access.",
+          a: "No. Plenty of customers are at work when we visit. We just need gate access and pets indoors.",
         },
         {
           q: "How far in advance do you schedule?",
-          a: "PLACEHOLDER — requires Eco-Tick's booking lead times.",
+          a: "Call 613-539-1472 and we will tell you the next available dates. Spring fills up fastest.",
         },
         {
           q: "What happens if it rains on the day?",
-          a: "PLACEHOLDER — requires the weather policy and label rainfastness information.",
+          a: "We do not spray in heavy rain or high wind. If weather closes in we reschedule, and if rain arrives shortly after an application we will assess whether it needs repeating.",
         },
       ],
     },
@@ -199,7 +199,7 @@ export const about: ServicePage = {
       imageKey: "founderAtWork",
       maxWidth: 330,
       caption:
-        "Edward on a spring application, on a property backing onto open water. The tank sprayer covers ground quickly across acreage; the backpack unit handles the treelines and borders a tractor cannot reach.",
+        "Edward on a spring application, on a property backing onto open water. Eco-Tick runs truck-mounted spray equipment rather than backpack units, which is what lets a single visit reach treelines and woodland edges instead of stopping at the lawn.",
     },
     {
       type: "callout",
@@ -284,6 +284,12 @@ export const serviceAreas: ServicePage = {
         "Farms and large estates",
         "Municipal and institutional properties",
       ],
+    },
+    {
+      type: "map",
+      heading: "Where we are based",
+      intro:
+        "Our base is in the west end of Kingston. If your property is outside the immediate area, send us the address and we will confirm coverage rather than leave you guessing from a map.",
     },
     {
       type: "callout",

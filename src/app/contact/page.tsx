@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/Container";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
+import { MapEmbed } from "@/components/ui/MapEmbed";
 import { buildMetadata } from "@/lib/seo";
 import { breadcrumbSchema, localBusinessSchema } from "@/lib/schema";
 import { site } from "@/content/site";
@@ -111,6 +112,7 @@ export default function ContactPage() {
             our busiest stretch. If you are planning treatment for the coming
             season, booking earlier gives you more choice of dates.
           </p>
+          <MapEmbed className="mt-7" />
         </div>
       </Container>
     </>

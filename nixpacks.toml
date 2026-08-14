@@ -31,7 +31,34 @@ COREPACK_ENABLE_DOWNLOAD_PROMPT = "0"
 
 [phases.install]
 dependsOn = ["setup"]
+
+# THIS LINE IS THE FIX FOR ERR_PNPM_IGNORED_BUILDS.
+#
+# Nixpacks copies a restricted file set into the install layer so that Docker
+# can cache it independently of source changes. Its Node provider's list covers
+# package.json and the lockfile but NOT pnpm-workspace.yaml — and in pnpm 11
+# that file is the only place the build-script allowlist can live. The setting
+# is not read from .npmrc (verified) and no longer read from package.json's
+# `pnpm` field.
+#
+# So on the server pnpm ran without ever seeing `allowBuilds`, refused to run
+# sharp's and unrs-resolver's install scripts, and exited 1 — even though the
+# identical install passes locally, where the file is obviously present.
+#
+# Listing the file here puts it in the install layer. These three are all
+# `pnpm install --frozen-lockfile` needs; source is copied for the build phase.
+onlyIncludeFiles = [
+  "package.json",
+  "pnpm-lock.yaml",
+  "pnpm-workspace.yaml",
+]
+
 cmds = [
+  # Safety net, not the fix. If a Nixpacks build ever ignores onlyIncludeFiles,
+  # this keeps the deploy green and says so loudly in the build log instead of
+  # failing. When the real file is present — the normal case — it is a no-op,
+  # so the two can never silently disagree.
+  "test -f pnpm-workspace.yaml || { echo '>>> WARNING: pnpm-workspace.yaml absent from install layer; writing fallback allowlist'; printf 'allowBuilds:\\n  sharp: true\\n  unrs-resolver: true\\n' > pnpm-workspace.yaml; }",
   # A corepack new enough to run pnpm 11.
   "npm install -g corepack@0.34.6",
   "corepack enable",

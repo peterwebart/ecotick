@@ -2,6 +2,7 @@ import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { SourceNeeded } from "@/components/ui/SourceNeeded";
 import Image from "next/image";
 import { images } from "@/content/images";
+import { MapEmbed } from "@/components/ui/MapEmbed";
 import { slugify } from "@/lib/slug";
 import type { Block } from "@/content/types";
 
@@ -291,6 +292,19 @@ function BlockRenderer({ block }: { block: Block }) {
         </figure>
       );
     }
+
+    case "map":
+      return (
+        <section>
+          <h2 id={slugify(block.heading)} className="scroll-mt-24 text-h2 font-display">
+            {block.heading}
+          </h2>
+          {block.intro && (
+            <p className="mt-4 max-w-2xl leading-relaxed text-ink-700">{block.intro}</p>
+          )}
+          <MapEmbed className="mt-6" />
+        </section>
+      );
 
     case "sourceNeeded":
       return <SourceNeeded heading={block.heading} needs={block.needs} />;

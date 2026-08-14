@@ -41,6 +41,7 @@ export type Block =
       rows: readonly (readonly string[])[];
     }
   | { type: "takeaways"; items: readonly string[] }
+  | { type: "map"; heading: string; intro?: string }
   | {
       type: "figure";
       /** Key into the images manifest, not the import - keeps blocks serialisable. */

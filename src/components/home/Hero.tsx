@@ -31,15 +31,15 @@ export function Hero() {
           </h1>
 
           <p className="mt-6 max-w-md text-lead text-bone-100/90 lg:mt-7">
-            Professional tick and mosquito protection for homes, cottages,
-            businesses and large outdoor properties across Eastern Ontario.
+            Truck-mounted, garlic-based tick and mosquito control for homes,
+            cottages, businesses and large properties across Eastern Ontario.
           </p>
 
           <p className="mt-5 inline-flex items-center gap-3 rounded-pill border border-white/20 bg-white/10 px-4 py-2 text-sm text-sage-100">
             <span aria-hidden="true" className="text-base">
               &#127813;
             </span>
-            A natural garlic-based approach
+            Garlic-based &middot; Health Canada registered
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:mt-9">

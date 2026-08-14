@@ -61,7 +61,7 @@ export const residential: ServicePage = {
         {
           n: "02",
           title: "Targeted treatment",
-          body: "We apply our garlic-based solution to the zones identified in the assessment, following the product label. This is a targeted application to habitat, not a blanket spray of the entire property.",
+          body: "We apply our garlic-based solution to the zones identified in the assessment using truck-mounted spray equipment. The reach matters: a backpack unit stops where the operator stops, while a truck-mounted rig pushes into treelines and woodland edges where the ticks actually are. Targeted application to habitat, not a blanket spray.",
         },
         {
           n: "03",
@@ -150,7 +150,7 @@ export const residential: ServicePage = {
       faqs: [
         {
           q: "How often should tick treatments be applied?",
-          a: "PLACEHOLDER — requires the reapplication interval from the product label. See ARCHITECTURE.md section 5.",
+          a: "Our programmes run on a four-to-six-week cycle through the active season. If pressure comes back sooner than that, call us and we will come back between scheduled visits.",
         },
         {
           q: "When should I start tick treatment?",
@@ -166,7 +166,7 @@ export const residential: ServicePage = {
         },
         {
           q: "Does rain affect the treatment?",
-          a: "PLACEHOLDER — requires rainfastness information from the product label.",
+          a: "Heavy rain within a few hours of application can reduce coverage. Tell us if that happens and we will assess whether the visit needs repeating.",
         },
         {
           q: "Do you treat cottages and rural properties?",

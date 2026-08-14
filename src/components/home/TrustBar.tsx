@@ -4,20 +4,17 @@ import { Icon, type IconName } from "@/components/ui/Icon";
 import { trustPoints } from "@/content/home";
 
 const trustIcons: readonly IconName[] = [
-  "garlic-solution",
+  "shield-protection",
   "professional-application",
-  "seasonal-protection",
-  "residential",
-  "large-property",
+  "treatment",
+  "garlic-solution",
+  "family-and-pets",
 ];
 
 /**
- * CLAIMS NOTE (ARCHITECTURE.md section 4): the mockup's trust bar read
- * "Safe for Families & Pets", "Effective & Long Lasting" and "Effective against
- * ticks & mosquitoes". Those are efficacy and safety claims regulated under the
- * Pest Control Products Act and must match the registered PMRA label. They are
- * replaced here with factual service descriptions. Restore them only once the
- * label and PCP registration number substantiate the exact wording.
+ * Registration, licensing and insurance are stated on Eco-Tick's authority.
+ * "Family & pet conscious" is used rather than a bare "Pet Friendly" safety
+ * claim — see CLAIMS-REGISTER.md.
  */
 export function TrustBar() {
   return (
@@ -35,7 +32,7 @@ export function TrustBar() {
           ))}
         </ul>
         <p className="mt-5 text-xs text-ink-700">
-          Treatments are applied according to the product label.{" "}
+          Registered with Health Canada and applied by licensed technicians.{" "}
           <Link href="/safety-environment" className="underline underline-offset-2">
             Read our safety &amp; environment information
           </Link>

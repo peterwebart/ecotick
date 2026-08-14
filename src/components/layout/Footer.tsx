@@ -30,6 +30,7 @@ const columns = [
       { label: "About", href: "/about" },
       { label: "How it works", href: "/how-it-works" },
       { label: "Who we serve", href: "/who-we-serve" },
+      { label: "Reviews", href: "/testimonials" },
       { label: "Safety & environment", href: "/safety-environment" },
       { label: "Service areas", href: "/service-areas" },
       { label: "Contact", href: "/contact" },

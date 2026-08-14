@@ -67,8 +67,8 @@ export const serviceTiers: readonly ServiceTier[] = [
 ];
 
 export const trustPoints = [
+  "Truck-mounted spray system",
   "Garlic-based formulation",
-  "Applied by trained technicians",
   "Seasonal programs",
   "Residential & commercial",
   "Large-property capability",
@@ -83,7 +83,7 @@ export const processSteps = [
   {
     n: "02",
     title: "Treat",
-    body: "We apply our garlic-based solution to the targeted outdoor areas identified in the assessment, following the product label.",
+    body: "We apply our garlic-based solution to the targeted areas using truck-mounted spray equipment, which reaches treelines and woodland edges a backpack sprayer cannot, following the product label.",
   },
   {
     n: "03",
@@ -110,7 +110,7 @@ export const seasons = [
   },
 ] as const;
 
-export const differences = [
+export const legacyDifferences = [
   {
     title: "A natural-oriented approach",
     body: "Our programs are built around a garlic-based outdoor treatment rather than a conventional broad-spectrum approach.",
@@ -171,7 +171,7 @@ export const homeFaqs = [
   },
   {
     q: "How often should treatments be applied?",
-    a: "PLACEHOLDER - requires the product label reapplication interval. See ARCHITECTURE.md section 5.",
+    a: "Programmes run on a four-to-six-week cycle across the active season, with return visits between scheduled applications if pressure returns sooner.",
   },
   {
     q: "When should I start treatment?",

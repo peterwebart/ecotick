@@ -114,11 +114,11 @@ export const professionalSpraying: Article = {
       faqs: [
         {
           q: "How long does a treatment visit take?",
-          a: "PLACEHOLDER — requires Eco-Tick's typical visit duration by property size.",
+          a: "A standard residential yard is usually well under an hour. Acreage takes longer, though the truck-mounted equipment covers ground far faster than walking a property with a backpack unit.",
         },
         {
           q: "Do I need to be home during the treatment?",
-          a: "PLACEHOLDER — requires Eco-Tick's policy on unattended access.",
+          a: "No. Plenty of customers are at work when we visit. We just need gate access and pets indoors.",
         },
         {
           q: "How soon can we use the yard afterwards?",

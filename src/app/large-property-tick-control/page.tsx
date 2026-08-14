@@ -16,7 +16,7 @@ export default function Page() {
     <>
       <ServicePageTemplate
         page={page}
-        hero={images.largePropertyAerial}
+        hero={images.truckDriveway}
         crumbs={[
           { name: "Home", path: "/" },
           { name: "Services", path: "/services" },

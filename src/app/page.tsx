@@ -4,7 +4,8 @@ import { TrustBar } from "@/components/home/TrustBar";
 import { ServiceTiers } from "@/components/home/ServiceTiers";
 import { HowItWorks } from "@/components/home/HowItWorks";
 import { GarlicPanel } from "@/components/home/GarlicPanel";
-import { DifferenceGrid } from "@/components/home/DifferenceGrid";
+import { BadgeRow } from "@/components/home/BadgeRow";
+import { Fleet } from "@/components/home/Fleet";
 import { KnowledgeHub } from "@/components/home/KnowledgeHub";
 import { SocialProof } from "@/components/home/SocialProof";
 import { FaqSection } from "@/components/home/FaqSection";
@@ -33,8 +34,9 @@ export default function HomePage() {
       <TrustBar />
       <ServiceTiers />
       <HowItWorks />
+      <Fleet />
       <GarlicPanel />
-      <DifferenceGrid />
+      <BadgeRow />
       <KnowledgeHub />
       <SocialProof />
       <FaqSection />

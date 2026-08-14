@@ -15,6 +15,7 @@ const core = [
   { path: "/resources", priority: 0.7 },
   { path: "/blog", priority: 0.6 },
   { path: "/faq", priority: 0.6 },
+  { path: "/testimonials", priority: 0.7 },
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

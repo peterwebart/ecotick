@@ -12,7 +12,7 @@ export const site = {
     "Professional tick and mosquito protection for homes, cottages, businesses and large outdoor properties in Kingston and Eastern Ontario.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.eco-ticksolutions.ca",
 
-  phone: "613-539-1472",
+  phone: "(613) 539-1472",
   phoneHref: "tel:+16135391472",
   email: "ecoticksolutions@gmail.com",
 
@@ -55,6 +55,7 @@ export const nav = [
   { label: "Services", href: "/services" },
   { label: "How It Works", href: "/how-it-works" },
   { label: "Who We Serve", href: "/who-we-serve" },
+  { label: "Reviews", href: "/testimonials" },
   { label: "Resources", href: "/resources" },
   { label: "About", href: "/about" },
 ] as const;

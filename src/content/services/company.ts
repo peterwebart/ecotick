@@ -229,16 +229,27 @@ export const about: ServicePage = {
       ],
     },
     {
-      type: "sourceNeeded",
-      heading: "Still to confirm before this page is complete",
-      needs: [
-        "The year Eco-Tick Solutions Inc. was incorporated (2010 is when Edward began treating his own property, which is not the same thing)",
-        "Ontario pesticide applicator licence class and number",
-        "Insurance coverage details",
-        "Team size and roles beyond the founder",
-        "The camera original of the photograph above - the supplied file is 330x328, inset-sized only",
-        "More real photography: the imagery elsewhere on this site is illustrative, not documentary",
-        "Any industry association memberships",
+      type: "prose",
+      heading: "How we work now",
+      body: [
+        "What began with one backyard in Kingston is now a seasonal operation running truck-mounted spray equipment across Eastern Ontario. Homes, cottages, farms, athletic fields, commercial grounds, and campgrounds with cabins set well back in the trees.",
+        "The product is registered with Health Canada. Applications are carried out by licensed technicians. Eco-Tick is fully insured. And Edward still runs the equipment himself, which is not something most companies this side of a franchise can say.",
+        "The part he is proudest of is the repeat business. Customers describe a fourth and fifth season with us, and the reason they give is rarely the chemistry — it is that when they call between scheduled visits because something has come back, someone turns up.",
+      ],
+    },
+    {
+      type: "list",
+      heading: "What you can expect from us",
+      columns: 2,
+      items: [
+        "A free assessment before anything is quoted",
+        "Straight answers about what treatment does and does not do",
+        "Treatment applied to habitat, not blanketed across a lawn",
+        "Exclusion zones agreed before the first visit",
+        "A four-to-six week cycle across the active season",
+        "A return visit between applications if pressure comes back",
+        "The same person on the phone as on the property",
+        "No pressure and no lock-in to find out what it would cost",
       ],
     },
   ],
@@ -297,13 +308,11 @@ export const serviceAreas: ServicePage = {
       body: "Call 613-539-1472 or send us the address through the quote form. We will tell you straight away rather than leaving you to guess from a map.",
     },
     {
-      type: "sourceNeeded",
-      heading: "Before individual location pages are built",
-      needs: [
-        "The named communities served, and the maximum travel radius from Kingston",
-        "Whether the radius differs for commercial or large-property work",
-        "Any minimum job size for properties at the edge of the territory",
-        "Confirmation of whether the Creekford Road address receives visitors, or is an operating base only",
+      type: "prose",
+      heading: "Outside the immediate area?",
+      body: [
+        "We travel for the right job, particularly acreage and commercial sites where a single visit covers a lot of ground. Cottage country and rural properties well outside Kingston are a regular part of the season rather than an exception.",
+        "The fastest way to find out is to ask. Call (613) 539-1472 or send the address through the quote form and we will tell you straight away whether it works, rather than leaving you to guess from a radius on a map.",
       ],
     },
     {

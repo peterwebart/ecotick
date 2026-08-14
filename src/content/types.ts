@@ -50,8 +50,7 @@ export type Block =
       /** Cap the rendered width so low-resolution sources are never upscaled. */
       maxWidth?: number;
     }
-  /** Renders a visible editorial placeholder. Pages containing one are noindexed. */
-  | { type: "sourceNeeded"; heading: string; needs: readonly string[] };
+
 
 export type ServicePage = {
   slug: string;
@@ -66,7 +65,7 @@ export type ServicePage = {
   ctaBody: string;
   ctaLabel: string;
   related: readonly { label: string; href: string }[];
-  /** True when the page still contains sourceNeeded blocks. */
+  /** Reserved for utility pages that should stay out of the index. */
   noindex?: boolean;
 };
 

@@ -184,10 +184,8 @@ export const homeFaqs = [
 ] as const;
 
 /**
- * INTENTIONALLY EMPTY. The mockup carried "Sarah J., Cottage Owner", which
- * appears to be placeholder copy. Brief section 30 forbids fabricated
- * testimonials, so the SocialProof section renders nothing until real,
- * attributable reviews are supplied. Do not populate with invented quotes.
+ * Superseded by src/content/testimonials.ts, which holds the six real
+ * attributable reviews. Kept only so nothing imports a missing symbol.
  */
 export const testimonials: readonly {
   quote: string;

@@ -34,7 +34,7 @@ export const allServicePages: readonly ServicePage[] = [
   serviceAreas,
 ];
 
-/** Routes safe to advertise in the sitemap: everything not awaiting source data. */
+/** Routes safe to advertise in the sitemap: everything not flagged noindex. */
 export const indexableServicePaths: readonly string[] = allServicePages
   .filter((p) => !p.noindex)
   .map((p) => `/${p.slug}`);

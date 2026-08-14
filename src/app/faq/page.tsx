@@ -22,9 +22,9 @@ const crumbs = [
 
 /**
  * Aggregated from the service pages so answers cannot drift out of sync with
- * the pages they came from. Questions whose answer is still a PLACEHOLDER are
- * filtered out rather than published: FAQPage schema on a placeholder answer
- * would be structured data that does not match useful visible content.
+ * the pages they came from. The filter below is a safety net: if an unfinished
+ * answer is ever introduced it is dropped rather than emitted into FAQPage
+ * schema, where it would be structured data with nothing useful behind it.
  */
 type Group = { source: string; href: string; faqs: readonly Faq[] };
 

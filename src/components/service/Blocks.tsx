@@ -1,5 +1,4 @@
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
-import { SourceNeeded } from "@/components/ui/SourceNeeded";
 import Image from "next/image";
 import { images } from "@/content/images";
 import { MapEmbed } from "@/components/ui/MapEmbed";
@@ -306,7 +305,5 @@ function BlockRenderer({ block }: { block: Block }) {
         </section>
       );
 
-    case "sourceNeeded":
-      return <SourceNeeded heading={block.heading} needs={block.needs} />;
   }
 }

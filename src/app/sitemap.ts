@@ -4,9 +4,8 @@ import { indexableServicePaths } from "@/content/services";
 import { indexableArticlePaths } from "@/content/articles";
 
 /**
- * Only routes that exist AND are indexable are listed. Pages still carrying
- * sourceNeeded blocks are excluded automatically, so an unfinished page can
- * never be advertised to Google by accident.
+ * Only routes that exist AND are indexable are listed. Anything flagged
+ * noindex in content is filtered out automatically rather than by hand.
  */
 const core = [
   { path: "/", priority: 1 },
@@ -16,6 +15,8 @@ const core = [
   { path: "/blog", priority: 0.6 },
   { path: "/faq", priority: 0.6 },
   { path: "/testimonials", priority: 0.7 },
+  { path: "/privacy", priority: 0.2 },
+  { path: "/terms", priority: 0.2 },
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

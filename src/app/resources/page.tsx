@@ -19,17 +19,6 @@ const crumbs = [
   { name: "Resources", path: "/resources" },
 ];
 
-/**
- * Planned content, shown as a visible backlog rather than published stubs.
- * Brief section 19: build the structure, do not publish placeholder pages.
- */
-const planned = [
-  { label: "Tick identification", note: "Needs macro photography" },
-  { label: "Blacklegged ticks and Lyme disease", note: "Needs medical review" },
-  { label: "The cottage owner's tick protection guide", note: "Phase 4" },
-  { label: "Commercial property pest management guide", note: "Phase 4" },
-  { label: "Spring, summer and fall prevention checklists", note: "Phase 4" },
-];
 
 export default function ResourcesPage() {
   return (
@@ -108,27 +97,6 @@ export default function ResourcesPage() {
           </Link>
         </section>
 
-        <section aria-labelledby="planned-heading" className="mt-16">
-          <div className="rounded-card border-2 border-dashed border-clay-500 bg-clay-100 p-7">
-            <Eyebrow>In progress</Eyebrow>
-            <h2 id="planned-heading" className="mt-2 text-h3 font-display">
-              Being written
-            </h2>
-            <p className="mt-2 max-w-2xl text-sm text-ink-700">
-              These are planned rather than published. Listing them here beats
-              putting up thin placeholder pages that would need to be indexed,
-              then fixed.
-            </p>
-            <ul className="mt-5 grid gap-2.5 sm:grid-cols-2">
-              {planned.map((p) => (
-                <li key={p.label} className="text-sm text-ink-900">
-                  <span className="font-semibold">{p.label}</span>
-                  <span className="text-ink-500"> — {p.note}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
       </Container>
 
       <CtaBand

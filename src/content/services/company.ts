@@ -159,8 +159,8 @@ export const whoWeServe: ServicePage = {
     },
     {
       type: "callout",
-      heading: "Industry pages",
-      body: "Dedicated pages for campgrounds, resorts, golf courses, sports facilities and property managers are planned for a later phase. They will only be published where there is genuinely distinct content for each, rather than the same page with the industry name swapped in.",
+      heading: "Not on the list?",
+      body: "If your property has outdoor space that people use, it is worth a conversation. Call (613) 539-1472 and describe the site — we will tell you honestly whether it is a good fit before quoting anything.",
     },
   ],
 };
@@ -314,11 +314,6 @@ export const serviceAreas: ServicePage = {
         "We travel for the right job, particularly acreage and commercial sites where a single visit covers a lot of ground. Cottage country and rural properties well outside Kingston are a regular part of the season rather than an exception.",
         "The fastest way to find out is to ask. Call (613) 539-1472 or send the address through the quote form and we will tell you straight away whether it works, rather than leaving you to guess from a radius on a map.",
       ],
-    },
-    {
-      type: "callout",
-      heading: "Why there are no city pages yet",
-      body: "Individual location pages are only worth building where there is genuinely distinct content for each: local property types, local conditions, local service detail. Generating a page per city from a template produces thin doorway pages, which the brief rules out and which search engines discount. Once the real territory is confirmed, location pages will be built for the areas that can support unique content.",
     },
   ],
 };

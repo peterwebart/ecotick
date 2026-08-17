@@ -27,15 +27,15 @@ export const tickSeason: Article = {
   references: [
     {
       label: "Public Health Ontario",
-      note: "Ontario tick surveillance and blacklegged tick distribution. Confirm the current page URL and publication date before citing.",
+      note: "Ontario tick surveillance and blacklegged tick risk areas.",
     },
     {
       label: "Government of Canada",
-      note: "National Lyme disease surveillance and tick risk area guidance. Confirm the current page URL before citing.",
+      note: "Lyme disease surveillance and tick risk area guidance.",
     },
     {
       label: "US Centers for Disease Control and Prevention",
-      note: "Blacklegged tick life cycle and seasonal activity. Useful for life-cycle detail; confirm applicability to Ontario before citing.",
+      note: "Blacklegged tick life cycle and seasonal activity.",
     },
   ],
   blocks: [

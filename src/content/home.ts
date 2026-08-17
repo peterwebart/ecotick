@@ -110,33 +110,6 @@ export const seasons = [
   },
 ] as const;
 
-export const legacyDifferences = [
-  {
-    title: "A natural-oriented approach",
-    body: "Our programs are built around a garlic-based outdoor treatment rather than a conventional broad-spectrum approach.",
-  },
-  {
-    title: "Professional application",
-    body: "Structured treatment by trained technicians, not a hardware-store product applied by guesswork.",
-  },
-  {
-    title: "Programs, not one-offs",
-    body: "Tick and mosquito activity shifts through the season. Our programs are scheduled around it.",
-  },
-  {
-    title: "Outdoor-only specialists",
-    body: "We are not a general exterminator. Ticks and mosquitoes on outdoor property is the whole job.",
-  },
-  {
-    title: "Homes through to acreage",
-    body: "The same team handles a suburban backyard, a lakefront cottage and a hundred-acre corporate campus.",
-  },
-  {
-    title: "Straight answers",
-    body: "We tell you what the treatment does, what it does not do, and what to expect between visits.",
-  },
-] as const;
-
 export const knowledgeArticles = [
   {
     title: "The Ontario Tick Control Guide",
@@ -182,14 +155,3 @@ export const homeFaqs = [
     a: "Yes. We service residential yards, cottage and rural properties, commercial grounds, and large properties such as farms, campuses, parks and sports fields.",
   },
 ] as const;
-
-/**
- * Superseded by src/content/testimonials.ts, which holds the six real
- * attributable reviews. Kept only so nothing imports a missing symbol.
- */
-export const testimonials: readonly {
-  quote: string;
-  name: string;
-  context: string;
-  source: string;
-}[] = [];

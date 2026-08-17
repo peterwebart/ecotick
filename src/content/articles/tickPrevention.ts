@@ -27,11 +27,11 @@ export const tickPrevention: Article = {
   references: [
     {
       label: "US Centers for Disease Control and Prevention",
-      note: "Tick habitat modification and yard guidance, including the wood-chip barrier recommendation and dryer heat guidance. Confirm the current page URL before citing.",
+      note: "Tick habitat modification, yard guidance and clothing dryer recommendations.",
     },
     {
       label: "Public Health Ontario",
-      note: "Tick removal guidance and Ontario risk areas. Confirm the current page URL before citing.",
+      note: "Tick removal guidance and Ontario risk areas.",
     },
   ],
   blocks: [

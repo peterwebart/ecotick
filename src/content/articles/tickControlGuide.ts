@@ -41,19 +41,19 @@ export const tickControlGuide: Article = {
   references: [
     {
       label: "Public Health Ontario",
-      note: "Ontario tick surveillance, blacklegged tick distribution and estimated risk areas. Verify the current page URL and publication year.",
+      note: "Ontario tick surveillance, blacklegged tick distribution and estimated risk areas.",
     },
     {
       label: "Government of Canada",
-      note: "National Lyme disease surveillance and tick risk area maps. Verify the current page URL.",
+      note: "National Lyme disease surveillance and tick risk area maps.",
     },
     {
       label: "US Centers for Disease Control and Prevention",
-      note: "Blacklegged tick life cycle, habitat modification guidance and the dryer-heat recommendation. Verify applicability to Ontario before citing.",
+      note: "Blacklegged tick life cycle and habitat modification guidance.",
     },
     {
-      label: "eTick / Public health tick identification services",
-      note: "Photo-based tick identification. Confirm which service is currently operating in Ontario and whether it is free.",
+      label: "eTick",
+      note: "Public photo-based tick identification service.",
     },
   ],
   blocks: [

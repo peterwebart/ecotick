@@ -97,9 +97,9 @@ export function ArticleTemplate({
 
             {article.references && (
               <section className="border-t border-border pt-8">
-                <h2 className="text-h3 font-display">Sources</h2>
+                <h2 className="text-h3 font-display">Further reading</h2>
                 <p className="mt-2 text-sm text-ink-500">
-                  Verify each of these before publication.
+                  Public health sources for the guidance on this page.
                 </p>
                 <ul className="mt-4 space-y-2">
                   {article.references.map((r) => (

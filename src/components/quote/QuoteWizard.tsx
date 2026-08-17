@@ -2,6 +2,7 @@
 
 import { useId, useState } from "react";
 import { Button } from "@/components/ui/Button";
+import { AddressAutocomplete } from "@/components/quote/AddressAutocomplete";
 import { track } from "@/lib/analytics";
 
 const propertyTypes = [
@@ -16,13 +17,6 @@ const propertyTypes = [
   "Other",
 ] as const;
 
-const services = [
-  "Tick control",
-  "Mosquito control",
-  "Tick + mosquito",
-  "Not sure yet",
-] as const;
-
 const sizes = [
   "Under 1/4 acre",
   "1/4 to 1 acre",
@@ -31,7 +25,14 @@ const sizes = [
   "25+ acres",
 ] as const;
 
-const timings = ["As soon as possible", "Within a month", "Next season", "Just researching"] as const;
+const timings = [
+  "As soon as possible",
+  "Within a month",
+  "Next season",
+  "Just researching",
+] as const;
+
+const contactMethods = ["Email", "Phone call", "Text message"] as const;
 
 /** Property types that branch the form into the B2B question set. */
 const commercialTypes = new Set<string>([
@@ -45,42 +46,58 @@ const commercialTypes = new Set<string>([
 
 type Form = {
   propertyType: string;
-  service: string;
   size: string;
-  location: string;
-  timing: string;
-  name: string;
-  email: string;
-  phone: string;
-  notes: string;
   acreage: string;
   buildings: string;
   visitors: string;
+  address: string;
+  /** Google place id, set only when a suggestion was selected. */
+  addressPlaceId: string;
+  timing: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  preferredContact: string;
+  notes: string;
   // Honeypot: real users never fill this.
   website: string;
 };
 
 const empty: Form = {
   propertyType: "",
-  service: "",
   size: "",
-  location: "",
-  timing: "",
-  name: "",
-  email: "",
-  phone: "",
-  notes: "",
   acreage: "",
   buildings: "",
   visitors: "",
+  address: "",
+  addressPlaceId: "",
+  timing: "",
+  firstName: "",
+  lastName: "",
+  email: "",
+  phone: "",
+  preferredContact: "",
+  notes: "",
   website: "",
 };
 
-const TOTAL_STEPS = 6;
+/**
+ * Four steps:
+ *   1  Property type
+ *   2  Property size (plus acreage/buildings/headcount for commercial)
+ *   3  Property address (Google autocomplete) + preferred timing
+ *   4  Contact details, split name, and preferred contact method
+ *
+ * The old "which pest" step is gone. It never changed how a property gets
+ * assessed — the technician walks it either way — so it was a question that cost
+ * a drop-off and bought nothing.
+ */
+const TOTAL_STEPS = 4;
 
 /**
  * `initialPropertyType` lets a service page drop the visitor straight onto the
- * matching branch - the large-property page opens on step 2 with the B2B
+ * matching branch — the large-property page opens on step 2 with the B2B
  * question set already active, rather than asking what it already knows.
  */
 export function QuoteWizard({
@@ -110,17 +127,23 @@ export function QuoteWizard({
   function validate(current: number): string[] {
     const e: string[] = [];
     if (current === 1 && !form.propertyType) e.push("Choose a property type.");
-    if (current === 2 && !form.service) e.push("Choose the service you need.");
-    if (current === 3 && !form.size) e.push("Choose an approximate property size.");
-    if (current === 4 && form.location.trim().length < 2)
-      e.push("Enter your town or city.");
-    if (current === 5 && !form.timing) e.push("Choose when you would like service.");
-    if (current === 6) {
-      if (form.name.trim().length < 2) e.push("Enter your name.");
+    if (current === 2 && !form.size) e.push("Choose an approximate property size.");
+    if (current === 3) {
+      // A typed address is accepted. Rural properties frequently have no
+      // matching suggestion, and rejecting those would lose real customers.
+      if (form.address.trim().length < 5)
+        e.push("Enter the property address.");
+      if (!form.timing) e.push("Choose when you would like service to start.");
+    }
+    if (current === 4) {
+      if (form.firstName.trim().length < 2) e.push("Enter your first name.");
+      if (form.lastName.trim().length < 2) e.push("Enter your last name.");
       if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email))
         e.push("Enter a valid email address.");
       if (form.phone.replace(/\D/g, "").length < 10)
         e.push("Enter a phone number with at least 10 digits.");
+      if (!form.preferredContact)
+        e.push("Choose how you would prefer to be contacted.");
     }
     return e;
   }
@@ -132,7 +155,7 @@ export function QuoteWizard({
   }
 
   async function submit() {
-    const e = validate(6);
+    const e = validate(TOTAL_STEPS);
     setErrors(e);
     if (e.length > 0) return;
 
@@ -145,7 +168,10 @@ export function QuoteWizard({
       });
       if (!res.ok) throw new Error(String(res.status));
       // Fire only on a server-confirmed write, never on click.
-      track("quote_submitted", { propertyType: form.propertyType, service: form.service });
+      track("quote_submitted", {
+        propertyType: form.propertyType,
+        preferredContact: form.preferredContact,
+      });
       setStatus("sent");
     } catch {
       setStatus("error");
@@ -157,9 +183,10 @@ export function QuoteWizard({
       <div className="rounded-card border border-border bg-white p-8 shadow-card">
         <h2 className="text-h2 font-display">Request received.</h2>
         <p className="mt-3 text-ink-700">
-          Thanks, {form.name.split(" ")[0]}. We have your details for a{" "}
-          {form.size.toLowerCase()} {form.propertyType.toLowerCase()} in{" "}
-          {form.location}. Someone will be in touch to arrange an assessment.
+          Thanks, {form.firstName}. We have your details for a{" "}
+          {form.size.toLowerCase()} {form.propertyType.toLowerCase()} at{" "}
+          {form.address}. Someone will be in touch by{" "}
+          {form.preferredContact.toLowerCase()} to arrange an assessment.
         </p>
       </div>
     );
@@ -178,7 +205,7 @@ export function QuoteWizard({
         aria-valuenow={step}
         aria-valuemin={1}
         aria-valuemax={TOTAL_STEPS}
-        aria-label="Quote progress"
+        aria-label={`Quote progress, step ${step} of ${TOTAL_STEPS}`}
         className="mt-3 h-1 w-full overflow-hidden rounded-pill bg-sage-100"
       >
         <div
@@ -210,16 +237,8 @@ export function QuoteWizard({
             onChange={(v) => set("propertyType", v)}
           />
         )}
+
         {step === 2 && (
-          <Choice
-            legend="What do you need?"
-            name={`${formId}-service`}
-            options={services}
-            value={form.service}
-            onChange={(v) => set("service", v)}
-          />
-        )}
-        {step === 3 && (
           <>
             <Choice
               legend="Roughly how big is the property?"
@@ -234,52 +253,87 @@ export function QuoteWizard({
                   label="Approximate acreage"
                   value={form.acreage}
                   onChange={(v) => set("acreage", v)}
+                  optional
                 />
                 <Text
                   label="Number of buildings"
                   value={form.buildings}
                   onChange={(v) => set("buildings", v)}
+                  optional
                 />
                 <Text
                   label="Typical people on site"
                   value={form.visitors}
                   onChange={(v) => set("visitors", v)}
+                  optional
                 />
               </div>
             )}
           </>
         )}
+
+        {step === 3 && (
+          <div className="space-y-7">
+            <AddressAutocomplete
+              value={form.address}
+              onChange={(v, placeId) =>
+                setForm((f) => {
+                  if (!started) {
+                    setStarted(true);
+                    track("quote_started");
+                  }
+                  return { ...f, address: v, addressPlaceId: placeId };
+                })
+              }
+              hint="Start typing and pick your address from the list, or type it in full."
+            />
+            <Choice
+              legend="When would you like service to start?"
+              name={`${formId}-timing`}
+              options={timings}
+              value={form.timing}
+              onChange={(v) => set("timing", v)}
+            />
+          </div>
+        )}
+
         {step === 4 && (
-          <Text
-            label="Town or city"
-            value={form.location}
-            onChange={(v) => set("location", v)}
-            hint="So we can confirm the property is within our service area."
-          />
-        )}
-        {step === 5 && (
-          <Choice
-            legend="When would you like service to start?"
-            name={`${formId}-timing`}
-            options={timings}
-            value={form.timing}
-            onChange={(v) => set("timing", v)}
-          />
-        )}
-        {step === 6 && (
           <div className="grid gap-4">
-            <Text label="Full name" value={form.name} onChange={(v) => set("name", v)} />
+            <div className="grid gap-4 sm:grid-cols-2">
+              <Text
+                label="First name"
+                value={form.firstName}
+                onChange={(v) => set("firstName", v)}
+                autoComplete="given-name"
+              />
+              <Text
+                label="Last name"
+                value={form.lastName}
+                onChange={(v) => set("lastName", v)}
+                autoComplete="family-name"
+              />
+            </div>
             <Text
               label="Email"
               type="email"
               value={form.email}
               onChange={(v) => set("email", v)}
+              autoComplete="email"
             />
             <Text
               label="Phone"
               type="tel"
               value={form.phone}
               onChange={(v) => set("phone", v)}
+              autoComplete="tel"
+            />
+            <Choice
+              legend="How would you prefer we get in touch?"
+              name={`${formId}-contact`}
+              options={contactMethods}
+              value={form.preferredContact}
+              onChange={(v) => set("preferredContact", v)}
+              columns={3}
             />
             <Text
               label="Anything we should know about the property?"
@@ -287,7 +341,7 @@ export function QuoteWizard({
               onChange={(v) => set("notes", v)}
               optional
             />
-            {/* Honeypot - visually hidden, not display:none, so bots still fill it. */}
+            {/* Honeypot - offscreen rather than display:none, so bots still fill it. */}
             <div className="absolute -left-[9999px]" aria-hidden="true">
               <label htmlFor={`${formId}-website`}>Website</label>
               <input
@@ -341,17 +395,23 @@ function Choice({
   options,
   value,
   onChange,
+  columns = 2,
 }: {
   legend: string;
   name: string;
   options: readonly string[];
   value: string;
   onChange: (v: string) => void;
+  columns?: 2 | 3;
 }) {
   return (
     <fieldset>
       <legend className="font-display text-h3 text-brand">{legend}</legend>
-      <div className="mt-5 grid gap-2.5 sm:grid-cols-2">
+      <div
+        className={`mt-5 grid gap-2.5 ${
+          columns === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2"
+        }`}
+      >
         {options.map((opt) => (
           <label
             key={opt}
@@ -384,6 +444,7 @@ function Text({
   type = "text",
   hint,
   optional,
+  autoComplete,
 }: {
   label: string;
   value: string;
@@ -391,6 +452,7 @@ function Text({
   type?: string;
   hint?: string;
   optional?: boolean;
+  autoComplete?: string;
 }) {
   const id = useId();
   return (
@@ -408,6 +470,7 @@ function Text({
         id={id}
         type={type}
         value={value}
+        autoComplete={autoComplete}
         aria-describedby={hint ? `${id}-hint` : undefined}
         onChange={(e) => onChange(e.target.value)}
         className="mt-2 w-full rounded-card border border-border bg-white px-4 py-3 text-base text-ink-900 placeholder:text-ink-500"

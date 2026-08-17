@@ -13,7 +13,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-surface/95 backdrop-blur">
-      <Container className="flex h-[72px] items-center justify-between gap-6">
+      <Container className="flex h-20 items-center justify-between gap-6 lg:h-24">
         <Link href="/" aria-label={`${site.name} home`}>
           <Logo />
         </Link>

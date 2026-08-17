@@ -118,10 +118,17 @@ version is declared in one place only.
 
 **Settings** → **Environment Variables**. Add:
 
-| Key | Value |
-|---|---|
-| `NEXT_PUBLIC_SITE_URL` | your temporary Coolify URL, e.g. `https://ecotick-abc123.your-server.sslip.io` |
-| `NEXT_PUBLIC_GA4_ID` | leave empty for now |
+| Key | Value | Build variable? |
+|---|---|---|
+| `NEXT_PUBLIC_SITE_URL` | your temporary Coolify URL, e.g. `https://ecotick-abc123.your-server.sslip.io` | **Yes** |
+| `NEXT_PUBLIC_GA4_ID` | leave empty for now | **Yes** |
+| `GOOGLE_PLACES_API_KEY` | Google Cloud key with **Places API (New)** enabled | No — runtime only |
+
+`GOOGLE_PLACES_API_KEY` powers address autocomplete on the quote form. It is
+read only on the server, in `app/api/places/autocomplete/route.ts`, and is
+deliberately **not** prefixed `NEXT_PUBLIC_` so it never reaches the browser.
+Restrict it by IP to the Coolify host, not by HTTP referrer. Leave it blank and
+the address field degrades to a plain text input — the form still submits.
 
 Anything prefixed `NEXT_PUBLIC_` is **inlined at build time**, not read at
 runtime. In Coolify you must tick **"Build Variable"** (sometimes shown as

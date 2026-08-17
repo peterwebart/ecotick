@@ -18,7 +18,7 @@ export default function QuotePage() {
           Get your free tick &amp; mosquito control quote.
         </h1>
         <p className="mt-5 text-lead text-ink-700">
-          Six quick questions. We use them to size the property, confirm it is
+          Four quick questions. We use them to size the property, confirm it is
           in our service area, and put together a programme that fits.
         </p>
         <p className="mt-6 text-sm text-ink-700">

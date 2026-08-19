@@ -57,6 +57,15 @@ export const testimonials: readonly Testimonial[] = [
       "Eco tick has been so great. We have noticed a significant decrease in our tick sightings this year (living with a forest as our backyard this says a lot!). Today we noticed a tick came in from the dogs, called them as we are due for our spray, they were here hours later. The contract says 4-6 weeks, but I definitely see them around the 4 week mark regularly. I would highly recommend this service especially if you have dogs or young children who enjoy the outdoors.",
   },
   {
+    name: "Diana",
+    context: "Dog owner, South Frontenac",
+    audience: "residential",
+    highlight:
+      "The garlic spray does make a big difference to the amount of ticks we encounter.",
+    quote:
+      "Just wanted to say thanks for the excellent service. Our most recent spray was very thorough and covered a good amount of our property. We find that the garlic spray does make a big difference to the amount of ticks we encounter. Thanks from us and our dogs!",
+  },
+  {
     name: "Genevieve Rheault",
     context: "Homeowner",
     audience: "residential",

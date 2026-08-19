@@ -282,6 +282,14 @@ export const serviceAreas: ServicePage = {
       ],
     },
     {
+      type: "prose",
+      heading: "Where our customers are",
+      body: [
+        "Kingston and the surrounding townships are the core of the work. Beyond the city, we have customers through South Frontenac and out along the St. Lawrence as far as Ivy Lea, where we treat a KOA campground with cabins and tent sites set well back in the trees.",
+        "Those are places with named customers rather than a radius drawn on a map. If your property is somewhere between or beyond them, ask — the answer is usually yes.",
+      ],
+    },
+    {
       type: "list",
       heading: "Property types we treat across the region",
       columns: 2,

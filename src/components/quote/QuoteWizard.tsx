@@ -59,6 +59,16 @@ type Form = {
   email: string;
   phone: string;
   preferredContact: string;
+  /**
+   * Marketing consent. Deliberately OPTIONAL, not required to submit.
+   *
+   * Under CASL, express consent has to be freely given — making it a condition
+   * of getting a quote is the pattern regulators treat as invalid consent, and
+   * it would also cost conversions on the last step of the funnel. Unchecked by
+   * default (pre-ticked boxes are not consent either). The value is recorded on
+   * the lead so there is a record of who agreed and who did not.
+   */
+  marketingOptIn: boolean;
   notes: string;
   // Honeypot: real users never fill this.
   website: string;
@@ -78,6 +88,7 @@ const empty: Form = {
   email: "",
   phone: "",
   preferredContact: "",
+  marketingOptIn: false,
   notes: "",
   website: "",
 };
@@ -188,6 +199,12 @@ export function QuoteWizard({
           {form.address}. Someone will be in touch by{" "}
           {form.preferredContact.toLowerCase()} to arrange an assessment.
         </p>
+        {form.marketingOptIn && (
+          <p className="mt-4 text-sm text-ink-500">
+            You are signed up for service updates and reminders. Reply STOP to
+            any message to cancel.
+          </p>
+        )}
       </div>
     );
   }
@@ -341,6 +358,34 @@ export function QuoteWizard({
               onChange={(v) => set("notes", v)}
               optional
             />
+
+            <label className="flex cursor-pointer gap-3 rounded-card border border-border bg-bone-50 p-4">
+              <input
+                type="checkbox"
+                checked={form.marketingOptIn}
+                onChange={(e) => set("marketingOptIn", e.target.checked)}
+                className="mt-1 h-5 w-5 shrink-0 accent-moss-600"
+              />
+              <span>
+                <span className="block text-sm font-semibold text-ink-900">
+                  Stay connected with Eco-Tick Solutions
+                </span>
+                <span className="mt-1.5 block text-xs leading-relaxed text-ink-700">
+                  I agree to receive service updates, appointment reminders and
+                  exclusive offers from Eco-Tick Solutions via call, text or
+                  email. Msg &amp; data rates may apply. Msg frequency varies.
+                  Reply STOP to cancel or HELP for help. Questions? Email{" "}
+                  <a
+                    href="mailto:info@eco-ticksolutions.ca"
+                    className="underline underline-offset-2"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    info@eco-ticksolutions.ca
+                  </a>
+                  .
+                </span>
+              </span>
+            </label>
             {/* Honeypot - offscreen rather than display:none, so bots still fill it. */}
             <div className="absolute -left-[9999px]" aria-hidden="true">
               <label htmlFor={`${formId}-website`}>Website</label>

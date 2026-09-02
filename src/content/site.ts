@@ -1,8 +1,8 @@
 /**
  * Business identity. All values below are supplied by Eco-Tick and are real.
  *
- * Resolved 2026-08: the 705 area code seen in the original mockup was a
- * placeholder. Eco-Tick operates from Kingston (613), Eastern Ontario.
+ * Contact details confirmed by Eco-Tick. The published line is the toll-free
+ * 1-888 number; the business operates from Kingston, Eastern Ontario.
  */
 export const site = {
   name: "Eco-Tick Solutions",
@@ -12,9 +12,9 @@ export const site = {
     "Professional tick and mosquito protection for homes, cottages, businesses and large outdoor properties in Kingston and Eastern Ontario.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.eco-ticksolutions.ca",
 
-  phone: "(613) 539-1472",
-  phoneHref: "tel:+16135391472",
-  email: "ecoticksolutions@gmail.com",
+  phone: "1-888-912-5152",
+  phoneHref: "tel:+18889125152",
+  email: "info@eco-ticksolutions.ca",
 
   address: {
     street: "3192 Creekford Road",

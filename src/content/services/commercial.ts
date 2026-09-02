@@ -151,7 +151,7 @@ export const commercial: ServicePage = {
         },
         {
           q: "How far in advance should we book for the season?",
-          a: "Spring and early summer are the busiest stretch, so earlier booking gives you more choice of dates. Call 613-539-1472 and we will tell you what is realistic.",
+          a: "Spring and early summer are the busiest stretch, so earlier booking gives you more choice of dates. Call 1-888-912-5152 and we will tell you what is realistic.",
         },
       ],
     },

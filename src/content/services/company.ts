@@ -77,7 +77,7 @@ export const howItWorks: ServicePage = {
         },
         {
           q: "How far in advance do you schedule?",
-          a: "Call 613-539-1472 and we will tell you the next available dates. Spring fills up fastest.",
+          a: "Call 1-888-912-5152 and we will tell you the next available dates. Spring fills up fastest.",
         },
         {
           q: "What happens if it rains on the day?",
@@ -160,7 +160,7 @@ export const whoWeServe: ServicePage = {
     {
       type: "callout",
       heading: "Not on the list?",
-      body: "If your property has outdoor space that people use, it is worth a conversation. Call (613) 539-1472 and describe the site — we will tell you honestly whether it is a good fit before quoting anything.",
+      body: "If your property has outdoor space that people use, it is worth a conversation. Call 1-888-912-5152 and describe the site — we will tell you honestly whether it is a good fit before quoting anything.",
     },
   ],
 };
@@ -313,14 +313,14 @@ export const serviceAreas: ServicePage = {
     {
       type: "callout",
       heading: "Not sure whether you are in range?",
-      body: "Call 613-539-1472 or send us the address through the quote form. We will tell you straight away rather than leaving you to guess from a map.",
+      body: "Call 1-888-912-5152 or send us the address through the quote form. We will tell you straight away rather than leaving you to guess from a map.",
     },
     {
       type: "prose",
       heading: "Outside the immediate area?",
       body: [
         "We travel for the right job, particularly acreage and commercial sites where a single visit covers a lot of ground. Cottage country and rural properties well outside Kingston are a regular part of the season rather than an exception.",
-        "The fastest way to find out is to ask. Call (613) 539-1472 or send the address through the quote form and we will tell you straight away whether it works, rather than leaving you to guess from a radius on a map.",
+        "The fastest way to find out is to ask. Call 1-888-912-5152 or send the address through the quote form and we will tell you straight away whether it works, rather than leaving you to guess from a radius on a map.",
       ],
     },
   ],

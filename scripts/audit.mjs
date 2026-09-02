@@ -46,6 +46,17 @@ const REQUIRED = {
 const issues = [];
 const add = (route, cat, msg) => issues.push({ route, cat, msg });
 
+/**
+ * Contact details are edited in exactly one place (src/content/site.ts). If a
+ * different phone number or email ever appears in a rendered page, someone has
+ * hardcoded it into body copy and it will silently drift. Six of these had
+ * already accumulated before this check existed.
+ */
+const PHONE_RE = /(?:\+?1[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/g;
+const EMAIL_RE = /[\w.+-]+@[\w-]+\.[\w.]+/g;
+const ALLOWED_PHONES = new Set(["1-888-912-5152", "+18889125152"]);
+const ALLOWED_EMAILS = new Set(["info@eco-ticksolutions.ca"]);
+
 const files = [];
 for await (const f of glob(`${DIR}/**/*.html`)) files.push(toPosix(f));
 files.sort();
@@ -119,6 +130,28 @@ for (const file of files) {
       add(route, "a11y", `vague link text '${text}'`);
   });
 
+  // Extract visible text only. Two traps here, both of which produced false
+  // positives on the first run: cheerio's .text() includes <script> contents,
+  // which on a Next page means the flight payload (and the Google Maps embed
+  // URL, whose coordinates look like phone numbers); and it concatenates
+  // adjacent elements with no separator, so a footer's "…Ontario." running into
+  // the next node's email glues them into one unmatchable blob.
+  const $body = $("body").clone();
+  $body.find("script, style, noscript").remove();
+  const visible = ($body.html() ?? "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&[a-z]+;/g, " ")
+    .replace(/\s+/g, " ");
+  for (const m of visible.match(PHONE_RE) ?? []) {
+    const norm = m.replace(/[\s.()]/g, "-").replace(/-+/g, "-");
+    if (!ALLOWED_PHONES.has(norm) && !ALLOWED_PHONES.has(m))
+      add(route, "content", `unexpected phone number in copy: ${m}`);
+  }
+  for (const m of visible.match(EMAIL_RE) ?? []) {
+    if (!ALLOWED_EMAILS.has(m.toLowerCase()))
+      add(route, "content", `unexpected email in copy: ${m}`);
+  }
+
   $('script[type="application/ld+json"]').each((_, el) => {
     let parsed;
     try {
@@ -146,7 +179,7 @@ for (const [label, map] of [["title", titles], ["description", descs]])
       add(routes.join(", "), "meta", `duplicate ${label}: ${value.slice(0, 48)}…`);
 
 console.log(`audited ${files.length} prerendered pages\n`);
-for (const cat of ["a11y", "meta", "schema"]) {
+for (const cat of ["a11y", "meta", "schema", "content"]) {
   const found = issues.filter((i) => i.cat === cat);
   console.log(`${cat.toUpperCase()}: ${found.length} issue(s)`);
   for (const i of found) console.log(`  ${i.route}: ${i.msg}`);

@@ -29,13 +29,13 @@ export function Fleet() {
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {/*
-            Large tile deliberately uses one of the two photographs where the
-            truck's wrap number is not legible. The rest of the fleet imagery
-            shows 613-371-3785, which does not match the business number — see
-            CLAIMS-REGISTER.md. Swap these the moment corrected photos arrive.
+            Prominent tiles use the three photographs that carry no wrong number:
+            the retouched tailgate, and the two where the wrap number is not
+            legible. The remaining four still show 613-371-3785 at small sizes —
+            see IMAGE-BRIEF.md for what to request as replacements.
           */}
           <Photo
-            image={images.truckSprayingBorder}
+            image={images.truckRig}
             ratio="3 / 2"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 50vw"
             className="sm:col-span-2 lg:col-span-2"

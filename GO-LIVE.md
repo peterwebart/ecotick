@@ -14,6 +14,9 @@ In Coolify → Environment Variables:
 | `NEXT_PUBLIC_SITE_URL` | `https://www.eco-ticksolutions.ca` | **Yes** |
 | `NEXT_PUBLIC_GA4_ID` | your GA4 measurement ID, or blank | **Yes** |
 | `GOOGLE_PLACES_API_KEY` | Places API (New) key, IP-restricted | No |
+| `RESEND_API_KEY` | Resend API key — **required for quote emails to send** | No |
+| `QUOTE_NOTIFY_EMAIL` | `info@eco-ticksolutions.ca` | No |
+| `QUOTE_FROM_EMAIL` | sender on a Resend-verified domain | No |
 
 `NEXT_PUBLIC_*` must be ticked as build variables or every canonical URL and
 sitemap entry points at the wrong domain. Redeploy after changing them.
@@ -69,14 +72,15 @@ rather than assume.
 
 ## 4. Known items, none blocking
 
-**Quote submissions currently only log.** `app/api/quote/route.ts` validates and
-writes to the server log — it does not yet email or persist. **Wire this before
-you drive traffic**, or leads are silently lost. `QUOTE_NOTIFY_EMAIL` is already
-in `.env.example` for it.
+**Set `RESEND_API_KEY` before driving traffic.** Quote submissions now email
+`info@eco-ticksolutions.ca` through Resend. Without the key the lead is still
+validated and logged, but not emailed — so enquiries would be lost silently.
+Also set `QUOTE_FROM_EMAIL` to an address on a domain verified in Resend.
 
-**Truck photography shows 613-371-3785.** Five of seven images have the old
-number on the wrap. The two where it is not legible hold the biggest slots;
-regenerating the other five with the correct number is a drop-in swap.
+**Truck photography still shows 613-371-3785 in four images.** The large tailgate
+shot was retouched successfully and now reads 1-888-912-5152; it holds the Fleet
+section's main tile. Two more attempts were reverted for looking worse than the
+originals. See `IMAGE-BRIEF.md` for exactly what to request as replacements.
 
 **Founder photo is 330x328.** Fine as the inset it currently is. A camera
 original would let it carry the About page properly.

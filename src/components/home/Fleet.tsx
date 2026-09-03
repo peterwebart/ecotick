@@ -28,35 +28,29 @@ export function Fleet() {
         </div>
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {/*
-            Prominent tiles use the three photographs that carry no wrong number:
-            the retouched tailgate, and the two where the wrap number is not
-            legible. The remaining four still show 613-371-3785 at small sizes —
-            see IMAGE-BRIEF.md for what to request as replacements.
-          */}
-          <Photo
+                    <Photo
             image={images.truckRig}
             ratio="3 / 2"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 50vw"
             className="sm:col-span-2 lg:col-span-2"
           />
           <Photo
-            image={images.truckBedCloseup}
+            image={images.truckEstateDriveway}
             ratio="3 / 2"
             sizes="(max-width: 640px) 100vw, 33vw"
           />
           <Photo
-            image={images.truckTwoTechs}
+            image={images.truckSprayingBorder}
             ratio="3 / 2"
             sizes="(max-width: 640px) 100vw, 33vw"
           />
           <Photo
-            image={images.truckFrontGarden}
+            image={images.truckLakeside}
             ratio="3 / 2"
             sizes="(max-width: 640px) 100vw, 33vw"
           />
           <Photo
-            image={images.truckDriveway}
+            image={images.largePropertyAerial}
             ratio="3 / 2"
             sizes="(max-width: 640px) 100vw, 33vw"
           />

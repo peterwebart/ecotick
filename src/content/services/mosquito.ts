@@ -46,6 +46,13 @@ export const mosquitoControl: ServicePage = {
       ],
     },
     {
+      type: "figure",
+      imageKey: "mosquitoMacro",
+      maxWidth: 640,
+      caption:
+        "Mosquitoes spend the heat of the day resting on shaded vegetation like this, not in open air. That resting habitat is what treatment targets.",
+    },
+    {
       type: "list",
       heading: "Where adults rest during the day",
       intro: "These are the zones treatment focuses on.",

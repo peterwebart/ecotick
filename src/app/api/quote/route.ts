@@ -1,21 +1,18 @@
 import { NextResponse } from "next/server";
+import { notifyRecipients, sendMail } from "@/lib/mail";
+import { createReference } from "@/lib/reference";
+import { site } from "@/content/site";
 
 /**
  * Quote submission endpoint.
  *
- * Validates and rejects bot traffic, then logs. It does NOT yet persist or
- * notify. Wire one of the following before launch, or leads are silently
- * discarded:
- *   1. Persist to a database
- *   2. Notify via QUOTE_NOTIFY_EMAIL
- *   3. Verify Cloudflare Turnstile using TURNSTILE_SECRET_KEY
+ * Returns a reference the customer can quote back on the phone, and emails the
+ * lead to the office with reply-to set to the customer — so hitting Reply in
+ * Gmail goes straight to them, not back to the website.
  *
  * Expected payload: propertyType, size, acreage, buildings, visitors, address,
  * addressPlaceId, timing, firstName, lastName, email, phone, preferredContact,
  * marketingOptIn, notes.
- *
- * marketingOptIn records CASL consent and is stored with the lead. It is never
- * required to submit — see the note in QuoteWizard.
  */
 
 type Payload = Record<string, unknown>;
@@ -23,6 +20,24 @@ type Payload = Record<string, unknown>;
 function str(v: unknown): string {
   return typeof v === "string" ? v.trim() : "";
 }
+
+const LABELS: [key: string, label: string][] = [
+  ["firstName", "First name"],
+  ["lastName", "Last name"],
+  ["email", "Email"],
+  ["phone", "Phone"],
+  ["preferredContact", "Preferred contact"],
+  ["marketingOptIn", "Marketing consent"],
+  ["propertyType", "Property type"],
+  ["size", "Property size"],
+  ["acreage", "Acreage"],
+  ["buildings", "Buildings"],
+  ["visitors", "People on site"],
+  ["address", "Property address"],
+  ["addressVerified", "Address verified via Google"],
+  ["timing", "Preferred start"],
+  ["notes", "Notes"],
+];
 
 export async function POST(request: Request) {
   let body: Payload;
@@ -34,7 +49,7 @@ export async function POST(request: Request) {
 
   // Honeypot: respond 200 so bots do not learn they were caught.
   if (str(body.website).length > 0) {
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, reference: createReference() });
   }
 
   const firstName = str(body.firstName);
@@ -58,106 +73,53 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 422 });
   }
 
-  // addressPlaceId is present when the customer picked a Google suggestion and
-  // empty when they typed it. Worth keeping: it tells the office whether an
-  // address has been verified before someone drives out to it.
-  const marketingOptIn = body.marketingOptIn === true;
-
-  console.info("[quote] lead received", {
-    propertyType,
-    size: str(body.size),
-    address,
-    addressVerified: str(body.addressPlaceId).length > 0,
-    timing: str(body.timing),
+  const reference = createReference();
+  const lead: Record<string, string | boolean> = {
+    firstName,
+    lastName,
+    email,
+    phone,
     preferredContact,
-    marketingOptIn,
-  });
-
-  await notify({
+    marketingOptIn: body.marketingOptIn === true,
     propertyType,
     size: str(body.size),
     acreage: str(body.acreage),
     buildings: str(body.buildings),
     visitors: str(body.visitors),
     address,
+    // Tells the office whether the address was picked from Google or typed by
+    // hand, which is worth knowing before someone drives out to it.
     addressVerified: str(body.addressPlaceId).length > 0,
     timing: str(body.timing),
-    firstName,
-    lastName,
-    email,
-    phone,
-    preferredContact,
-    marketingOptIn,
     notes: str(body.notes),
-  });
+  };
 
-  return NextResponse.json({ ok: true });
-}
-
-type Lead = Record<string, string | boolean>;
-
-const LABELS: Record<string, string> = {
-  firstName: "First name",
-  lastName: "Last name",
-  email: "Email",
-  phone: "Phone",
-  preferredContact: "Preferred contact",
-  marketingOptIn: "Marketing consent",
-  propertyType: "Property type",
-  size: "Property size",
-  acreage: "Acreage",
-  buildings: "Buildings",
-  visitors: "People on site",
-  address: "Address",
-  addressVerified: "Address verified via Google",
-  timing: "Preferred start",
-  notes: "Notes",
-};
-
-/**
- * Emails the lead to QUOTE_NOTIFY_EMAIL via Resend's REST API.
- *
- * Plain fetch rather than the SDK: one less dependency to keep current, and the
- * payload is three fields. Without RESEND_API_KEY this is a no-op and the lead
- * still lands in the server log, so a missing key degrades rather than losing
- * the enquiry. A send failure is caught and logged for the same reason — the
- * customer must never see an error for something that is our problem.
- */
-async function notify(lead: Lead): Promise<void> {
-  const key = process.env.RESEND_API_KEY;
-  const to = process.env.QUOTE_NOTIFY_EMAIL ?? "info@eco-ticksolutions.ca";
-  const from = process.env.QUOTE_FROM_EMAIL ?? "quotes@eco-ticksolutions.ca";
-  if (!key) {
-    console.warn("[quote] RESEND_API_KEY not set — lead logged but not emailed");
-    return;
-  }
-
-  const rows = Object.entries(lead)
-    .filter(([, v]) => v !== "" && v !== false)
-    .map(([k, v]) => `${LABELS[k] ?? k}: ${v === true ? "Yes" : v}`)
+  const rows = LABELS.filter(([k]) => lead[k] !== "" && lead[k] !== false)
+    .map(([k, label]) => `${label}: ${lead[k] === true ? "Yes" : lead[k]}`)
     .join("\n");
 
-  try {
-    const res = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${key}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from: `Eco-Tick website <${from}>`,
-        to: [to],
-        // Replying goes straight back to the customer, not to the website.
-        reply_to: String(lead.email),
-        subject: `Quote request — ${lead.firstName} ${lead.lastName}, ${lead.propertyType}`,
-        text: `New quote request from the website.\n\n${rows}\n`,
-      }),
-      signal: AbortSignal.timeout(8000),
-    });
-    if (!res.ok) {
-      console.error("[quote] notify failed", res.status, await res.text());
-    }
-  } catch (err) {
-    console.error("[quote] notify threw", err);
-  }
+  // Logged first and synchronously, so the lead survives any mail failure.
+  console.info("[quote] lead received", { reference, propertyType, address });
+  console.info(`[quote] ${reference} details:\n${rows}`);
+
+  /**
+   * Mail is dispatched WITHOUT awaiting. The customer should not wait on an
+   * SMTP handshake — with a slow or unreachable server that meant a ten second
+   * spinner for something they have no stake in. Coolify runs a persistent Node
+   * process, so the send completes after the response has gone out, and the
+   * outcome is logged either way.
+   */
+  void sendMail({
+    to: notifyRecipients(
+      "info@eco-ticksolutions.ca,shawn@eco-ticksolutions.ca,admin@eco-ticksolutions.ca",
+    ),
+    from: process.env.QUOTE_FROM_EMAIL ?? site.email,
+    replyTo: email,
+    subject: `Quote request ${reference} — ${firstName} ${lastName}, ${propertyType}`,
+    text: `New quote request from the website.\n\nReference: ${reference}\n\n${rows}\n`,
+  }).then((result) => {
+    console.info(`[quote] ${reference} mail: ${result}`);
+  });
+
+  return NextResponse.json({ ok: true, reference });
 }

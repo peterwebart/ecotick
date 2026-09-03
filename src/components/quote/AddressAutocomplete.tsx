@@ -68,8 +68,12 @@ export function AddressAutocomplete({
         setSuggestions(data.suggestions ?? []);
         setOpen((data.suggestions ?? []).length > 0);
         setActive(-1);
-      } catch {
-        // Silent: the field stays usable as a plain text input.
+      } catch (err) {
+        // The field stays usable as a plain text input either way, but surface
+        // the reason in the console so a broken key is diagnosable.
+        if ((err as Error)?.name !== "AbortError") {
+          console.warn("[address] suggestion lookup failed", err);
+        }
       } finally {
         setLoading(false);
       }

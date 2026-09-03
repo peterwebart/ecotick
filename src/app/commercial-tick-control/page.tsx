@@ -15,7 +15,7 @@ export default function Page() {
   return (
     <ServicePageTemplate
       page={page}
-      hero={images.truckSprayingLawn}
+      hero={images.truckEstateGrounds}
       crumbs={[
         { name: "Home", path: "/" },
         { name: "Services", path: "/services" },

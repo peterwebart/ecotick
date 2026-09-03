@@ -10,7 +10,7 @@ export const site = {
   tagline: "Take Back the Outdoors.",
   description:
     "Professional tick and mosquito protection for homes, cottages, businesses and large outdoor properties in Kingston and Eastern Ontario.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.eco-ticksolutions.ca",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://eco-ticksolutions.ca",
 
   phone: "1-888-912-5152",
   phoneHref: "tel:+18889125152",

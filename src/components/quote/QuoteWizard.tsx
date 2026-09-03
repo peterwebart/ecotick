@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useId, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { AddressAutocomplete } from "@/components/quote/AddressAutocomplete";
@@ -121,7 +122,8 @@ export function QuoteWizard({
     initialPropertyType ? { ...empty, propertyType: initialPropertyType } : empty,
   );
   const [errors, setErrors] = useState<string[]>([]);
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "error">("idle");
+  const router = useRouter();
   const [started, setStarted] = useState(false);
   const formId = useId();
 
@@ -176,37 +178,28 @@ export function QuoteWizard({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
+        // The server bounds its own work, but a dead connection would otherwise
+        // leave the button on "Sending..." forever. Fail visibly instead.
+        signal: AbortSignal.timeout(20_000),
       });
       if (!res.ok) throw new Error(String(res.status));
+      const data = (await res.json()) as { reference?: string };
       // Fire only on a server-confirmed write, never on click.
       track("quote_submitted", {
         propertyType: form.propertyType,
         preferredContact: form.preferredContact,
       });
-      setStatus("sent");
+      // A distinct URL rather than an inline state: it gives a goal page for
+      // conversion tracking, survives a refresh, and can be shared or bookmarked
+      // with the reference intact.
+      router.push(
+        data.reference
+          ? `/thank-you?ref=${encodeURIComponent(data.reference)}`
+          : "/thank-you",
+      );
     } catch {
       setStatus("error");
     }
-  }
-
-  if (status === "sent") {
-    return (
-      <div className="rounded-card border border-border bg-white p-8 shadow-card">
-        <h2 className="text-h2 font-display">Request received.</h2>
-        <p className="mt-3 text-ink-700">
-          Thanks, {form.firstName}. We have your details for a{" "}
-          {form.size.toLowerCase()} {form.propertyType.toLowerCase()} at{" "}
-          {form.address}. Someone will be in touch by{" "}
-          {form.preferredContact.toLowerCase()} to arrange an assessment.
-        </p>
-        {form.marketingOptIn && (
-          <p className="mt-4 text-sm text-ink-500">
-            You are signed up for service updates and reminders. Reply STOP to
-            any message to cancel.
-          </p>
-        )}
-      </div>
-    );
   }
 
   return (

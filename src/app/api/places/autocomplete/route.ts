@@ -15,8 +15,17 @@ import { NextResponse } from "next/server";
  * 3. The dropdown is our own markup, so it inherits the form's styling and
  *    keyboard behaviour instead of fighting a web component's shadow DOM.
  *
- * Uses Places API (New). Enable "Places API (New)" on the key and restrict it
- * by IP to the Coolify host.
+ * Uses Places API (New) — the endpoint below is places.googleapis.com, NOT the
+ * legacy maps.googleapis.com/maps/api/place. In Google Cloud you must enable
+ * the library entry called "Places API (New)". Enabling only the older
+ * "Places API" returns 403 and no suggestions appear.
+ *
+ * Restrict the key by IP address to the Coolify host. Do NOT use an HTTP
+ * referrer restriction: the call is made server to server, so there is no
+ * referrer header and every request is rejected.
+ *
+ * Failures are logged with Google's own response so a misconfiguration is
+ * diagnosable from the Coolify logs rather than presenting as silence.
  *
  * Failure is always soft: any error returns an empty list so the customer can
  * still type an address by hand and submit. An address field that breaks
@@ -84,8 +93,9 @@ export async function POST(request: Request) {
       body: JSON.stringify({
         input,
         includedRegionCodes: ["ca"],
-        // Street addresses only — no restaurants or landmarks in an address field.
-        includedPrimaryTypes: ["street_address", "premise", "subpremise", "route"],
+        // No includedPrimaryTypes filter. It was rejecting valid requests with
+        // INVALID_ARGUMENT, and Canada + a Kingston bias already narrows results
+        // enough that landmarks rarely surface above street addresses.
         locationBias: {
           circle: { center: BIAS_CENTRE, radius: BIAS_RADIUS_M },
         },
@@ -97,7 +107,16 @@ export async function POST(request: Request) {
       signal: AbortSignal.timeout(4000),
     });
 
-    if (!res.ok) return empty();
+    if (!res.ok) {
+      const detail = await res.text();
+      console.error(
+        `[places] Google returned ${res.status}. ` +
+          `403 usually means the key is restricted or "Places API (New)" is not ` +
+          `enabled; 400 INVALID_ARGUMENT means the request body was rejected. ` +
+          `Response: ${detail.slice(0, 500)}`,
+      );
+      return empty();
+    }
 
     const data = (await res.json()) as GoogleResponse;
     const suggestions: AddressSuggestion[] = (data.suggestions ?? [])
@@ -112,7 +131,8 @@ export async function POST(request: Request) {
       }));
 
     return NextResponse.json({ suggestions, unavailable: false });
-  } catch {
+  } catch (err) {
+    console.error("[places] request failed:", err instanceof Error ? err.message : err);
     return empty();
   }
 }

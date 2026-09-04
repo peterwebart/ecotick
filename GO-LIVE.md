@@ -146,11 +146,21 @@ ten minutes of your lawyer's time before launch.
 
 ## 4b. If something is not working
 
-**Autocomplete shows no suggestions.** Check the Coolify logs — the route now
-prints Google's own response. Two usual causes: the Cloud project has the older
-**Places API** enabled instead of **Places API (New)**, which returns 403; or the
-key carries an HTTP-referrer restriction, which cannot work because the call is
-made server to server with no referrer. Restrict by **IP address** instead.
+**Autocomplete shows no suggestions.** Check the Coolify logs — the route prints
+Google's own response, which names the actual problem. Known causes:
+
+- `400 INVALID_ARGUMENT: Invalid circle.radius` — the location bias exceeded
+  Google's 50,000m maximum. Fixed, and now asserted at boot so it cannot recur
+  silently.
+- `403` — the Cloud project has the older **Places API** enabled instead of
+  **Places API (New)**.
+- `403` with no detail — the key carries an **HTTP-referrer** restriction. That
+  cannot work: the call is server to server and sends no referrer. Restrict by
+  **IP address** instead.
+
+**`Internal: NoFallbackError` on /blog/[slug].** Was `dynamicParams = false`,
+which left Next with no fallback when a crawler requested a stale blog URL, so
+it returned 500 instead of 404. Fixed — unknown slugs now render the real 404.
 
 **Quote form hangs on "Sending…".** It cannot any more — mail is dispatched
 without blocking the response, which now returns in around 100ms regardless of
@@ -161,6 +171,21 @@ was used where an App Password is required.
 **`TypeError: Cannot read properties of undefined (reading 'b')`.** This was
 nodemailer being processed by the bundler. `serverExternalPackages` in
 `next.config.ts` fixes it; if it reappears, confirm that line survived.
+
+## 4c. Consent
+
+The "Stay connected with Eco-Tick Solutions" checkbox is **required** — the form
+will not advance without it, and `/api/quote` returns 422 if it is missing or
+false. It is unchecked by default, and the value is stored on every lead as the
+record of agreement.
+
+One thing worth knowing: the message bundles service updates and appointment
+reminders together with promotional offers. Those are treated differently under
+CASL — a customer who asked you for a quote can be contacted about that quote
+regardless, whereas promotional messages need express consent. Splitting them
+into a required service-contact tick and an optional offers tick would keep the
+hard requirement you want on the part that justifies it. Say the word and it is
+a small change.
 
 ## 5. Every deploy from here
 

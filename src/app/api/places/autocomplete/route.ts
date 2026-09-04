@@ -35,9 +35,17 @@ import { NextResponse } from "next/server";
 const ENDPOINT = "https://places.googleapis.com/v1/places:autocomplete";
 const MIN_INPUT = 3;
 
-/** Kingston, so suggestions surface local streets before distant same-named ones. */
+/**
+ * Kingston, so suggestions surface local streets before distant same-named ones.
+ *
+ * 50,000m is Google's hard maximum for circle.radius — anything larger is
+ * rejected outright with INVALID_ARGUMENT, which is what a 60,000 value was
+ * doing here. This is a bias, not a restriction: addresses further out still
+ * appear, they just rank below local ones. Ivy Lea sits right at this edge and
+ * resolves fine.
+ */
 const BIAS_CENTRE = { latitude: 44.2783, longitude: -76.6088 };
-const BIAS_RADIUS_M = 60_000;
+const BIAS_RADIUS_M = 50_000;
 
 export type AddressSuggestion = {
   placeId: string;
@@ -64,6 +72,19 @@ type GoogleResponse = {
 
 function empty(unavailable = false) {
   return NextResponse.json({ suggestions: [], unavailable });
+}
+
+/**
+ * Google's documented request limits. A 60,000m radius sat here for a while and
+ * every single lookup was rejected — the field simply showed nothing, because
+ * the route treats any failure as "no suggestions". Asserting the constraint at
+ * module load means a bad value fails loudly at boot instead of presenting as a
+ * feature that quietly does not work.
+ */
+if (BIAS_RADIUS_M > 50_000) {
+  throw new Error(
+    `locationBias radius must be <= 50000m (Google limit); got ${BIAS_RADIUS_M}`,
+  );
 }
 
 export async function POST(request: Request) {

@@ -59,6 +59,7 @@ export async function POST(request: Request) {
   const propertyType = str(body.propertyType);
   const address = str(body.address);
   const preferredContact = str(body.preferredContact);
+  const marketingOptIn = body.marketingOptIn === true;
 
   const invalid =
     firstName.length < 2 ||
@@ -67,7 +68,11 @@ export async function POST(request: Request) {
     phone.replace(/\D/g, "").length < 10 ||
     propertyType.length === 0 ||
     address.length < 5 ||
-    preferredContact.length === 0;
+    preferredContact.length === 0 ||
+    // Required by Eco-Tick. Enforced here as well as in the UI, because a
+    // client-side check is trivially bypassed and the stored consent record
+    // would then be false.
+    !marketingOptIn;
 
   if (invalid) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 422 });
@@ -80,7 +85,7 @@ export async function POST(request: Request) {
     email,
     phone,
     preferredContact,
-    marketingOptIn: body.marketingOptIn === true,
+    marketingOptIn,
     propertyType,
     size: str(body.size),
     acreage: str(body.acreage),

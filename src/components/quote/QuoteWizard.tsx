@@ -61,13 +61,12 @@ type Form = {
   phone: string;
   preferredContact: string;
   /**
-   * Marketing consent. Deliberately OPTIONAL, not required to submit.
+   * Contact consent. REQUIRED to submit, at Eco-Tick's instruction — the form
+   * will not proceed without it, and the API rejects a submission that lacks it.
    *
-   * Under CASL, express consent has to be freely given — making it a condition
-   * of getting a quote is the pattern regulators treat as invalid consent, and
-   * it would also cost conversions on the last step of the funnel. Unchecked by
-   * default (pre-ticked boxes are not consent either). The value is recorded on
-   * the lead so there is a record of who agreed and who did not.
+   * Still unchecked by default: a pre-ticked box is not consent under any
+   * regime, and would also mean every lead carried a consent record nobody
+   * actually gave. The value is stored on the lead as the record of agreement.
    */
   marketingOptIn: boolean;
   notes: string;
@@ -157,6 +156,8 @@ export function QuoteWizard({
         e.push("Enter a phone number with at least 10 digits.");
       if (!form.preferredContact)
         e.push("Choose how you would prefer to be contacted.");
+      if (!form.marketingOptIn)
+        e.push("Please tick the box to confirm we can contact you.");
     }
     return e;
   }
@@ -352,9 +353,17 @@ export function QuoteWizard({
               optional
             />
 
-            <label className="flex cursor-pointer gap-3 rounded-card border border-border bg-bone-50 p-4">
+            <label
+              className={`flex cursor-pointer gap-3 rounded-card border p-4 transition-colors ${
+                form.marketingOptIn
+                  ? "border-cta bg-sage-100"
+                  : "border-border bg-bone-50"
+              }`}
+            >
               <input
                 type="checkbox"
+                required
+                aria-required="true"
                 checked={form.marketingOptIn}
                 onChange={(e) => set("marketingOptIn", e.target.checked)}
                 className="mt-1 h-5 w-5 shrink-0 accent-moss-600"
@@ -362,6 +371,10 @@ export function QuoteWizard({
               <span>
                 <span className="block text-sm font-semibold text-ink-900">
                   Stay connected with Eco-Tick Solutions
+                  <span aria-hidden="true" className="ml-0.5 text-clay-600">
+                    *
+                  </span>
+                  <span className="sr-only"> (required)</span>
                 </span>
                 <span className="mt-1.5 block text-xs leading-relaxed text-ink-700">
                   I agree to receive service updates, appointment reminders and

@@ -1,124 +1,144 @@
 import nodemailer from "nodemailer";
 
 /**
- * Sends the quote notification.
+ * Outbound mail.
  *
- * Two transports, chosen by whichever credentials are present:
+ * TRANSPORTS, in priority order:
  *
- *   SMTP   — SMTP_HOST/PORT/USER/PASS. The route to use with Google Workspace:
- *            smtp.gmail.com, port 465, the mailbox address as the user, and an
- *            App Password (not the account password) as the pass. Requires
- *            2-step verification on the Google account.
- *   Resend — RESEND_API_KEY instead, if you would rather not hold SMTP
- *            credentials. Needs a verified sending domain.
+ *   Resend (HTTPS)  RESEND_API_KEY. Talks to api.resend.com over 443.
+ *   SMTP            SMTP_HOST/PORT/USER/PASS.
  *
- * EVERY PATH IS TIME-BOUNDED. An SMTP connection that hangs — wrong port,
- * blocked egress, bad credentials against a server that stalls rather than
- * refuses — would otherwise hold the HTTP request open indefinitely and leave
- * the customer staring at a "Sending..." button that never resolves. Nodemailer
- * has no default timeouts, so they are set explicitly and the whole operation
- * is raced against a hard ceiling on top.
+ * Resend is listed first deliberately. Most cloud hosts — Hetzner included —
+ * block outbound SMTP ports (25, 465, 587) by default to limit spam abuse, and
+ * a blocked port presents as "Connection timeout" rather than anything that
+ * names the real cause. An HTTPS API is unaffected by that policy.
+ *
+ * Sending over Resend does not move Eco-Tick's mailboxes off Google. Receiving
+ * stays exactly where it is; only the outbound path changes, and it needs no
+ * MX changes.
+ *
+ * Every path is time-bounded, and nothing here blocks the HTTP response.
  */
 export type MailResult = "sent" | "logged" | "failed";
 
-/** Hard ceiling for the whole send, whichever transport is used. */
-const OVERALL_TIMEOUT_MS = 12_000;
+export type Message = {
+  to: string[];
+  from: string;
+  replyTo: string;
+  subject: string;
+  text: string;
+};
 
-function withTimeout<T>(work: Promise<T>, fallback: T): Promise<T> {
+const OVERALL_TIMEOUT_MS = 10_000;
+
+function withTimeout<T>(work: Promise<T>, fallback: T, label: string): Promise<T> {
   return Promise.race([
     work,
     new Promise<T>((resolve) =>
       setTimeout(() => {
-        console.error(`[mail] timed out after ${OVERALL_TIMEOUT_MS}ms`);
+        console.error(`[mail] ${label} timed out after ${OVERALL_TIMEOUT_MS}ms`);
         resolve(fallback);
       }, OVERALL_TIMEOUT_MS),
     ),
   ]);
 }
 
-export async function sendMail(opts: {
-  /** One or more addresses. */
-  to: string[];
-  from: string;
-  replyTo: string;
-  subject: string;
-  text: string;
-}): Promise<MailResult> {
-  const { SMTP_HOST, SMTP_USER, SMTP_PASS, SMTP_PORT, RESEND_API_KEY } = process.env;
-
+export async function sendMail(msg: Message, label = "message"): Promise<MailResult> {
+  if (process.env.RESEND_API_KEY) {
+    return withTimeout(viaResend(msg, process.env.RESEND_API_KEY), "failed", label);
+  }
+  const { SMTP_HOST, SMTP_USER, SMTP_PASS } = process.env;
   if (SMTP_HOST && SMTP_USER && SMTP_PASS) {
-    return withTimeout(sendViaSmtp(opts), "failed");
+    return withTimeout(viaSmtp(msg), "failed", label);
   }
-  if (RESEND_API_KEY) {
-    return withTimeout(sendViaResend(opts, RESEND_API_KEY), "failed");
-  }
-
-  console.warn("[mail] no transport configured — lead logged but not emailed");
+  console.warn(`[mail] no transport configured — ${label} logged but not sent`);
   return "logged";
+}
 
-  async function sendViaSmtp(o: typeof opts): Promise<MailResult> {
-    try {
-      const port = Number(SMTP_PORT ?? 465);
-      const transport = nodemailer.createTransport({
-        host: SMTP_HOST,
-        port,
-        secure: port === 465,
-        auth: { user: SMTP_USER, pass: SMTP_PASS },
-        // Without these three, a stalled connection never returns.
-        connectionTimeout: 8000,
-        greetingTimeout: 8000,
-        socketTimeout: 10_000,
-      });
-      const info = await transport.sendMail({
-        from: o.from,
-        to: o.to.join(", "),
-        replyTo: o.replyTo,
-        subject: o.subject,
-        text: o.text,
-      });
-      console.info("[mail] sent via SMTP", { accepted: info.accepted, rejected: info.rejected });
-      return "sent";
-    } catch (err) {
-      // Log the real reason. "Invalid login" almost always means an account
-      // password was used where an App Password is required.
-      console.error("[mail] SMTP send failed:", err instanceof Error ? err.message : err);
+async function viaResend(msg: Message, key: string): Promise<MailResult> {
+  try {
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        from: msg.from,
+        to: msg.to,
+        reply_to: msg.replyTo,
+        subject: msg.subject,
+        text: msg.text,
+      }),
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!res.ok) {
+      const detail = await res.text();
+      console.error(
+        `[mail] Resend returned ${res.status}. A 403 here usually means the ` +
+          `"from" domain is not verified in Resend. Response: ${detail.slice(0, 400)}`,
+      );
       return "failed";
     }
-  }
-
-  async function sendViaResend(o: typeof opts, key: string): Promise<MailResult> {
-    try {
-      const res = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
-        body: JSON.stringify({
-          from: o.from,
-          to: o.to,
-          reply_to: o.replyTo,
-          subject: o.subject,
-          text: o.text,
-        }),
-        signal: AbortSignal.timeout(8000),
-      });
-      if (!res.ok) {
-        console.error("[mail] Resend rejected", res.status, await res.text());
-        return "failed";
-      }
-      return "sent";
-    } catch (err) {
-      console.error("[mail] Resend send failed:", err instanceof Error ? err.message : err);
-      return "failed";
-    }
+    return "sent";
+  } catch (err) {
+    console.error("[mail] Resend request failed:", err instanceof Error ? err.message : err);
+    return "failed";
   }
 }
 
 /**
- * Recipients from QUOTE_NOTIFY_EMAIL, comma or semicolon separated.
- * Falls back to the three Eco-Tick mailboxes.
+ * SMTP, with a 587/STARTTLS retry. Some hosts block the implicit-TLS port 465
+ * but leave 587 open, so a single retry is worth the couple of seconds. If both
+ * time out, outbound SMTP is blocked and no credential change will help.
  */
+async function viaSmtp(msg: Message): Promise<MailResult> {
+  const host = process.env.SMTP_HOST!;
+  const user = process.env.SMTP_USER!;
+  const pass = process.env.SMTP_PASS!;
+  const configured = Number(process.env.SMTP_PORT ?? 465);
+  const ports = configured === 465 ? [465, 587] : [configured];
+
+  for (const port of ports) {
+    try {
+      const transport = nodemailer.createTransport({
+        host,
+        port,
+        secure: port === 465,
+        auth: { user, pass },
+        connectionTimeout: 4000,
+        greetingTimeout: 4000,
+        socketTimeout: 6000,
+      });
+      const info = await transport.sendMail({
+        from: msg.from,
+        to: msg.to.join(", "),
+        replyTo: msg.replyTo,
+        subject: msg.subject,
+        text: msg.text,
+      });
+      console.info(`[mail] sent via SMTP:${port}`, { accepted: info.accepted });
+      return "sent";
+    } catch (err) {
+      const reason = err instanceof Error ? err.message : String(err);
+      const blocked = /timeout|ETIMEDOUT|ECONNREFUSED|ENETUNREACH/i.test(reason);
+      console.error(
+        `[mail] SMTP:${port} failed — ${reason}` +
+          (blocked
+            ? ". A connection timeout means the port never opened, so the " +
+              "credentials were never tested. Cloud hosts commonly block " +
+              "outbound SMTP; Hetzner blocks 25/465/587 by default. Either ask " +
+              "them to unblock it, or set RESEND_API_KEY and send over HTTPS."
+            : /invalid login|535|BadCredentials/i.test(reason)
+              ? ". Authentication was rejected — with Google this almost always " +
+                "means an account password was used where an App Password is required."
+              : ""),
+      );
+    }
+  }
+  return "failed";
+}
+
+/** Recipients from QUOTE_NOTIFY_EMAIL, comma or semicolon separated. */
 export function notifyRecipients(fallback: string): string[] {
-  const raw = process.env.QUOTE_NOTIFY_EMAIL;
-  const list = (raw ?? fallback)
+  const list = (process.env.QUOTE_NOTIFY_EMAIL ?? fallback)
     .split(/[,;]/)
     .map((s) => s.trim())
     .filter((s) => s.includes("@"));

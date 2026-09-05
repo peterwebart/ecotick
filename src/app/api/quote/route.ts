@@ -114,17 +114,66 @@ export async function POST(request: Request) {
    * process, so the send completes after the response has gone out, and the
    * outcome is logged either way.
    */
-  void sendMail({
-    to: notifyRecipients(
-      "info@eco-ticksolutions.ca,shawn@eco-ticksolutions.ca,admin@eco-ticksolutions.ca",
-    ),
-    from: process.env.QUOTE_FROM_EMAIL ?? site.email,
-    replyTo: email,
-    subject: `Quote request ${reference} — ${firstName} ${lastName}, ${propertyType}`,
-    text: `New quote request from the website.\n\nReference: ${reference}\n\n${rows}\n`,
-  }).then((result) => {
-    console.info(`[quote] ${reference} mail: ${result}`);
-  });
+  const from = process.env.QUOTE_FROM_EMAIL ?? site.email;
+
+  // 1. The office copy. Reply-to is the customer, so Reply in Gmail goes to them.
+  void sendMail(
+    {
+      to: notifyRecipients(
+        "info@eco-ticksolutions.ca,shawn@eco-ticksolutions.ca,admin@eco-ticksolutions.ca",
+      ),
+      from,
+      replyTo: email,
+      subject: `Quote request ${reference} — ${firstName} ${lastName}, ${propertyType}`,
+      text: `New quote request from the website.\n\nReference: ${reference}\n\n${rows}\n`,
+    },
+    `${reference} office`,
+  ).then((r) => console.info(`[quote] ${reference} office mail: ${r}`));
+
+  // 2. The customer's confirmation. Someone who has just handed over their
+  //    details deserves proof it landed and something to quote back on the
+  //    phone — otherwise the only evidence is a page they have already left.
+  void sendMail(
+    {
+      to: [email],
+      from,
+      replyTo: site.email,
+      subject: `We have your request — ${reference}`,
+      text: [
+        `Hi ${firstName},`,
+        ``,
+        `Thanks for getting in touch with Eco-Tick Solutions. We have your`,
+        `request and someone will contact you by ${preferredContact.toLowerCase()}`,
+        `to arrange a free property assessment.`,
+        ``,
+        `Your reference: ${reference}`,
+        `Quote it if you call and we can pull your details up straight away.`,
+        ``,
+        `What we have on file`,
+        `---------------------`,
+        `Property: ${propertyType}, ${str(body.size)}`,
+        `Address: ${address}`,
+        `Preferred start: ${str(body.timing)}`,
+        ``,
+        `If any of that is wrong, just reply to this email and tell us.`,
+        ``,
+        `What happens next`,
+        `-----------------`,
+        `1. We confirm the property is inside our service area.`,
+        `2. We contact you to book a free assessment. Nothing is priced until`,
+        `   we have walked the ground, and there is no obligation.`,
+        `3. You get a quote and a proposed schedule for the season.`,
+        ``,
+        `Need us sooner? Call ${site.phone}.`,
+        ``,
+        `Eco-Tick Solutions`,
+        `${site.address.street}, ${site.address.city}, ${site.address.regionName} ${site.address.postalCode}`,
+        `${site.phone} · ${site.email}`,
+        `Take Back the Outdoors.`,
+      ].join("\n"),
+    },
+    `${reference} customer`,
+  ).then((r) => console.info(`[quote] ${reference} customer mail: ${r}`));
 
   return NextResponse.json({ ok: true, reference });
 }

@@ -106,7 +106,32 @@ rather than assume.
 `QUOTE_NOTIFY_EMAIL` as a comma-separated list. Reply-to is the customer, so
 Reply in Gmail addresses them.
 
-**Set the SMTP credentials before driving traffic.** Quote submissions email
+**Use Resend, not SMTP.** Hetzner blocks outbound SMTP ports (25, 465, 587) by
+default, which is why an App Password produced `Connection timeout` rather than
+an authentication error — the connection never opened, so the credentials were
+never tested. No credential change fixes a filtered port.
+
+Two ways forward:
+
+1. **Set `RESEND_API_KEY`** (recommended). Resend sends over HTTPS on 443, which
+   no host blocks. Sign up, verify `eco-ticksolutions.ca` as a sending domain by
+   adding the DNS records they give you, and set the key. **This does not move
+   your mailboxes off Google** — receiving stays exactly where it is and your MX
+   records are untouched. Only the outbound path changes.
+2. **Ask Hetzner to unblock outbound SMTP**, then keep the `SMTP_*` values. They
+   usually grant this after the account has some history.
+
+Whichever you choose, run this on the server to confirm before testing the form:
+
+```bash
+pnpm mail:test you@example.com
+```
+
+It reports which transport is configured, probes ports 465, 587 and 25, and
+sends one real message if the path is open. It also flags an `SMTP_PASS` that is
+not 16 characters, since a Google App Password always is.
+
+**Set the credentials before driving traffic.** Quote submissions email
 `info@eco-ticksolutions.ca`, with reply-to set to the customer — so hitting
 Reply in Gmail goes to them, not back to the website.
 
@@ -161,6 +186,20 @@ Google's own response, which names the actual problem. Known causes:
 **`Internal: NoFallbackError` on /blog/[slug].** Was `dynamicParams = false`,
 which left Next with no fallback when a crawler requested a stale blog URL, so
 it returned 500 instead of 404. Fixed — unknown slugs now render the real 404.
+
+**Customer did not get a confirmation.** Two emails now go out per submission:
+one to the office with reply-to set to the customer, and one to the customer
+with their reference and what happens next. Both are logged separately —
+`grep "customer mail"` and `grep "office mail"` to see each outcome. If both say
+`logged`, no transport is configured; if both say `failed`, see the SMTP note
+above.
+
+**Stale-deployment errors after a redeploy.** `Failed to find Server Action`,
+`Unexpected end of form`, or `Cannot read properties of undefined (reading 'aa')`
+appear when a browser tab is still running JavaScript from the previous build
+and posts to chunk names that no longer exist. Harmless, and a hard refresh
+clears it. If you see it during testing, reload before concluding something is
+broken.
 
 **Quote form hangs on "Sending…".** It cannot any more — mail is dispatched
 without blocking the response, which now returns in around 100ms regardless of

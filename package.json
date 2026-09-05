@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "audit:site": "node scripts/audit.mjs"
+    "audit:site": "node scripts/audit.mjs",
+    "mail:test": "node --experimental-strip-types scripts/mail-test.mjs"
   },
   "dependencies": {
     "next": "15.5.4",

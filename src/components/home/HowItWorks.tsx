@@ -52,7 +52,7 @@ export function HowItWorks() {
         </div>
 
         <Photo
-          image={images.truckSprayingBorder}
+          image={images.treatmentLawn}
           ratio="4 / 5"
           sizes="(max-width: 1024px) 100vw, 45vw"
           position="60% center"

@@ -32,7 +32,7 @@ export function GarlicPanel() {
             </h2>
           </div>
           <Photo
-            image={images.garlicTreatment}
+            image={images.reachCanopy}
             ratio="16 / 9"
             sizes="(max-width: 1024px) 100vw, 45vw"
             className="mt-7"

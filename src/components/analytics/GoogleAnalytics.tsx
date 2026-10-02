@@ -12,6 +12,21 @@ export function GoogleAnalytics() {
   const id = process.env.NEXT_PUBLIC_GA4_ID;
   if (!id) return null;
 
+  /**
+   * GA4 is almost always configured inside GTM. Loading gtag.js here as well
+   * means two libraries reporting to the same property, and every pageview and
+   * event counted twice — which looks like growth rather than a bug, so it can
+   * go unnoticed for months. Pick one: either leave NEXT_PUBLIC_GA4_ID unset and
+   * add a GA4 tag in the GTM container, or leave GA4 out of GTM and keep this.
+   */
+  if (process.env.NEXT_PUBLIC_GTM_ID !== "" && process.env.NEXT_PUBLIC_GTM_ID !== undefined) {
+    console.warn(
+      "[analytics] Both NEXT_PUBLIC_GA4_ID and GTM are configured. If the GTM " +
+        "container also holds a GA4 tag, every pageview is being counted twice. " +
+        "Configure GA4 in one place only.",
+    );
+  }
+
   return (
     <>
       <Script

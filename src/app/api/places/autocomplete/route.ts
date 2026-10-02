@@ -36,16 +36,22 @@ const ENDPOINT = "https://places.googleapis.com/v1/places:autocomplete";
 const MIN_INPUT = 3;
 
 /**
- * Kingston, so suggestions surface local streets before distant same-named ones.
+ * Bias suggestions toward Ontario, since that is the service area.
  *
- * 50,000m is Google's hard maximum for circle.radius — anything larger is
- * rejected outright with INVALID_ARGUMENT, which is what a 60,000 value was
- * doing here. This is a bias, not a restriction: addresses further out still
- * appear, they just rank below local ones. Ivy Lea sits right at this edge and
- * resolves fine.
+ * A rectangle rather than a circle: a circle tops out at 50,000m radius (a
+ * 60,000m value here once broke every lookup with INVALID_ARGUMENT), which
+ * cannot span a province — a 50km circle around Kingston ranked Kingston
+ * streets above a real address in Aurora. Google documents no size limit on a
+ * rectangle bias. It is a bias, not a restriction, so a valid address just
+ * outside the box still appears.
+ *
+ * Corners are the province's bounding box: south-west near Pelee Island,
+ * north-east past the Ottawa River.
  */
-const BIAS_CENTRE = { latitude: 44.2783, longitude: -76.6088 };
-const BIAS_RADIUS_M = 50_000;
+const ONTARIO_BOUNDS = {
+  low: { latitude: 41.68, longitude: -95.16 },
+  high: { latitude: 56.86, longitude: -74.34 },
+};
 
 export type AddressSuggestion = {
   placeId: string;
@@ -75,16 +81,12 @@ function empty(unavailable = false) {
 }
 
 /**
- * Google's documented request limits. A 60,000m radius sat here for a while and
- * every single lookup was rejected — the field simply showed nothing, because
- * the route treats any failure as "no suggestions". Asserting the constraint at
- * module load means a bad value fails loudly at boot instead of presenting as a
- * feature that quietly does not work.
+ * Google rejects an "empty" rectangle (low north of high). Asserted at load so a
+ * bad edit fails loudly at boot rather than presenting as an address field that
+ * quietly returns nothing — which is how the radius bug hid for two rounds.
  */
-if (BIAS_RADIUS_M > 50_000) {
-  throw new Error(
-    `locationBias radius must be <= 50000m (Google limit); got ${BIAS_RADIUS_M}`,
-  );
+if (ONTARIO_BOUNDS.low.latitude >= ONTARIO_BOUNDS.high.latitude) {
+  throw new Error("locationBias rectangle: low.latitude must be south of high.latitude");
 }
 
 export async function POST(request: Request) {
@@ -115,11 +117,9 @@ export async function POST(request: Request) {
         input,
         includedRegionCodes: ["ca"],
         // No includedPrimaryTypes filter. It was rejecting valid requests with
-        // INVALID_ARGUMENT, and Canada + a Kingston bias already narrows results
+        // INVALID_ARGUMENT, and Canada + an Ontario bias already narrows results
         // enough that landmarks rarely surface above street addresses.
-        locationBias: {
-          circle: { center: BIAS_CENTRE, radius: BIAS_RADIUS_M },
-        },
+        locationBias: { rectangle: ONTARIO_BOUNDS },
         ...(typeof body.sessionToken === "string"
           ? { sessionToken: body.sessionToken }
           : {}),

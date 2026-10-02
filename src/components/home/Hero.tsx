@@ -32,7 +32,7 @@ export function Hero() {
 
           <p className="mt-6 max-w-md text-lead text-bone-100/90 lg:mt-7">
             Truck-mounted, garlic-based tick and mosquito control for homes,
-            cottages, businesses and large properties across Eastern Ontario.
+            cottages, businesses and large properties across Ontario.
           </p>
 
           <p className="mt-5 inline-flex items-center gap-3 rounded-pill border border-white/20 bg-white/10 px-4 py-2 text-sm text-sage-100">
@@ -60,7 +60,7 @@ export function Hero() {
       */}
       <div className="relative aspect-[4/3] w-full sm:aspect-[2/1] lg:absolute lg:inset-0 lg:z-0 lg:aspect-auto lg:h-full">
         <Image
-          src={images.familyBackyard.src}
+          src={images.heroProperty.src}
           alt=""
           priority
           fill

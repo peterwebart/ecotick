@@ -47,7 +47,7 @@ export default function ServicesPage() {
           woodland instead of stopping at the lawn edge.
         </p>
         <Photo
-          image={images.truckLakeside}
+          image={images.sprayingWaterfront}
           ratio="21 / 9"
           sizes="(max-width: 1280px) 100vw, 1200px"
           className="mt-10"
@@ -117,7 +117,7 @@ export default function ServicesPage() {
           <div className="mt-8 grid gap-8 lg:grid-cols-[1.3fr_1fr] lg:items-start">
             <TestimonialCard t={commercialTestimonials[0]!} />
             <Photo
-              image={images.truckEstateGrounds}
+              image={images.aerialTruck}
               ratio="4 / 3"
               sizes="(max-width: 1024px) 100vw, 40vw"
             />

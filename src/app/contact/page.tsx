@@ -9,9 +9,9 @@ import { breadcrumbSchema, localBusinessSchema } from "@/lib/schema";
 import { site } from "@/content/site";
 
 export const metadata = buildMetadata({
-  title: "Contact Eco-Tick Solutions in Kingston",
+  title: "Contact Eco-Tick Solutions",
   description:
-    "Call 1-888-912-5152 or email Eco-Tick Solutions about tick and mosquito control for a home, cottage, commercial site or large property in Eastern Ontario.",
+    "Call 1-888-912-5152 or email Eco-Tick Solutions about tick and mosquito control for a home, cottage, commercial site or large property across Ontario.",
   path: "/contact",
 });
 

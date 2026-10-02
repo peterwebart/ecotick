@@ -1,91 +1,93 @@
 import type { StaticImageData } from "next/image";
 
-import familyBackyard from "../../public/images/eco-tick/home/eco-tick-family-dog-backyard-outdoor-living.webp";
-import residentialPatio from "../../public/images/eco-tick/residential/eco-tick-residential-backyard-patio.webp";
-import commercialPatio from "../../public/images/eco-tick/commercial/eco-tick-commercial-resort-patio-dining.webp";
-import garlicTreatment from "../../public/images/eco-tick/garlic/eco-tick-garlic-based-treatment.webp";
+import heroProperty from "../../public/images/eco-tick/real/eco-tick-real-aerial-wooded-property.webp";
+import largeProperty from "../../public/images/eco-tick/real/eco-tick-real-aerial-wide-estate.webp";
+import aerialTruck from "../../public/images/eco-tick/real/eco-tick-real-aerial-truck-spraying.webp";
+import aerialTreating from "../../public/images/eco-tick/real/eco-tick-real-aerial-treating-lawn.webp";
+import aerialTopdown from "../../public/images/eco-tick/real/eco-tick-real-aerial-spraying-topdown.webp";
+import residentialSpraying from "../../public/images/eco-tick/real/eco-tick-real-spraying-rainbow.webp";
+import treatmentLawn from "../../public/images/eco-tick/real/eco-tick-real-spraying-lawn-behind.webp";
+import sprayingPath from "../../public/images/eco-tick/real/eco-tick-real-spraying-stone-path.webp";
+import sprayingWaterfront from "../../public/images/eco-tick/real/eco-tick-real-spraying-waterfront.webp";
+import commercialTruck from "../../public/images/eco-tick/real/eco-tick-real-truck-in-woods.webp";
+import reachCanopy from "../../public/images/eco-tick/real/eco-tick-real-spray-reach-canopy.webp";
+import reachPatio from "../../public/images/eco-tick/real/eco-tick-real-spray-reach-patio.webp";
+import reachWoodland from "../../public/images/eco-tick/real/eco-tick-real-spray-reach-woodland.webp";
 import founderPhoto from "../../public/images/eco-tick/brand/eco-tick-tractor-mounted-sprayer-spring-application.webp";
-
-import truckRig from "../../public/images/eco-tick/truck/eco-tick-service-truck-tank-and-reel.webp";
-import truckEstateDriveway from "../../public/images/eco-tick/truck/eco-tick-service-truck-private-estate-driveway.webp";
-import truckSprayingBorder from "../../public/images/eco-tick/truck/eco-tick-technician-spraying-lawn-border.webp";
-import truckEstateGrounds from "../../public/images/eco-tick/truck/eco-tick-technician-treating-estate-grounds.webp";
-import truckFrontYard from "../../public/images/eco-tick/truck/eco-tick-technician-treating-front-yard.webp";
-import truckLakeside from "../../public/images/eco-tick/truck/eco-tick-lakeside-cottage-treatment.webp";
-import largePropertyAerial from "../../public/images/eco-tick/large-properties/eco-tick-large-property-aerial-treatment.webp";
-import tickMacro from "../../public/images/eco-tick/pests/blacklegged-tick-on-grass-blade.webp";
-import mosquitoMacro from "../../public/images/eco-tick/pests/mosquito-resting-on-leaf.webp";
 
 export type SiteImage = { src: StaticImageData; alt: string };
 
 /**
- * The truck set carries the real Eco-Tick logo, the correct 1-888-912-5152 on
- * every panel, and one consistent mark throughout — so there is no longer a
- * mismatch between what the header says and what the photography shows.
+ * EVERY IMAGE HERE IS REAL.
  *
- * Alt text describes what is visible without keyword stuffing. It says "an
- * Eco-Tick technician" because these are the company's own branded vehicle and
- * crew imagery, not generic library stock.
+ * Frames are pulled from Eco-Tick's own drone and phone footage of actual
+ * treatments — the real truck, real technicians, real properties. The earlier
+ * AI-generated set was removed after negative feedback; among other problems it
+ * showed a white flatbed with a red target logo, while the real truck is a grey
+ * Silverado with a completely different wrap.
+ *
+ * Each frame was chosen as the sharpest in a ±0.6s window around its moment, by
+ * Laplacian variance, since video frames blur easily under motion. The 4K
+ * sources are downscaled to 1800px; the three "reach" shots come from 720p clips
+ * and are 1280px, so they suit cards and inline figures rather than full-width
+ * heroes.
+ *
+ * Do not add generated imagery back. If a slot needs a photo nobody has taken,
+ * leave it without one.
  */
 export const images = {
-  // --- Fleet and service ---
-  truckRig: {
-    src: truckRig,
-    alt: "The Eco-Tick service truck from behind, showing the tank, pump and hose reel mounted on the flatbed",
+  heroProperty: {
+    src: heroProperty,
+    alt: "Aerial view of a treed residential property with a wide lawn, where an Eco-Tick technician is treating the borders",
   },
-  truckEstateDriveway: {
-    src: truckEstateDriveway,
-    alt: "The Eco-Tick service truck parked on the driveway of a gated private estate",
+  largeProperty: {
+    src: largeProperty,
+    alt: "Aerial view of a large wooded property during an Eco-Tick treatment",
   },
-  truckSprayingBorder: {
-    src: truckSprayingBorder,
-    alt: "An Eco-Tick technician spraying a garden border from the truck-mounted hose reel",
+  aerialTruck: {
+    src: aerialTruck,
+    alt: "Overhead view of the Eco-Tick truck on a gravel drive, its spray tank in the bed, with a technician treating the lawn beside it",
   },
-  truckEstateGrounds: {
-    src: truckEstateGrounds,
-    alt: "An Eco-Tick technician treating the grounds of a large stone-fronted home",
+  aerialTreating: {
+    src: aerialTreating,
+    alt: "Aerial view of an Eco-Tick technician spraying a large lawn, the mist visible across the grass",
   },
-  truckFrontYard: {
-    src: truckFrontYard,
-    alt: "An Eco-Tick technician treating a front yard beside the branded service truck",
+  aerialTopdown: {
+    src: aerialTopdown,
+    alt: "Top-down view of an Eco-Tick technician spraying a lawn beside a gravel drive",
   },
-  truckLakeside: {
-    src: truckLakeside,
-    alt: "An Eco-Tick technician treating the lawn of a lakeside cottage, dock and water behind",
+  residentialSpraying: {
+    src: residentialSpraying,
+    alt: "An Eco-Tick technician spraying a residential lawn, a rainbow forming in the mist",
   },
-  largePropertyAerial: {
-    src: largePropertyAerial,
-    alt: "Aerial view of an Eco-Tick technician treating the lawns of a large estate property",
+  treatmentLawn: {
+    src: treatmentLawn,
+    alt: "An Eco-Tick technician walking a striped lawn while spraying treatment from a hose",
   },
-
-  // --- Education: macro pest photography for the guides ---
-  tickMacro: {
-    src: tickMacro,
-    alt: "Close view of a blacklegged tick questing on a blade of grass",
+  sprayingPath: {
+    src: sprayingPath,
+    alt: "An Eco-Tick technician treating a lawn crossed by a stone path",
   },
-  mosquitoMacro: {
-    src: mosquitoMacro,
-    alt: "Close view of a mosquito resting on a green leaf",
+  sprayingWaterfront: {
+    src: sprayingWaterfront,
+    alt: "An Eco-Tick technician treating a waterfront lawn beside a stone path",
   },
-
-  // --- Lifestyle and product ---
-  familyBackyard: {
-    src: familyBackyard,
-    alt: "A family and their dog playing on a backyard lawn in late-afternoon sunlight",
+  commercialTruck: {
+    src: commercialTruck,
+    alt: "An Eco-Tick technician walking toward the company truck parked on a wooded property",
   },
-  residentialPatio: {
-    src: residentialPatio,
-    alt: "A residential backyard with patio seating, lawn and mature trees",
+  reachCanopy: {
+    src: reachCanopy,
+    alt: "Treatment spray reaching high into a tree canopy from a hand-held spray gun",
   },
-  commercialPatio: {
-    src: commercialPatio,
-    alt: "An outdoor restaurant patio at a lakeside resort in evening light",
+  reachPatio: {
+    src: reachPatio,
+    alt: "Treatment spray arcing into the trees beside a backyard patio",
   },
-  garlicTreatment: {
-    src: garlicTreatment,
-    alt: "Garlic bulbs and cloves beside a small amber bottle on a weathered wooden surface",
+  reachWoodland: {
+    src: reachWoodland,
+    alt: "Treatment spray reaching into woodland at the edge of a property",
   },
-
   /** Founder Edward Chodowski. Only 330x328 — inset use only, never a hero. */
   founderAtWork: {
     src: founderPhoto,

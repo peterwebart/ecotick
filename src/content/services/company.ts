@@ -11,7 +11,7 @@ export const howItWorks: ServicePage = {
     "What happens on an Eco-Tick visit: property assessment, zone mapping, targeted treatment and seasonal scheduling.",
   ctaHeading: "Start with an assessment.",
   ctaBody: "It is free, and it tells you where the pressure on your property actually is.",
-  ctaLabel: "Book an assessment",
+  ctaLabel: "Get your free quote",
   related: [
     { label: "How professional tick spraying works", href: "/blog/how-professional-tick-spraying-works" },
     { label: "Our natural garlic-based solution", href: "/natural-garlic-spray" },
@@ -170,13 +170,13 @@ export const about: ServicePage = {
   audience: "general",
   h1: "About Eco-Tick Solutions",
   answer:
-    "Eco-Tick Solutions is a Kingston-based outdoor pest control company founded by Edward Chodowski. It provides garlic-based tick and mosquito treatment for residential, commercial and large properties across Eastern Ontario.",
+    "Eco-Tick Solutions is a Kingston-based outdoor pest control company founded by Edward Chodowski. It provides garlic-based tick and mosquito treatment for residential, commercial and large properties across Ontario.",
   metaTitle: "About Eco-Tick Solutions",
   metaDescription:
     "How Eco-Tick Solutions began: founder Edward Chodowski, a childhood memory of garlic spray, and why the company treats outdoor properties the way it does.",
   ctaHeading: "Come and see for yourself.",
-  ctaBody: "Book a free property assessment and we will walk the ground with you.",
-  ctaLabel: "Book an assessment",
+  ctaBody: "Get a free, no-obligation quote, prepared from your property details.",
+  ctaLabel: "Get your free quote",
   related: [
     { label: "How it works", href: "/how-it-works" },
     { label: "Our natural garlic-based solution", href: "/natural-garlic-spray" },
@@ -232,7 +232,7 @@ export const about: ServicePage = {
       type: "prose",
       heading: "How we work now",
       body: [
-        "What began with one backyard in Kingston is now a seasonal operation running truck-mounted spray equipment across Eastern Ontario. Homes, cottages, farms, athletic fields, commercial grounds, and campgrounds with cabins set well back in the trees.",
+        "What began with one backyard in Kingston is now a seasonal operation running truck-mounted spray equipment across Ontario. Homes, cottages, farms, athletic fields, commercial grounds, and campgrounds with cabins set well back in the trees.",
         "The product is registered with Health Canada. Applications are carried out by licensed technicians. Eco-Tick is fully insured. And Edward still runs the equipment himself, which is not something most companies this side of a franchise can say.",
         "The part he is proudest of is the repeat business. Customers describe a fourth and fifth season with us, and the reason they give is rarely the chemistry — it is that when they call between scheduled visits because something has come back, someone turns up.",
       ],
@@ -242,7 +242,7 @@ export const about: ServicePage = {
       heading: "What you can expect from us",
       columns: 2,
       items: [
-        "A free assessment before anything is quoted",
+        "A free, no-obligation quote by email — no site visit needed to get a price",
         "Straight answers about what treatment does and does not do",
         "Treatment applied to habitat, not blanketed across a lawn",
         "Exclusion zones agreed before the first visit",
@@ -260,10 +260,10 @@ export const serviceAreas: ServicePage = {
   audience: "general",
   h1: "Service Areas",
   answer:
-    "Eco-Tick Solutions operates from 3192 Creekford Road in Kingston, Ontario, and treats residential, commercial and large properties across Kingston and the surrounding Eastern Ontario region.",
-  metaTitle: "Service Areas in Eastern Ontario",
+    "Eco-Tick Solutions operates from 3192 Creekford Road in Kingston, Ontario, and treats residential, commercial and large properties across Ontario.",
+  metaTitle: "Service Areas Across Ontario",
   metaDescription:
-    "Eco-Tick Solutions is based on Creekford Road in Kingston and treats properties across Eastern Ontario. Check whether your address falls inside our territory.",
+    "Eco-Tick Solutions is based in Kingston and treats residential, commercial and large properties across Ontario. Check whether your address is covered.",
   ctaHeading: "Not sure if you are in range?",
   ctaBody: "Send us the address and we will tell you straight away.",
   ctaLabel: "Check my address",
@@ -277,15 +277,15 @@ export const serviceAreas: ServicePage = {
       type: "prose",
       heading: "Based in Kingston",
       body: [
-        "Our base is 3192 Creekford Road, Kingston, Ontario K7P 2Z6, in the west end of the city. Kingston and the immediately surrounding townships are our core territory.",
-        "Eastern Ontario is a good fit for this work. The region has the mix that produces tick pressure: mixed woodland, shoreline along Lake Ontario and the Rideau system, farmland edges, and a lot of cottage and rural property where the treeline sits close to where people actually spend their time.",
+        "Our base is 3192 Creekford Road, Kingston, Ontario K7P 2Z6. From there we treat residential, commercial and large properties across Ontario.",
+        "Ontario is a good fit for this work. Much of the province has exactly the mix that produces tick pressure: mixed woodland, shoreline along the Great Lakes and inland waterways, farmland edges, and a great deal of cottage and rural property where the treeline sits close to where people actually spend their time.",
       ],
     },
     {
       type: "prose",
       heading: "Where our customers are",
       body: [
-        "Kingston and the surrounding townships are the core of the work. Beyond the city, we have customers through South Frontenac and out along the St. Lawrence as far as Ivy Lea, where we treat a KOA campground with cabins and tent sites set well back in the trees.",
+        "We work across Ontario. Among the customers who have reviewed us are a homeowner in South Frontenac and the KOA campground at Ivy Lea on the St. Lawrence, where we treat cabins and tent sites set well back in the trees.",
         "Those are places with named customers rather than a radius drawn on a map. If your property is somewhere between or beyond them, ask — the answer is usually yes.",
       ],
     },
@@ -294,7 +294,7 @@ export const serviceAreas: ServicePage = {
       heading: "Property types we treat across the region",
       columns: 2,
       items: [
-        "City and suburban yards in and around Kingston",
+        "City and suburban yards",
         "Rural and acreage properties in the surrounding townships",
         "Waterfront and cottage properties",
         "Campgrounds, parks and trail networks",
@@ -308,7 +308,7 @@ export const serviceAreas: ServicePage = {
       type: "map",
       heading: "Where we are based",
       intro:
-        "Our base is in the west end of Kingston. If your property is outside the immediate area, send us the address and we will confirm coverage rather than leave you guessing from a map.",
+        "Our base is in the west end of Kingston. Wherever in Ontario your property is, send us the address and we will confirm coverage rather than leave you guessing from a map.",
     },
     {
       type: "callout",
@@ -317,9 +317,9 @@ export const serviceAreas: ServicePage = {
     },
     {
       type: "prose",
-      heading: "Outside the immediate area?",
+      heading: "Further afield?",
       body: [
-        "We travel for the right job, particularly acreage and commercial sites where a single visit covers a lot of ground. Cottage country and rural properties well outside Kingston are a regular part of the season rather than an exception.",
+        "We travel for the right job, particularly acreage and commercial sites where a single visit covers a lot of ground. Cottage country, rural properties and sites far from Kingston are a regular part of the season rather than an exception.",
         "The fastest way to find out is to ask. Call 1-888-912-5152 or send the address through the quote form and we will tell you straight away whether it works, rather than leaving you to guess from a radius on a map.",
       ],
     },

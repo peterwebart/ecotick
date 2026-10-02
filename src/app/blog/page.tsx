@@ -67,7 +67,7 @@ export default function BlogIndex() {
 
       <CtaBand
         heading="Ready to take back your outdoors?"
-        body="A free property assessment is the fastest way to find out what you are dealing with."
+        body="A free quote is the fastest way to find out what treatment would cost for your property."
         source="blog_index"
       />
     </>

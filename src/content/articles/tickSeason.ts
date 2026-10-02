@@ -48,13 +48,6 @@ export const tickSeason: Article = {
       ],
     },
     {
-      type: "figure",
-      imageKey: "tickMacro",
-      maxWidth: 640,
-      caption:
-        "An adult blacklegged tick. Adults are the stage most people notice; the nymphs that cause most unnoticed bites are roughly the size of a poppy seed.",
-    },
-    {
       type: "table",
       heading: "Activity by life stage",
       intro:

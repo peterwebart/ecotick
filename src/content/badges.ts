@@ -65,9 +65,9 @@ export const liveBadges: readonly Badge[] = [
   },
   {
     icon: "service-area",
-    title: "Kingston & Eastern Ontario",
+    title: "Across Ontario",
     detail:
-      "Based on Creekford Road in Kingston, covering the surrounding region.",
+      "Based in Kingston, treating properties across Ontario.",
   },
   {
     icon: "established",
@@ -78,6 +78,6 @@ export const liveBadges: readonly Badge[] = [
   {
     icon: "free-quote",
     title: "Free, no-obligation quote",
-    detail: "We walk the property and price the work before you commit to anything.",
+    detail: "Prepared from your property details and sent by email. No site visit needed to get a price."
   },
 ];

@@ -139,7 +139,7 @@ export function ArticleTemplate({
 
       <CtaBand
         heading="Want the property looked at properly?"
-        body="A free assessment tells you where the pressure actually is on your own land."
+        body="Get a free, no-obligation quote for your property, sent straight to your inbox."
         source={`article_${article.slug}`}
       />
     </>

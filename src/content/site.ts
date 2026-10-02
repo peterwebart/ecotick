@@ -2,14 +2,14 @@
  * Business identity. All values below are supplied by Eco-Tick and are real.
  *
  * Contact details confirmed by Eco-Tick. The published line is the toll-free
- * 1-888 number; the business operates from Kingston, Eastern Ontario.
+ * 1-888 number. Operating base is Kingston; service area is across Ontario.
  */
 export const site = {
   name: "Eco-Tick Solutions",
   legalName: "Eco-Tick Solutions Inc.",
   tagline: "Take Back the Outdoors.",
   description:
-    "Professional tick and mosquito protection for homes, cottages, businesses and large outdoor properties in Kingston and Eastern Ontario.",
+    "Professional tick and mosquito protection for homes, cottages, businesses and large outdoor properties across Ontario.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://eco-ticksolutions.ca",
 
   phone: "1-888-912-5152",
@@ -37,7 +37,7 @@ export const site = {
     { label: "Sunday", value: "8:00am – 1:00pm" },
   ],
 
-  serviceArea: "Kingston & Eastern Ontario",
+  serviceArea: "Ontario",
 
   founder: {
     name: "Edward Chodowski",

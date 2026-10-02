@@ -30,8 +30,8 @@ export default async function ThankYouPage({
       <Icon name="shield-protection" size={88} className="mx-auto" />
       <h1 className="mt-6 text-h1 font-display">Request received.</h1>
       <p className="mt-5 text-lead text-ink-700">
-        Thanks for getting in touch. We will be in touch to arrange a free
-        property assessment, using the contact method you chose.
+        Thank you for contacting Eco-Tick Solutions. Our team will review your
+        details and send a customized quote directly to your inbox.
       </p>
 
       {reference && (
@@ -56,21 +56,21 @@ export default async function ThankYouPage({
             <span aria-hidden="true" className="font-display text-clay-600 tabular-nums">
               01
             </span>
-            We review the property details you sent and confirm it is inside our
-            service area.
+            <span>
+              <strong className="font-semibold text-ink-900">Quote preparation.</strong>{" "}
+              We prepare your estimate from the property details you sent — no
+              in-person visit needed.
+            </span>
           </li>
           <li className="flex gap-3">
             <span aria-hidden="true" className="font-display text-clay-600 tabular-nums">
               02
             </span>
-            We contact you to arrange a free assessment — no obligation, and
-            nothing is priced until we have walked the ground.
-          </li>
-          <li className="flex gap-3">
-            <span aria-hidden="true" className="font-display text-clay-600 tabular-nums">
-              03
+            <span>
+              <strong className="font-semibold text-ink-900">Email delivery.</strong>{" "}
+              Your custom quote and proposed seasonal schedule arrive directly in
+              your inbox. A confirmation with your reference is on its way now.
             </span>
-            You get a quote and a proposed schedule for the season.
           </li>
         </ol>
       </div>

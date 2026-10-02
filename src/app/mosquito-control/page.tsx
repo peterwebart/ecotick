@@ -15,7 +15,7 @@ export default function Page() {
   return (
     <ServicePageTemplate
       page={page}
-      hero={images.truckRig}
+      hero={images.reachCanopy}
       crumbs={[
         { name: "Home", path: "/" },
         { name: "Services", path: "/services" },
@@ -23,8 +23,8 @@ export default function Page() {
       ]}
       aside={
         <QuoteAside
-          heading="Free property assessment"
-          body="Mosquito pressure is site-specific. A walk-through finds the source."
+          heading="Free, no-obligation quote"
+          body="Tell us about the property and we will email a free, no-obligation quote."
           label={page.ctaLabel}
           source={page.slug}
         />

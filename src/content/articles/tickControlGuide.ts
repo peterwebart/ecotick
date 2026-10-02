@@ -67,13 +67,6 @@ export const tickControlGuide: Article = {
       ],
     },
     {
-      type: "figure",
-      imageKey: "tickMacro",
-      maxWidth: 640,
-      caption:
-        "A blacklegged tick questing on a grass blade — front legs extended, waiting for something to brush past. They do not jump or drop from trees; this is the whole hunting strategy.",
-    },
-    {
       type: "table",
       heading: "The two species most Ontario properties encounter",
       columns: ["", "Blacklegged tick", "American dog tick"],

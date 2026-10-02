@@ -1,10 +1,9 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useId, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { AddressAutocomplete } from "@/components/quote/AddressAutocomplete";
-import { track } from "@/lib/analytics";
+import { track, trackThenNavigate } from "@/lib/analytics";
 
 const propertyTypes = [
   "Home",
@@ -122,7 +121,6 @@ export function QuoteWizard({
   );
   const [errors, setErrors] = useState<string[]>([]);
   const [status, setStatus] = useState<"idle" | "sending" | "error">("idle");
-  const router = useRouter();
   const [started, setStarted] = useState(false);
   const formId = useId();
 
@@ -185,19 +183,26 @@ export function QuoteWizard({
       });
       if (!res.ok) throw new Error(String(res.status));
       const data = (await res.json()) as { reference?: string };
-      // Fire only on a server-confirmed write, never on click.
-      track("quote_submitted", {
-        propertyType: form.propertyType,
-        preferredContact: form.preferredContact,
-      });
-      // A distinct URL rather than an inline state: it gives a goal page for
-      // conversion tracking, survives a refresh, and can be shared or bookmarked
-      // with the reference intact.
-      router.push(
+      // Fired on a server-confirmed write, never on click — and pushed BEFORE
+      // navigating, so the conversion survives a slow load or a tab closed on
+      // the thank-you page.
+      //
+      // window.location.assign, not router.push: the conversion needs a real
+      // document load so GTM fires a Page View for /thank-you and there is a
+      // Page URL to key the goal on. This is the one navigation on the site
+      // that is deliberately not client-side.
+      trackThenNavigate(
+        "quote_submitted",
+        {
+          propertyType: form.propertyType,
+          preferredContact: form.preferredContact,
+          reference: data.reference ?? "",
+        },
         data.reference
           ? `/thank-you?ref=${encodeURIComponent(data.reference)}`
           : "/thank-you",
       );
+      return;
     } catch {
       setStatus("error");
     }

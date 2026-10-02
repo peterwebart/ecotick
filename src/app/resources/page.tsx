@@ -101,7 +101,7 @@ export default function ResourcesPage() {
 
       <CtaBand
         heading="Reading is useful. A site walk is better."
-        body="A free assessment tells you where the pressure is on your own property."
+        body="Get a free, no-obligation quote for your own property, sent by email."
         source="resources"
       />
     </>

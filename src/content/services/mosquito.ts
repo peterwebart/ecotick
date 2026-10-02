@@ -9,8 +9,8 @@ export const mosquitoControl: ServicePage = {
   metaTitle: "Mosquito Control for Homes & Businesses",
   metaDescription:
     "Professional mosquito control for Ontario yards, cottages and commercial properties. Breeding-site reduction plus targeted treatment of adult resting areas.",
-  ctaHeading: "Get the property assessed.",
-  ctaBody: "Mosquito pressure is very site-specific. A walk-through tells us where yours comes from.",
+  ctaHeading: "Get your free quote.",
+  ctaBody: "Tell us about the property and we will send a free, no-obligation quote by email.",
   ctaLabel: "Get your free quote",
   related: [
     { label: "Tick & mosquito programmes", href: "/tick-mosquito-control" },
@@ -44,13 +44,6 @@ export const mosquitoControl: ServicePage = {
         "Keep pool covers taut and drained, and pools circulating",
         "Check tree hollows and blocked drains",
       ],
-    },
-    {
-      type: "figure",
-      imageKey: "mosquitoMacro",
-      maxWidth: 640,
-      caption:
-        "Mosquitoes spend the heat of the day resting on shaded vegetation like this, not in open air. That resting habitat is what treatment targets.",
     },
     {
       type: "list",

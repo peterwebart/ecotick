@@ -10,7 +10,7 @@ import { resultsDisclaimer, testimonials } from "@/content/testimonials";
 export const metadata = buildMetadata({
   title: "Customer Reviews",
   description:
-    "What Eco-Tick customers across Kingston and Eastern Ontario say about our garlic-based tick and mosquito control, including a campground operator in Ivy Lea.",
+    "What Eco-Tick customers across Ontario say about our garlic-based tick and mosquito control, including a campground operator in Ivy Lea.",
   path: "/testimonials",
 });
 
@@ -36,7 +36,7 @@ export default function TestimonialsPage() {
           What our customers say
         </h1>
         <p className="mt-6 max-w-2xl border-l-2 border-moss-600 pl-5 text-lead text-ink-700">
-          Reviews from Eco-Tick customers across Kingston and Eastern Ontario —
+          Reviews from Eco-Tick customers across Ontario —
           dog owners, homeowners backing onto woodland, and a campground
           operator running cabins deep in the trees. Published as written.
         </p>
@@ -80,7 +80,7 @@ export default function TestimonialsPage() {
 
       <CtaBand
         heading="Want the same for your property?"
-        body="A free assessment tells you what you are actually dealing with."
+        body="Get a free, no-obligation quote for your property, prepared from the details you send."
         source="testimonials"
       />
     </>

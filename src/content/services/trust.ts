@@ -20,7 +20,7 @@ export const garlicSolution: ServicePage = {
   metaDescription:
     "How Eco-Tick's garlic-based treatment works: the super-garlic formulation, why sulfur repels ticks and mosquitoes, and how long each application lasts.",
   ctaHeading: "Want it on your property?",
-  ctaBody: "Free assessment, no obligation. We will walk the ground with you.",
+  ctaBody: "Free and no obligation — prepared from your property details and sent by email.",
   ctaLabel: "Get your free quote",
   related: [
     { label: "Safety & environment", href: "/safety-environment" },

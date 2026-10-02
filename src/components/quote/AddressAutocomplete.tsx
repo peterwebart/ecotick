@@ -12,7 +12,7 @@ import type { AddressSuggestion } from "@/app/api/places/autocomplete/route";
  * text, which tells the office whether an address was verified or hand-typed.
  *
  * Typing without selecting is fine and always has been — plenty of rural
- * Eastern Ontario properties will not match a suggestion at all, and blocking
+ * Ontario properties will not match a suggestion at all, and blocking
  * submission on that would lose exactly the customers this business wants.
  */
 export function AddressAutocomplete({

@@ -7,9 +7,9 @@ import { images } from "@/content/images";
 import { serviceTiers } from "@/content/home";
 
 const tierPhotos = {
-  residential: images.residentialPatio,
-  commercial: images.commercialPatio,
-  "large-property": images.largePropertyAerial,
+  residential: images.residentialSpraying,
+  commercial: images.commercialTruck,
+  "large-property": images.largeProperty,
 } as const;
 
 export function ServiceTiers() {

@@ -29,28 +29,28 @@ export function Fleet() {
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     <Photo
-            image={images.truckRig}
+            image={images.aerialTruck}
             ratio="3 / 2"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 50vw"
             className="sm:col-span-2 lg:col-span-2"
           />
           <Photo
-            image={images.truckEstateDriveway}
+            image={images.aerialTreating}
             ratio="3 / 2"
             sizes="(max-width: 640px) 100vw, 33vw"
           />
           <Photo
-            image={images.truckSprayingBorder}
+            image={images.sprayingPath}
             ratio="3 / 2"
             sizes="(max-width: 640px) 100vw, 33vw"
           />
           <Photo
-            image={images.truckLakeside}
+            image={images.sprayingWaterfront}
             ratio="3 / 2"
             sizes="(max-width: 640px) 100vw, 33vw"
           />
           <Photo
-            image={images.largePropertyAerial}
+            image={images.reachPatio}
             ratio="3 / 2"
             sizes="(max-width: 640px) 100vw, 33vw"
           />

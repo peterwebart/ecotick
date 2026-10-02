@@ -12,7 +12,8 @@ In Coolify → Environment Variables:
 | Key | Value | Build variable? |
 |---|---|---|
 | `NEXT_PUBLIC_SITE_URL` | `https://eco-ticksolutions.ca` — **no www** | **Yes** |
-| `NEXT_PUBLIC_GA4_ID` | your GA4 measurement ID, or blank | **Yes** |
+| `NEXT_PUBLIC_GTM_ID` | `GTM-5G97FBRL` (defaults to this) | **Yes** |
+| `NEXT_PUBLIC_GA4_ID` | **leave blank if GA4 lives inside GTM** | **Yes** |
 | `GOOGLE_PLACES_API_KEY` | Places API (New) key, IP-restricted | No |
 | `SMTP_HOST` | `smtp.gmail.com` | No |
 | `SMTP_PORT` | `465` | No |
@@ -168,6 +169,83 @@ page. Worth doing — star ratings measurably lift click-through.
 ten minutes of your lawyer's time before launch.
 
 ---
+
+## 4a. Google Tag Manager
+
+Container `GTM-5G97FBRL` is live on all 25 prerendered pages: the loader in
+`<head>`, the noscript iframe at the top of `<body>`.
+
+**Do not also set `NEXT_PUBLIC_GA4_ID` if your GTM container holds a GA4 tag.**
+That is two libraries reporting to the same property, and every pageview counted
+twice — which reads as growth rather than a bug, so it can run unnoticed for
+months. Pick one place to configure GA4. The code logs a warning to the server
+log if it sees both.
+
+### Your form events are already in dataLayer
+
+`lib/analytics.ts` pushes to `window.dataLayer`, which is exactly what GTM
+consumes. These are available as Custom Event triggers in the container with no
+further code:
+
+| Event | Fires when |
+|---|---|
+| `quote_started` | First interaction with the quote form |
+| `quote_submitted` | Server confirms the lead — with `propertyType` and `preferredContact` |
+| `phone_clicked` | Any `tel:` link, with a `location` parameter |
+| `email_clicked` | Any `mailto:` link |
+| `service_cta_clicked` | CTA buttons, with a `location` parameter |
+
+`quote_submitted` is the one to mark as a conversion. `/thank-you` also works as
+a destination trigger if you prefer a URL-based goal.
+
+## 4d. Photography — all real now
+
+Every photograph on the site is a frame from Eco-Tick's own drone and phone
+footage: the real truck, real technicians, real properties. The AI-generated set
+is deleted from the repository.
+
+13 frames, each the sharpest in a ±0.6s window around its moment (video frames
+blur easily under motion). Sources:
+
+| Clip | Resolution | Used |
+|---|---|---|
+| Two DJI drone flights | 4K | 6 frames — aerials, hero, truck from above |
+| `IMG_7386.MOV` | 4K | 4 frames — technician spraying, waterfront |
+| `IMG_7354`, `IMG_7401` | 720p | 3 frames — spray reaching the canopy |
+| `IMG_7353` | 720p | not used — POV frames only, nothing distinct |
+| Four `*_Copy.mov` | 568×320 | not used — too small for any slot |
+
+The 720p frames are 1280px wide and sit in cards and inline figures, never in a
+full-width hero.
+
+**The real truck carries 613-539-1472**, the original business number, on its
+door — legible in the commercial tier photo. That is your actual vehicle, so I
+have not retouched it; faking a genuine photo is the opposite of the point. If
+that number still rings through, it is harmless. If it has been retired, it is
+worth knowing it is on the truck itself, not just in the photo.
+
+### Still without a real photo
+
+- **Tick and mosquito close-ups.** The AI macros are removed from the guides.
+  A pest-identification guide is exactly where an anatomically wrong generated
+  tick gets spotted. Licensed real photography, or your own macro shots, would
+  restore them.
+- **A commercial property.** The commercial tier uses the truck on a wooded
+  property. Footage from the Ivy Lea KOA would fit far better.
+
+Drop new frames into `public/images/eco-tick/real/` and add them to
+`src/content/images.ts`.
+
+## 4e. Quoting is now remote
+
+The confirmation email says quotes are prepared from property details **without
+an in-person visit**. The site previously promised the opposite in 19 places —
+"nothing is priced until we have walked the ground," "book a free assessment,"
+"we will walk the ground with you." All are now aligned to remote quoting, and
+the thank-you page mirrors the email's two steps.
+
+The **How It Works** process still describes a technician assessing the property
+— that is the treatment visit, which still happens, not the quote.
 
 ## 4b. If something is not working
 

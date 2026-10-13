@@ -8,10 +8,10 @@ export const largeProperty: ServicePage = {
     "Large-property tick and mosquito control treats acreage by zone rather than uniformly. Because treating a hundred acres end to end is neither practical nor useful, Eco-Tick maps a large site into used, transitional and untouched areas, and concentrates treatment where people actually are.",
   metaTitle: "Large-Property Tick & Mosquito Control",
   metaDescription:
-    "Zone-based tick and mosquito programmes for farms, estates, parks, sports fields, municipal grounds and corporate campuses across Ontario.",
+    "Zone-based tick and mosquito programs for farms, estates, parks, sports fields, municipal grounds and corporate campuses across Ontario.",
   ctaHeading: "Tell us about the property.",
   ctaBody:
-    "Acreage, usage and current conditions. We will design a zoned programme and quote it.",
+    "Acreage, usage and current conditions. We will design a zoned program and quote it.",
   ctaLabel: "Request a large-property assessment",
   related: [
     { label: "Commercial tick control", href: "/commercial-tick-control" },
@@ -39,7 +39,7 @@ export const largeProperty: ServicePage = {
       heading: "Why acreage changes the approach",
       body: [
         "On a quarter-acre lot, the difference between treating the habitat zones and treating everything is small enough that the distinction barely matters. At forty acres it is the entire question.",
-        "Large properties are almost never uniformly used. A corporate campus might have three hundred metres of walking trail, two outdoor seating areas and a great deal of land that nobody sets foot on from one year to the next. A sports complex has fields, spectator areas and margins, each with different pressure and different consequences if pressure goes unmanaged. Treating all of it identically wastes money on the parts nobody uses and under-serves the parts they do.",
+        "Large properties are almost never uniformly used. A corporate campus might have three hundred metres of walking trail, two outdoor seating areas and a great deal of land that nobody sets foot on from one year to the next. A sports complex has fields, spectator areas and margins, each with different pressure and different consequences if pressure goes unmanaged. Treating every area the same way can waste resources on unused land while leaving high-use areas without enough attention.",
         "So the first job on a large property is not treatment. It is deciding what to treat, and being honest about what should be left alone.",
       ],
     },
@@ -47,7 +47,7 @@ export const largeProperty: ServicePage = {
       type: "steps",
       heading: "Zoning a large property",
       intro:
-        "Every large-property programme starts by dividing the site into three categories.",
+        "Every large-property program starts by dividing the site into three categories.",
       steps: [
         {
           n: "01",
@@ -57,7 +57,7 @@ export const largeProperty: ServicePage = {
         {
           n: "02",
           title: "Transition zones",
-          body: "The margins between used areas and everything else. Treelines, field edges, drainage corridors and the strip of vegetation people brush past on the way somewhere. This is where most tick pressure on a large site actually lives, and it is the zone most often overlooked.",
+          body: "The margins between used areas and everything else. Tree lines, field edges, drainage corridors and the strip of vegetation people brush past on the way somewhere. This is where most tick pressure on a large site actually lives, and it is the zone most often overlooked.",
         },
         {
           n: "03",
@@ -68,7 +68,7 @@ export const largeProperty: ServicePage = {
     },
     {
       type: "list",
-      heading: "What a large-property programme includes",
+      heading: "What a large-property program includes",
       columns: 2,
       items: [
         "Full site walk and zone mapping",
@@ -88,7 +88,7 @@ export const largeProperty: ServicePage = {
     },
     {
       type: "nabc",
-      need: "On a large property, outdoor pest pressure concentrates exactly where the land is used, and the sheer scale makes the reflexive answer, treat everything, both unaffordable and ineffective. Facilities and grounds managers need to know which parts of the site are being covered and why.",
+      need: "On a large property, treating every area equally can be costly and inefficient. A zoned plan focuses resources on the areas people use most. Facilities and grounds managers need to know which parts of the site are being covered and why.",
       approach:
         "A full site walk produces a zone map dividing the property into used, transitional and untreated areas, with treatment frequency set per zone and reviewed across the season.",
       benefits: [
@@ -96,7 +96,7 @@ export const largeProperty: ServicePage = {
         "Explicit, written record of what is and is not treated",
         "Frequency varied by zone rather than flattened site-wide",
         "Buffers and exclusions agreed before the first visit",
-        "A natural-oriented approach",
+        "A garlic-based approach to outdoor pest control",
         "Seasonal review against how the site gets used",
       ],
       alternatives: [
@@ -132,11 +132,11 @@ export const largeProperty: ServicePage = {
         },
         {
           q: "Can you work around a farming or grounds-maintenance schedule?",
-          a: "Yes. Application timing is set during programme design against your operating calendar, whether that is cutting schedules, field bookings, harvest or public access.",
+          a: "Yes. Application timing is set during program design against your operating calendar, whether that is cutting schedules, field bookings, harvest or public access.",
         },
         {
           q: "What equipment do you use on large sites?",
-          a: "Truck-mounted spray equipment: a tank, pump and hose reel built into the truck bed. It reaches well beyond where an operator can walk with a backpack unit, which is what makes treelines and woodland practical to treat.",
+          a: "Truck-mounted spray equipment: a tank, pump and hose reel built into the truck bed. It reaches well beyond where an operator can walk with a backpack unit, which is what makes tree lines and woodland practical to treat.",
         },
       ],
     },

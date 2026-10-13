@@ -39,7 +39,7 @@ export function GarlicPanel() {
           />
           <p className="mt-4 text-bone-100/85">
             Garlic has a long history of use as an outdoor pest deterrent. Our
-            programmes are built around a garlic-based solution applied to the
+            programs are built around a garlic-based solution applied to the
             parts of a property where ticks and mosquitoes concentrate.
           </p>
           <ul className="mt-8 space-y-4">
@@ -65,8 +65,7 @@ export function GarlicPanel() {
             Protection that tracks the season.
           </h2>
           <p className="mt-4 text-ink-700">
-            Tick and mosquito activity is not constant from May to October. A
-            programme scheduled around that arc beats a single spring visit.
+            Tick and mosquito activity changes throughout the season. Regularly scheduled treatments help maintain coverage as conditions change.
           </p>
 
           {/* Season spine: the horizontal rule encodes the actual activity arc. */}

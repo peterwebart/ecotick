@@ -5,13 +5,13 @@ export const commercial: ServicePage = {
   audience: "commercial",
   h1: "Commercial Tick & Mosquito Control",
   answer:
-    "Commercial tick and mosquito control is a recurring outdoor treatment programme built around a business's operating schedule and the areas its guests, customers and staff actually occupy. Eco-Tick assesses the site, designs a programme around it, and coordinates application timing so treatment does not interrupt trading.",
+    "Commercial tick and mosquito control is a recurring outdoor treatment program built around a business's operating schedule and the areas its guests, customers and staff actually occupy. Eco-Tick assesses your site, develops a tailored program and schedules treatments around your operating hours.",
   metaTitle: "Commercial Tick & Mosquito Control",
   metaDescription:
-    "Recurring outdoor tick and mosquito programmes for resorts, campgrounds, golf courses, patios, event venues and managed properties across Ontario.",
+    "Recurring outdoor tick and mosquito programs for resorts, campgrounds, golf courses, patios, event venues and managed properties across Ontario.",
   ctaHeading: "Request a commercial property assessment.",
   ctaBody:
-    "Tell us about the site and how it operates. We will come back with a programme and a quote.",
+    "Tell us about the site and how it operates. We will come back with a program and a quote.",
   ctaLabel: "Request a property assessment",
   related: [
     { label: "Large-property tick control", href: "/large-property-tick-control" },
@@ -43,14 +43,14 @@ export const commercial: ServicePage = {
       type: "prose",
       heading: "Why commercial sites are a different problem",
       body: [
-        "On a residential property the person paying for treatment is also the person walking the yard. On a commercial site they are almost never the same. A property manager is buying against complaints they hear about second-hand, and a resort operator is buying against reviews written by people who will not say the word tick, only that the grounds were unpleasant.",
-        "That changes what a programme has to do. It has to cover the areas guests actually reach, which is often broader than the areas that get maintained. It has to happen at times that do not collide with trading, check-in, tee times or an event. And it has to leave a record, because the person who signs the invoice usually needs to show someone else that something was done.",
+        "Commercial properties often serve many people, so treatment plans must account for guests, staff, operating hours and reporting needs. A property manager is buying against complaints they hear about second-hand, and a resort operator is buying against reviews written by people who will not say the word tick, only that the grounds were unpleasant.",
+        "That changes what a program has to do. It has to cover the areas guests actually reach, which is often broader than the areas that get maintained. It has to happen at times that do not collide with trading, check-in, tee times or an event. And it has to leave a record, because the person who signs the invoice usually needs to show someone else that something was done.",
         "Commercial sites also tend to have real constraints that a backyard does not: water features, food service areas, sensitive plantings, pollinator habitat, neighbouring properties, and staff who need to be told what is happening and when.",
       ],
     },
     {
       type: "steps",
-      heading: "How a commercial programme comes together",
+      heading: "How a commercial program comes together",
       steps: [
         {
           n: "01",
@@ -59,7 +59,7 @@ export const commercial: ServicePage = {
         },
         {
           n: "02",
-          title: "Programme design",
+          title: "Program design",
           body: "Zones, frequency and scheduling are set against your operating calendar rather than a generic seasonal template. A campground and a corporate campus have opposite busy periods and should not be on the same schedule.",
         },
         {
@@ -70,13 +70,13 @@ export const commercial: ServicePage = {
         {
           n: "04",
           title: "Documentation and review",
-          body: "Each visit is recorded. The programme is reviewed across the season and adjusted where conditions, complaints or usage patterns have changed.",
+          body: "Each visit is recorded. The program is reviewed across the season and adjusted where conditions, complaints or usage patterns have changed.",
         },
       ],
     },
     {
       type: "list",
-      heading: "What a programme covers",
+      heading: "What a program covers",
       columns: 2,
       items: [
         "Zone mapping across the full site",
@@ -93,21 +93,21 @@ export const commercial: ServicePage = {
       type: "prose",
       heading: "Guests, customers and staff",
       body: [
-        "Signage, notification and re-entry timing are governed by the product label and by your own site policies. We will agree the notification approach with you during programme design rather than turning up and improvising.",
-        "For sites with food service, water features, pollinator plantings or neighbouring residential properties, exclusion zones are agreed up front and recorded as part of the programme. If there is somewhere on your site we should not treat, we want to know before the first visit, not after.",
+        "Signage, notification and re-entry timing are governed by the product label and by your own site policies. We will agree on notification procedures with you when we design the program.",
+        "For sites with food service, water features, pollinator plantings or neighbouring residential properties, exclusion zones are agreed up front and recorded as part of the program. If there is somewhere on your site we should not treat, we want to know before the first visit, not after.",
       ],
     },
     {
       type: "nabc",
-      need: "Outdoor pest pressure affects a commercial property commercially. Guests cut visits short, patio covers drop on still evenings, event clients ask what is being done about it, and complaints arrive through reviews rather than to your face. For managed properties, it also arrives as tenant or resident escalations.",
+      need: "Ticks and mosquitoes can affect guest comfort, outdoor use and your business’s reputation. Guests may cut visits short, fewer customers may use the patio, and event clients may ask how pests are being managed. For managed properties, it also arrives as tenant or resident escalations.",
       approach:
-        "A site assessment produces a zone map and a recurring treatment programme built around your operating calendar, applied by trained technicians and documented visit by visit.",
+        "A site assessment produces a zone map and a recurring treatment program built around your operating calendar, applied by trained technicians and documented visit by visit.",
       benefits: [
         "Coverage of the areas guests and staff actually use",
         "Scheduling that works around trading and occupancy",
         "Documented visits for internal reporting",
         "Defined exclusion zones agreed in advance",
-        "A natural-oriented approach",
+        "A garlic-based approach to outdoor pest control",
         "Seasonal review rather than a fixed annual template",
       ],
       alternatives: [
@@ -121,7 +121,7 @@ export const commercial: ServicePage = {
         },
         {
           label: "A general pest control contract",
-          body: "Most commercial pest contracts are built around interior and structural work, with outdoor pests as an add-on. That is a reasonable fit for some sites. Where outdoor ticks and mosquitoes are the actual problem, a specialist outdoor programme usually maps better to the property.",
+          body: "Most commercial pest contracts are built around interior and structural work, with outdoor pests as an add-on. That is a reasonable fit for some sites. Where outdoor ticks and mosquitoes are the actual problem, a specialist outdoor program usually maps better to the property.",
         },
       ],
     },
@@ -131,15 +131,15 @@ export const commercial: ServicePage = {
       faqs: [
         {
           q: "How do you schedule around our operating hours?",
-          a: "Scheduling is agreed during programme design. Most commercial sites are treated outside trading, occupancy or event windows, with timing confirmed to your team in advance of each visit.",
+          a: "Scheduling is agreed during program design. Most commercial sites are treated outside trading, occupancy or event windows, with timing confirmed to your team in advance of each visit.",
         },
         {
           q: "Do you provide documentation of each visit?",
-          a: "Yes. Visit records are part of the programme, which matters for property managers and operators who need to report internally or to clients.",
+          a: "Yes. Visit records are part of the program, which matters for property managers and operators who need to report internally or to clients.",
         },
         {
           q: "Can you exclude specific areas of the property?",
-          a: "Yes. Exclusion zones are agreed at assessment and recorded as part of the programme, whether that is a pollinator planting, a water feature, a food service area or a boundary with a neighbouring property.",
+          a: "Yes. Exclusion zones are agreed at assessment and recorded as part of the program, whether that is a pollinator planting, a water feature, a food service area or a boundary with a neighbouring property.",
         },
         {
           q: "Do you work with multi-site property portfolios?",
@@ -151,7 +151,7 @@ export const commercial: ServicePage = {
         },
         {
           q: "How far in advance should we book for the season?",
-          a: "Spring and early summer are the busiest stretch, so earlier booking gives you more choice of dates. Call 1-888-912-5152 and we will tell you what is realistic.",
+          a: "Spring and early summer are our busiest periods. Booking early gives you more choice of dates. Call 1-888-912-5152 to check availability.",
         },
       ],
     },

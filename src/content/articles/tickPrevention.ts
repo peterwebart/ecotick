@@ -14,7 +14,7 @@ export const tickPrevention: Article = {
   author: "The Eco-Tick team",
   takeaways: [
     "Ticks need humidity and shade. Sunlit, mown lawn is hostile to them.",
-    "The treeline transition is where most yard tick pressure lives.",
+    "The tree line transition is where most yard tick pressure lives.",
     "Woodpiles and bird feeders attract the rodents that carry ticks.",
     "Habitat management and treatment work together; neither replaces the other.",
   ],
@@ -48,7 +48,7 @@ export const tickPrevention: Article = {
       type: "checklist",
       heading: "Landscaping changes that reduce habitat",
       intro:
-        "Roughly in order of value for effort. None of these eliminates ticks, but together they make a property meaningfully less hospitable.",
+        "These steps are listed roughly by benefit relative to effort. They will not eliminate every tick, but together they can make your property less suitable for ticks.",
       items: [
         "Mow regularly and keep grass short, particularly along edges and fence lines",
         "Clear leaf litter, especially the accumulation left over winter",
@@ -79,7 +79,7 @@ export const tickPrevention: Article = {
         "Shower reasonably soon after coming in from long grass or wooded areas",
         "Tumble dry outdoor clothing on high heat, which kills ticks on dry fabric",
         "Wear light-coloured clothing so ticks are easier to spot",
-        "Tuck trousers into socks when working along edges or in tall grass",
+        "Tuck your pants into your socks when working along edges or in tall grass",
         "Use an appropriate insect repellent according to its label",
         "Talk to your veterinarian about tick preventatives for dogs",
         "Keep to the middle of mown paths rather than brushing vegetation",

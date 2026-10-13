@@ -10,7 +10,7 @@ export function FinalCta() {
     <section aria-labelledby="cta-heading" className="bg-forest-900 py-20 text-center">
       <Container>
         <h2 id="cta-heading" className="text-h1 font-display text-white">
-          Ready to take back your outdoors?
+          Ready to take back the outdoors?
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-lead text-bone-100/85">
           Professional tick and mosquito protection for residential, commercial

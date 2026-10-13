@@ -13,7 +13,7 @@ export const mosquitoControl: ServicePage = {
   ctaBody: "Tell us about the property and we will send a free, no-obligation quote by email.",
   ctaLabel: "Get your free quote",
   related: [
-    { label: "Tick & mosquito programmes", href: "/tick-mosquito-control" },
+    { label: "Tick & mosquito programs", href: "/tick-mosquito-control" },
     { label: "Residential tick control", href: "/residential-tick-control" },
     { label: "Commercial tick control", href: "/commercial-tick-control" },
     { label: "Our natural garlic-based solution", href: "/natural-garlic-spray" },
@@ -24,7 +24,7 @@ export const mosquitoControl: ServicePage = {
       heading: "Where mosquitoes actually come from",
       body: [
         "Most mosquitoes on a property did not travel far to get there. Many common species breed within a short distance of where they emerge, which means the water producing your mosquito problem is frequently on your own land or immediately next to it.",
-        "The amount of water required is smaller than people expect. A saucer under a plant pot, a clogged eavestrough, a tarp with a fold in it, a wheelbarrow left out after rain, a tyre swing, a bird bath that has not been emptied in a fortnight. Each of these is capable of producing mosquitoes.",
+        "The amount of water required is smaller than people expect. A saucer under a plant pot, a clogged eavestrough, a tarp with a fold in it, a wheelbarrow left out after rain, a tire swing, a bird bath that has not been emptied in two weeks. Each of these is capable of producing mosquitoes.",
         "Adults then spend the heat of the day resting somewhere shaded and humid: under decks, in dense shrubs, in tall grass, beneath overhanging vegetation. That resting habitat is what treatment targets, because that is where the adults are when they are not biting you.",
       ],
     },
@@ -39,7 +39,7 @@ export const mosquitoControl: ServicePage = {
         "Turn over or store wheelbarrows, buckets, bins and toys",
         "Drain saucers under plant pots after rain",
         "Check tarps, covers and boat covers for folds holding water",
-        "Remove or drill drainage holes in old tyres",
+        "Remove or drill drainage holes in old tires",
         "Fix low spots in the lawn that hold water for more than a few days",
         "Keep pool covers taut and drained, and pools circulating",
         "Check tree hollows and blocked drains",
@@ -79,7 +79,7 @@ export const mosquitoControl: ServicePage = {
         "Treatment focused on adult resting habitat, not open air",
         "Applications scheduled across the season",
         "Buffers around water agreed in advance",
-        "A natural-oriented approach",
+        "A garlic-based approach to outdoor pest control",
       ],
       alternatives: [
         {
@@ -102,7 +102,7 @@ export const mosquitoControl: ServicePage = {
       faqs: [
         {
           q: "How long does mosquito treatment last?",
-          a: "Weeks per application. Programmes run on a four-to-six week cycle across the active season.",
+          a: "Each application provides coverage for several weeks. Programs run on a four-to-six-week cycle throughout the active season.",
         },
         {
           q: "Can you treat near a lake or river?",
@@ -110,11 +110,11 @@ export const mosquitoControl: ServicePage = {
         },
         {
           q: "Will this get rid of every mosquito?",
-          a: "No. Mosquitoes fly in from surrounding land, so a property is continually resupplied. The goal is reducing pressure in the areas you use during the hours you use them.",
+          a: "No. Mosquitoes can fly in from surrounding areas. Our goal is to reduce mosquito activity where you spend time outdoors.",
         },
         {
           q: "Do you treat for mosquitoes and ticks at the same time?",
-          a: "Yes. Most properties with both problems are better served by a combined seasonal programme than by two separate schedules.",
+          a: "Yes. Most properties with both problems are better served by a combined seasonal program than by two separate schedules.",
         },
       ],
     },
@@ -126,11 +126,11 @@ export const tickMosquito: ServicePage = {
   audience: "general",
   h1: "Professional Tick & Mosquito Control Services",
   answer:
-    "A combined tick and mosquito programme treats both pests on one seasonal schedule. Because the two occupy overlapping habitat, shaded margins, tall grass and dense vegetation, most properties with one problem have the other, and a single programme covers both more efficiently than two.",
-  metaTitle: "Tick & Mosquito Control Programmes",
+    "A combined tick and mosquito program treats both pests on one seasonal schedule. Ticks and mosquitoes often use overlapping habitats, including shaded edges, tall grass and dense vegetation. A combined program can address both on one seasonal schedule.",
+  metaTitle: "Tick & Mosquito Control Programs",
   metaDescription:
     "Combined seasonal tick and mosquito control for Ontario homes, cottages, businesses and large properties. One assessment, one schedule, both pests.",
-  ctaHeading: "One programme, both pests.",
+  ctaHeading: "One program, both pests.",
   ctaBody: "Tell us about the property and we will scope a combined seasonal plan.",
   ctaLabel: "Get your free quote",
   related: [
@@ -145,34 +145,34 @@ export const tickMosquito: ServicePage = {
       heading: "Why they go together",
       body: [
         "Ticks and mosquitoes are different animals with different life cycles, but they want similar things from a property: shade, humidity and vegetation to shelter in. The strip of dense shrub along a fence line is prime tick questing habitat and prime mosquito resting habitat at the same time.",
-        "That overlap is why combined programmes make sense. The assessment covers the same ground either way. The treatment zones largely coincide. Running two separate schedules means paying twice for a site walk that only needed doing once.",
-        "Where they differ is timing. Tick activity peaks in spring and again in fall; mosquito pressure peaks in midsummer. A combined programme is built around both curves rather than averaging them.",
+        "That overlap is why combined programs make sense. The assessment covers the same ground either way. The treatment zones largely coincide. Running two separate schedules means paying twice for a site walk that only needed doing once.",
+        "Where they differ is timing. Tick activity peaks in spring and again in fall; mosquito pressure peaks in midsummer. A combined program is built around both curves rather than averaging them.",
       ],
     },
     {
       type: "table",
-      heading: "Which programme fits your situation",
+      heading: "Which program fits your situation",
       columns: ["If this is your situation", "What generally fits"],
       rows: [
         [
           "Ticks are the concern, wooded or rural property",
-          "Tick-focused programme weighted toward the spring and fall adult peaks",
+          "Tick-focused program weighted toward the spring and fall adult peaks",
         ],
         [
           "Mosquitoes are the concern, waterfront or low-lying land",
-          "Mosquito-focused programme weighted to midsummer, with breeding-site reduction",
+          "Mosquito-focused program weighted to midsummer, with breeding-site reduction",
         ],
         [
           "Both, and the property gets used all season",
-          "Combined seasonal programme covering spring through fall",
+          "Combined seasonal program covering spring through fall",
         ],
         [
           "Commercial site with guests or customers outdoors",
-          "Combined programme scheduled around your operating calendar",
+          "Combined program scheduled around your operating calendar",
         ],
         [
           "Acreage where usage is concentrated in a few areas",
-          "Zoned combined programme, treatment frequency varied by zone",
+          "Zoned combined program, treatment frequency varied by zone",
         ],
         [
           "Not sure yet",
@@ -208,15 +208,15 @@ export const tickMosquito: ServicePage = {
     },
     {
       type: "faq",
-      heading: "Combined programme FAQs",
+      heading: "Combined program FAQs",
       faqs: [
         {
-          q: "Is a combined programme cheaper than two separate ones?",
-          a: "A combined programme is one assessment and one schedule rather than two, so it works out better than buying the services separately. Ask for a quote on the property and we will price both ways.",
+          q: "Is a combined program cheaper than two separate ones?",
+          a: "A combined program is one assessment and one schedule rather than two, so it works out better than buying the services separately. Ask for a quote on the property and we will price both ways.",
         },
         {
           q: "Can I start with one and add the other later?",
-          a: "Yes. Plenty of customers start with ticks and add mosquito coverage once they see how much outdoor time they are getting back.",
+          a: "Yes. You can begin with tick control and add mosquito treatment later as your needs change.",
         },
         {
           q: "Are the treatment areas the same for both?",
@@ -224,7 +224,7 @@ export const tickMosquito: ServicePage = {
         },
         {
           q: "How many visits does a season involve?",
-          a: "A full season on a four-to-six week cycle generally works out to four or five visits from spring through fall, depending on when you start and how the season runs.",
+          a: "The number of visits depends on your start date, treatment interval and season length. Your quote will specify the schedule for your property.",
         },
       ],
     },

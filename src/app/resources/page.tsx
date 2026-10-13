@@ -34,9 +34,7 @@ export default function ResourcesPage() {
           Tick &amp; Mosquito Knowledge Centre
         </h1>
         <p className="mt-6 max-w-2xl border-l-2 border-moss-600 pl-5 text-lead text-ink-700">
-          Practical, Ontario-specific writing on ticks and mosquitoes: when they
-          are active, where they live on a property, and what actually reduces
-          pressure.
+          Practical guides for Ontario property owners on tick and mosquito activity, habitat and ways to reduce their presence.
         </p>
       </Container>
 

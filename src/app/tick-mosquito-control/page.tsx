@@ -21,7 +21,7 @@ export default function Page() {
       ]}
       aside={
         <QuoteAside
-          heading="One combined programme"
+          heading="One combined program"
           body="Both pests, one assessment, one seasonal schedule."
           label={page.ctaLabel}
           source={page.slug}

@@ -17,12 +17,16 @@ const propertyTypes = [
   "Other",
 ] as const;
 
+/**
+ * Mutually exclusive. The previous labels ("1/4 to 1 acre", "1 to 5 acres", …)
+ * overlapped at 1, 5 and 25 acres, so a 5-acre property fit two options.
+ */
 const sizes = [
   "Under 1/4 acre",
-  "1/4 to 1 acre",
-  "1 to 5 acres",
-  "5 to 25 acres",
-  "25+ acres",
+  "1/4 to under 1 acre",
+  "1 to under 5 acres",
+  "5 to under 25 acres",
+  "25 acres or more",
 ] as const;
 
 const timings = [
@@ -278,7 +282,7 @@ export function QuoteWizard({
                   optional
                 />
                 <Text
-                  label="Typical people on site"
+                  label="Typical number of people on site"
                   value={form.visitors}
                   onChange={(v) => set("visitors", v)}
                   optional
@@ -301,7 +305,7 @@ export function QuoteWizard({
                   return { ...f, address: v, addressPlaceId: placeId };
                 })
               }
-              hint="Start typing and pick your address from the list, or type it in full."
+              hint="Start typing and select your address from the suggestions, or enter the full address manually."
             />
             <Choice
               legend="When would you like service to start?"
@@ -344,7 +348,7 @@ export function QuoteWizard({
               autoComplete="tel"
             />
             <Choice
-              legend="How would you prefer we get in touch?"
+              legend="How would you prefer us to contact you?"
               name={`${formId}-contact`}
               options={contactMethods}
               value={form.preferredContact}
@@ -384,7 +388,7 @@ export function QuoteWizard({
                 <span className="mt-1.5 block text-xs leading-relaxed text-ink-700">
                   I agree to receive service updates, appointment reminders and
                   exclusive offers from Eco-Tick Solutions via call, text or
-                  email. Msg &amp; data rates may apply. Msg frequency varies.
+                  email. Message and data rates may apply. Message frequency varies.
                   Reply STOP to cancel or HELP for help. Questions? Email{" "}
                   <a
                     href="mailto:info@eco-ticksolutions.ca"

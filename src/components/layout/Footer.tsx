@@ -56,11 +56,17 @@ export function Footer() {
             <a href={`mailto:${site.email}`} className="block hover:underline">
               {site.email}
             </a>
-            <address className="pt-2 leading-relaxed text-sage-300 not-italic">
-              {site.address.street}
-              <br />
-              {site.address.city}, {site.address.regionName} {site.address.postalCode}
-            </address>
+            <div className="pt-3">
+              <p className="text-xs font-semibold tracking-[0.12em] text-sage-300 uppercase">
+                Our head office
+              </p>
+              <address className="mt-1 leading-relaxed text-sage-300 not-italic">
+                {site.address.street}
+                <br />
+                {site.address.city}, {site.address.regionName} {site.address.postalCode}
+              </address>
+              <p className="mt-1 text-sage-300">Serving properties across Ontario.</p>
+            </div>
           </div>
         </div>
 
@@ -89,7 +95,7 @@ export function Footer() {
         <Container className="flex flex-col gap-3 py-6 text-xs text-sage-300 sm:flex-row sm:items-center sm:justify-between">
           {/* Dynamic year - the mockup was hardcoded to 2024. */}
           <p>
-            &copy; {new Date().getFullYear()} {site.legalName}. All rights
+            &copy; {new Date().getFullYear()} {site.legalName.replace(/\.$/, "")}. All rights
             reserved.
           </p>
           <ul className="flex gap-6">

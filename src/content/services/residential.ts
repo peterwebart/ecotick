@@ -8,7 +8,7 @@ export const residential: ServicePage = {
     "Residential tick control is a targeted outdoor treatment of the parts of a property where ticks actually live: shaded borders, leaf litter, tall grass and the edge where a lawn meets woods. Eco-Tick assesses the property, treats those zones with a garlic-based solution, and returns across the season as tick activity changes.",
   metaTitle: "Residential Tick Control & Yard Spray",
   metaDescription:
-    "Professional residential tick control for Ontario yards, cottages and rural properties. Property assessment, targeted garlic-based treatment and seasonal programmes.",
+    "Professional residential tick control for Ontario yards, cottages and rural properties. Property assessment, targeted garlic-based treatment and seasonal programs.",
   ctaHeading: "Get your yard assessed.",
   ctaBody:
     "Tell us about your property and we will put together a seasonal plan that fits it.",
@@ -27,8 +27,8 @@ export const residential: ServicePage = {
       heading: "Why ticks end up in residential yards",
       body: [
         "Ticks do not travel far on their own. They arrive on the animals that move through a property: deer, raccoons, rodents, birds and household pets. Once they drop off, whether they survive depends entirely on whether the yard gives them somewhere humid and shaded to wait.",
-        "That is why tick pressure is rarely spread evenly across a property. A mowed, sunlit lawn is hostile to ticks, which dry out quickly in open sun. The margins are a different story: the leaf litter under a hedge, the strip of long grass behind a shed, the first few metres of woods past the property line. Most of the tick activity on a typical yard is concentrated in a small fraction of its area.",
-        "Ticks also do not jump, fly, or drop out of trees. They climb vegetation and wait with their front legs extended, a behaviour called questing, until something brushes past. This matters practically: it means the height and density of vegetation along the paths you walk is one of the things most directly under your control.",
+        "That is why tick pressure is rarely spread evenly across a property. A mowed, sunlit lawn is hostile to ticks, which dry out quickly in open sun. The margins are a different story: the leaf litter under a hedge, the strip of long grass behind a shed, the first few metres of woods past the property line. Most tick activity in a typical yard is concentrated in a small part of the property.",
+        "Ticks also do not jump, fly, or drop out of trees. They climb vegetation and wait with their front legs extended, a behaviour called questing, until something brushes past. This has a practical benefit: you can control the height and density of vegetation along the paths you use.",
       ],
     },
     {
@@ -37,7 +37,7 @@ export const residential: ServicePage = {
       intro:
         "These are the zones we look at first during an assessment. They are also the zones worth checking yourself before the season starts.",
       items: [
-        "The treeline where lawn meets woods, especially the first few metres in",
+        "The tree line where lawn meets woods, especially the first few metres in",
         "Leaf litter, particularly where it has been left to accumulate over winter",
         "Tall or unmown grass along fences, sheds and property boundaries",
         "Shaded ornamental beds and dense ground cover such as pachysandra or ivy",
@@ -51,7 +51,7 @@ export const residential: ServicePage = {
       type: "steps",
       heading: "How the service works",
       intro:
-        "Every property is different, so the programme starts with looking at yours rather than applying a standard package.",
+        "Every property is different, so we begin with an assessment and tailor the treatment plan to your needs.",
       steps: [
         {
           n: "01",
@@ -61,7 +61,7 @@ export const residential: ServicePage = {
         {
           n: "02",
           title: "Targeted treatment",
-          body: "We apply our garlic-based solution to the zones identified in the assessment using truck-mounted spray equipment. The reach matters: a backpack unit stops where the operator stops, while a truck-mounted rig pushes into treelines and woodland edges where the ticks actually are. Targeted application to habitat, not a blanket spray.",
+          body: "We apply our garlic-based solution to the zones identified in the assessment using truck-mounted spray equipment. The reach matters: a backpack unit stops where the operator stops, while a truck-mounted rig pushes into tree lines and woodland edges where the ticks actually are. Targeted application to habitat, not a blanket spray.",
         },
         {
           n: "03",
@@ -76,7 +76,7 @@ export const residential: ServicePage = {
       columns: 2,
       items: [
         "Lawn edges and transition zones",
-        "Treelines and wooded borders",
+        "Tree lines and wooded borders",
         "Shrub beds and ornamental plantings",
         "Fence lines and property boundaries",
         "Around sheds, decks and outbuildings",
@@ -90,8 +90,8 @@ export const residential: ServicePage = {
       heading: "Cottages and rural properties",
       body: [
         "A cottage property changes the problem in three ways. It usually has far more woodland edge relative to its open space, it often sits near water where mosquito pressure is higher, and it tends to be used in concentrated bursts rather than continuously.",
-        "That last point matters more than people expect. If you are at the property four weekends a summer, a treatment schedule built around a suburban lawn does not serve you well. Programmes for seasonal properties are worth scheduling around when the property is actually occupied.",
-        "Rural and acreage properties raise a different question, which is how much of the land to treat at all. Treating a hundred metres of woodland that nobody walks through is not a good use of anyone's money. The assessment focuses on the used envelope: the yard, the paths, the dock run, the areas around the buildings.",
+        "That last point matters more than people expect. If you are at the property four weekends a summer, a treatment schedule built around a suburban lawn does not serve you well. Programs for seasonal properties are worth scheduling around when the property is actually occupied.",
+        "Rural and acreage properties raise a different question, which is how much of the land to treat at all. Treating a hundred metres of woodland that nobody walks through is not a good use of anyone's money. The assessment focuses on the areas you use: the yard, paths, access to the dock and spaces around buildings.",
       ],
     },
     {
@@ -99,14 +99,14 @@ export const residential: ServicePage = {
       heading: "Families, pets and treated areas",
       body: [
         "Re-entry timing and any handling precautions are governed by the product label, and your technician will tell you what applies for your specific treatment before they leave. If you have questions about the product itself, our safety and environment page is the place to start.",
-        "Pets deserve particular attention here, but for a reason unrelated to the treatment: dogs are one of the most common ways ticks get from a yard into a house. A dog that runs the treeline is sampling exactly the habitat ticks prefer. Speak to your veterinarian about tick preventatives, and check your dog when it comes in, paying attention to ears, neck, armpits and between the toes.",
+        "Pets deserve particular attention here, but for a reason unrelated to the treatment: dogs are one of the most common ways ticks get from a yard into a house. A dog that runs the tree line is sampling exactly the habitat ticks prefer. Speak to your veterinarian about tick preventatives, and check your dog when it comes in, paying attention to ears, neck, armpits and between the toes.",
       ],
     },
     {
       type: "checklist",
       heading: "Before your visit",
       intro:
-        "None of this is mandatory, but it makes the treatment more effective and the visit faster.",
+        "Please prepare your property before our visit. Your technician will confirm any required precautions and access arrangements.",
       items: [
         "Mow the lawn a day or two beforehand, if you can",
         "Clear leaf litter from beds and along fence lines",
@@ -126,8 +126,8 @@ export const residential: ServicePage = {
         "Treatment matched to your property rather than a standard package",
         "Focus on the areas your household actually uses",
         "Scheduling that follows the season",
-        "A natural-oriented approach",
-        "Applied by trained technicians rather than by guesswork",
+        "A garlic-based approach to outdoor pest control",
+        "Applied by trained technicians using a property-specific treatment plan",
       ],
       alternatives: [
         {
@@ -150,7 +150,7 @@ export const residential: ServicePage = {
       faqs: [
         {
           q: "How often should tick treatments be applied?",
-          a: "Our programmes run on a four-to-six-week cycle through the active season. If pressure comes back sooner than that, call us and we will come back between scheduled visits.",
+          a: "Our programs run on a four-to-six-week cycle through the active season. If pressure comes back sooner than that, call us and we will come back between scheduled visits.",
         },
         {
           q: "When should I start tick treatment?",
@@ -170,11 +170,11 @@ export const residential: ServicePage = {
         },
         {
           q: "Do you treat cottages and rural properties?",
-          a: "Yes. Cottage and rural properties are a significant part of our residential work, and programmes for seasonally occupied properties are usually scheduled differently from year-round homes.",
+          a: "Yes. Cottage and rural properties are a significant part of our residential work, and programs for seasonally occupied properties are usually scheduled differently from year-round homes.",
         },
         {
           q: "Will this get rid of every tick on my property?",
-          a: "No. No outdoor treatment eliminates a tick population permanently, and anyone promising that is overselling. The goal is reducing pressure in the areas you use, alongside habitat management and personal checks.",
+          a: "No. Outdoor treatment cannot permanently eliminate every tick. Our goal is to reduce tick activity in the areas you use, alongside habitat management and regular tick checks.",
         },
       ],
     },

@@ -15,6 +15,7 @@ const core = [
   { path: "/blog", priority: 0.6 },
   { path: "/faq", priority: 0.6 },
   { path: "/testimonials", priority: 0.7 },
+  { path: "/service-areas", priority: 0.8 },
   { path: "/privacy", priority: 0.2 },
   { path: "/terms", priority: 0.2 },
 ] as const;

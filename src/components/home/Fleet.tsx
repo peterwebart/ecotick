@@ -20,10 +20,7 @@ export function Fleet() {
             Truck-mounted, not backpack.
           </h2>
           <p className="mt-4 text-bone-100/85">
-            A backpack sprayer stops where the operator stops — the lawn, maybe
-            the first metre of hedge. That is not where ticks are. Our rig runs a
-            tank, pump and hose reel off the truck, so treatment reaches into
-            treelines and woodland and covers acreage in one visit.
+            Our truck-mounted system combines a tank, pump and hose reel to treat targeted areas efficiently, including tree lines, woodland edges and large properties.
           </p>
         </div>
 

@@ -2,7 +2,7 @@ import type { ServicePage } from "@/content/types";
 
 /**
  * Both pages are now published. Business facts below — Health Canada
- * registration, applicator licensing, insurance, the four-to-six week service
+ * registration, applicator licensing, insurance, the four-to-six-week service
  * cycle — are stated on Eco-Tick's own authority as the operator.
  *
  * Two wordings from the supplied reference material are deliberately not used:
@@ -15,7 +15,7 @@ export const garlicSolution: ServicePage = {
   audience: "general",
   h1: "Our Natural Garlic-Based Tick & Mosquito Solution",
   answer:
-    "Eco-Tick treats properties with a concentrated garlic-based solution applied through truck-mounted spray equipment. Garlic's natural sulfur compounds repel ticks and mosquitoes, the treated area stays protected for weeks, and programmes run on a four-to-six week cycle through the season.",
+    "Eco-Tick treats properties with a concentrated garlic-based solution applied through truck-mounted spray equipment. Garlic's natural sulfur compounds repel ticks and mosquitoes. Each application provides coverage for several weeks, with programs scheduled on a four-to-six-week cycle throughout the season.",
   metaTitle: "Natural Garlic-Based Treatment",
   metaDescription:
     "How Eco-Tick's garlic-based treatment works: the super-garlic formulation, why sulfur repels ticks and mosquitoes, and how long each application lasts.",
@@ -40,9 +40,9 @@ export const garlicSolution: ServicePage = {
     },
     {
       type: "prose",
-      heading: "Super garlic, not grocery garlic",
+      heading: "A concentrated formulation",
       body: [
-        "The strain in our formulation is far more potent than anything on a supermarket shelf — the lab people call it super garlic, and the difference is not marginal. A domestic kitchen bulb applied to a lawn would do very little.",
+        "Our treatment uses a concentrated garlic-based formulation designed for outdoor pest control.",
         "To people, the smell is noticeable on application and then gone. It lifts within roughly thirty to forty-five minutes. To insects, the treated vegetation stays unwelcoming for weeks.",
       ],
     },
@@ -54,7 +54,7 @@ export const garlicSolution: ServicePage = {
       columns: 2,
       items: [
         "Residential yards and lawn margins",
-        "Treelines, hedges and shaded borders",
+        "Tree lines, hedges and shaded borders",
         "Cottage grounds and waterfront properties",
         "Parks, trails and green space",
         "Athletic fields and recreational grounds",
@@ -68,7 +68,7 @@ export const garlicSolution: ServicePage = {
       heading: "The equipment is half the answer",
       body: [
         "Most companies doing this work carry a backpack sprayer. A backpack stops where the operator stops, which in practice means the lawn and maybe the first metre of hedge — and the first metre of hedge is not where the ticks are.",
-        "Eco-Tick runs truck-mounted spray equipment: a tank, pump and hose reel built into the bed of the truck. It pushes treatment deep into treelines and woodland where the questing actually happens, and it covers acreage in a single visit rather than a dozen tank refills.",
+        "Eco-Tick runs truck-mounted spray equipment: a tank, pump and hose reel built into the bed of the truck. It pushes treatment deep into tree lines and woodland where the questing actually happens, and it covers acreage in a single visit rather than a dozen tank refills.",
         "The operator of the KOA campground at Ivy Lea put it more plainly than we would: it reaches deep into the forest where people can't easily go, so results show up even at cabins and tent sites well back in the trees.",
       ],
     },
@@ -98,14 +98,14 @@ export const garlicSolution: ServicePage = {
       heading: "What to expect",
       columns: ["Question", "Answer"],
       rows: [
-        ["What is the active ingredient", "Concentrated garlic — natural sulfur compounds"],
-        ["How long does it last", "Weeks per application, on a four-to-six week service cycle"],
-        ["How is it applied", "Truck-mounted spray equipment, targeted to vegetation"],
-        ["How long does the smell last", "Roughly 30 to 45 minutes in the air"],
-        ["What does it target", "Ticks and mosquitoes"],
-        ["Is it registered", "Yes — registered with Health Canada"],
-        ["Who applies it", "Licensed technicians"],
-        ["Does rain matter", "Heavy rain soon after application can reduce coverage; tell us and we will assess"],
+        ["What is the active ingredient?", "Concentrated garlic — natural sulfur compounds"],
+        ["How long does it last?", "Weeks per application, on a four-to-six-week service cycle"],
+        ["How is it applied?", "Truck-mounted spray equipment, targeted to vegetation"],
+        ["How long does the smell last?", "Roughly 30 to 45 minutes in the air"],
+        ["What does it target?", "Ticks and mosquitoes"],
+        ["Is it registered?", "Yes — registered with Health Canada"],
+        ["Who applies it?", "Licensed technicians"],
+        ["Does rain matter?", "Heavy rain soon after application can reduce coverage; tell us and we will assess"],
       ],
     },
     {
@@ -130,7 +130,7 @@ export const garlicSolution: ServicePage = {
         },
         {
           q: "Can you reach the wooded parts of my property?",
-          a: "Yes, and that is the point of the truck-mounted equipment. Reach into treelines and woodland is where a backpack sprayer runs out and where most tick pressure actually lives.",
+          a: "Yes. Our truck-mounted equipment is designed to reach targeted tree lines and woodland edges where ticks may be active.",
         },
       ],
     },
@@ -160,7 +160,7 @@ export const safetyEnvironment: ServicePage = {
       type: "prose",
       heading: "Why people ask about this first",
       body: [
-        "Almost every enquiry we get includes some version of the same question: what exactly are you putting on my lawn, and do I need to worry about the kids and the dog.",
+        "One of the most common questions we hear is: “What are you applying to my property, and what precautions should I take for my children and pets?”",
         "It is the right question, and it is the reason this business exists at all. Edward started down this road in 2010 because the options available to him were products he did not want near his own family.",
       ],
     },
@@ -183,7 +183,7 @@ export const safetyEnvironment: ServicePage = {
       heading: "Children and pets",
       body: [
         "The treatment is applied to vegetation, borders and margins rather than to the middle of a lawn where children play. Your technician will tell you when the treated areas are ready to use again before leaving the property.",
-        "Worth saying plainly, because it matters more than anything on this page: dogs are the most common way ticks get from a yard into a house. A dog that patrols the treeline is sampling exactly the habitat ticks prefer. Treatment reduces what is out there; checking your dog when it comes in handles what gets through. Talk to your vet about preventatives too.",
+        "Worth saying plainly, because it matters more than anything on this page: dogs are the most common way ticks get from a yard into a house. A dog that patrols the tree line is sampling exactly the habitat ticks prefer. Treatment reduces what is out there; checking your dog when it comes in handles what gets through. Talk to your vet about preventatives too.",
       ],
     },
     {
@@ -191,7 +191,7 @@ export const safetyEnvironment: ServicePage = {
       heading: "Pollinators and waterways",
       body: [
         "Bees and other pollinators are working the flowers, not the shaded leaf litter and grassy margins where ticks quest, so the areas we target and the areas pollinators use largely do not overlap. If you keep hives, tell us at the assessment and we will map them as exclusion zones.",
-        "The same applies to ponds, wells, drainage features and shoreline. Buffers get agreed and recorded before the first application rather than judged on the day.",
+        "The same applies to ponds, wells, drainage features and shorelines. Buffers get agreed and recorded before the first application rather than judged on the day.",
       ],
     },
     {
@@ -205,7 +205,7 @@ export const safetyEnvironment: ServicePage = {
       faqs: [
         {
           q: "Is it safe for my dog?",
-          a: "The treatment is designed for use around pets when applied as directed. Your technician will confirm when treated areas are ready to use again. For tick protection on the animal itself, speak to your veterinarian about preventatives — that is a different and complementary thing.",
+          a: "The treatment is designed for use around pets when applied as directed. Your technician will confirm when treated areas are ready to use again. For protection on your pet, ask your veterinarian about tick preventatives that complement property treatment.",
         },
         {
           q: "Can my children play on the lawn afterwards?",
@@ -213,7 +213,7 @@ export const safetyEnvironment: ServicePage = {
         },
         {
           q: "What about my vegetable garden?",
-          a: "Tell us at the assessment and we will mark it as an exclusion zone. Same for hives, ponds and anything else you would rather we kept away from.",
+          a: "Let us know during the assessment, and we will mark your vegetable garden as an exclusion zone. We can also identify beehives, ponds and other areas to avoid.",
         },
         {
           q: "Are you licensed and insured?",

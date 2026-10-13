@@ -14,7 +14,7 @@ export const professionalSpraying: Article = {
   author: "The Eco-Tick team",
   takeaways: [
     "Treatment is applied to habitat zones, not sprayed uniformly across a property.",
-    "The assessment is the part that determines whether the treatment does anything.",
+    "The assessment helps identify where treatment will be most useful.",
     "Timing across the season matters as much as the application itself.",
     "No outdoor treatment eliminates a tick population permanently.",
   ],
@@ -29,9 +29,9 @@ export const professionalSpraying: Article = {
       type: "prose",
       heading: "The assessment does most of the work",
       body: [
-        "The most common misconception about professional tick treatment is that the value sits in the product. It mostly does not. It sits in knowing where to put it.",
+        "Professional treatment depends on both the product and how it is applied. A property assessment helps identify the most suitable treatment areas.",
         "Ticks occupy a small and predictable fraction of a typical property: shaded borders, leaf litter, tall grass along fences, the transition where lawn meets woods. A treatment applied evenly across an entire property spends most of its effort on open lawn, where ticks were unlikely to survive anyway, while potentially under-treating the metre of hedge line that carries most of the pressure.",
-        "So a visit starts with a walk. A technician is looking at vegetation type, shade, moisture, wildlife signs, and, critically, which parts of the property the household actually uses. A treeline nobody goes near is a different priority from a treeline the dog patrols twice a day.",
+        "So a visit starts with a walk. A technician is looking at vegetation type, shade, moisture, wildlife signs, and, critically, which parts of the property the household actually uses. A tree line nobody goes near is a different priority from a tree line the dog patrols twice a day.",
       ],
     },
     {
@@ -103,7 +103,7 @@ export const professionalSpraying: Article = {
       type: "prose",
       heading: "What treatment does not do",
       body: [
-        "It does not eliminate a tick population permanently. Ticks arrive on hosts that cross property lines, so any property adjacent to woodland, field or a neighbour's untreated yard is being continually resupplied. Anyone promising a tick-free property is overselling.",
+        "It does not eliminate a tick population permanently. Ticks arrive on hosts that cross property lines, so any property adjacent to woodland, field or a neighbour's untreated yard will always see some new activity. No outdoor treatment can guarantee a tick-free property.",
         "It also does not replace personal precautions. Tick checks after time outdoors remain the single most reliable protection available to a household, and they cost nothing. Treatment reduces the pressure in the areas you use. Checks handle what gets through.",
         "Finally, it is not a substitute for habitat management. A property where leaf litter is never cleared and the woodpile sits against the deck is asking treatment to work against conditions that could be changed for free.",
       ],

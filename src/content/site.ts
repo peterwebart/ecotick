@@ -2,7 +2,9 @@
  * Business identity. All values below are supplied by Eco-Tick and are real.
  *
  * Contact details confirmed by Eco-Tick. The published line is the toll-free
- * 1-888 number. Operating base is Kingston; service area is across Ontario.
+ * 1-888 number. Service area is across Ontario. The postal address below is
+ * the only place the head office city appears, and must match the Google
+ * Business Profile exactly for local search.
  */
 export const site = {
   name: "Eco-Tick Solutions",
@@ -32,9 +34,9 @@ export const site = {
     { days: ["Sunday"], opens: "08:00", closes: "13:00" },
   ],
   hoursDisplay: [
-    { label: "Monday to Friday", value: "7:00am – 6:00pm" },
-    { label: "Saturday", value: "8:00am – 6:00pm" },
-    { label: "Sunday", value: "8:00am – 1:00pm" },
+    { label: "Monday to Friday", value: "7:00 a.m. – 6:00 p.m." },
+    { label: "Saturday", value: "8:00 a.m. – 6:00 p.m." },
+    { label: "Sunday", value: "8:00 a.m. – 1:00 p.m." },
   ],
 
   serviceArea: "Ontario",

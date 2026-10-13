@@ -36,8 +36,7 @@ export default function ContactPage() {
           <h1 className="text-h1 font-display">Contact us</h1>
           <p className="mt-6 max-w-md text-lead text-ink-700">
             We offer free, no-obligation quotes for tick and mosquito control.
-            Call, email, or send the property details through the quote form and
-            we will come back to you.
+            Call us, email us or submit your property details through our quote form, and we will get back to you.
           </p>
 
           <dl className="mt-10 space-y-7">

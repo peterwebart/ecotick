@@ -15,7 +15,7 @@ import { commercialTestimonials, resultsDisclaimer } from "@/content/testimonial
 export const metadata = buildMetadata({
   title: "Tick & Mosquito Control Services",
   description:
-    "Residential, commercial and large-property tick and mosquito control across Ontario. Seasonal programmes built around a natural garlic-based approach.",
+    "Residential, commercial and large-property tick and mosquito control across Ontario. Seasonal programs built around a natural garlic-based approach.",
   path: "/services",
 });
 
@@ -42,9 +42,7 @@ export default function ServicesPage() {
         <p className="mt-6 max-w-2xl border-l-2 border-moss-600 pl-5 text-lead text-ink-700">
           Eco-Tick provides seasonal outdoor tick and mosquito control for three
           kinds of property: homes and cottages, commercial sites, and large
-          properties measured in acres. Every programme runs off truck-mounted
-          spray equipment, which is what lets treatment reach treelines and
-          woodland instead of stopping at the lawn edge.
+          properties measured in acres. We use truck-mounted spray equipment to reach targeted areas such as tree lines and woodland edges.
         </p>
         <Photo
           image={images.sprayingWaterfront}
@@ -89,7 +87,7 @@ export default function ServicesPage() {
               { label: "Our natural garlic-based solution", href: "/natural-garlic-spray" },
               { label: "Safety & environment", href: "/safety-environment" },
               { label: "Mosquito control", href: "/mosquito-control" },
-              { label: "Tick & mosquito programmes", href: "/tick-mosquito-control" },
+              { label: "Tick & mosquito programs", href: "/tick-mosquito-control" },
               { label: "How it works", href: "/how-it-works" },
               { label: "The Ontario tick control guide", href: "/tick-control-guide" },
             ].map((l) => (
@@ -106,7 +104,7 @@ export default function ServicesPage() {
         </div>
       </Container>
 
-      <BadgeRow heading="What every programme includes" />
+      <BadgeRow heading="What every program includes" />
 
       {commercialTestimonials.length > 0 && (
         <Container className="py-16">
@@ -130,7 +128,7 @@ export default function ServicesPage() {
 
       <CtaBand
         heading="Not sure which fits?"
-        body="Tell us about the property and we will point you at the right programme."
+        body="Tell us about your property, and we will recommend the right program."
         source="services_hub"
       />
     </>

@@ -40,13 +40,13 @@ const MIN_INPUT = 3;
  *
  * A rectangle rather than a circle: a circle tops out at 50,000m radius (a
  * 60,000m value here once broke every lookup with INVALID_ARGUMENT), which
- * cannot span a province — a 50km circle around Kingston ranked Kingston
- * streets above a real address in Aurora. Google documents no size limit on a
+ * cannot span a province — a 50km circle ranked nearby streets above a real
+ * address 250km away. Google documents no size limit on a
  * rectangle bias. It is a bias, not a restriction, so a valid address just
  * outside the box still appears.
  *
  * Corners are the province's bounding box: south-west near Pelee Island,
- * north-east past the Ottawa River.
+ * north-east at the province's eastern border.
  */
 const ONTARIO_BOUNDS = {
   low: { latitude: 41.68, longitude: -95.16 },

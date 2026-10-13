@@ -5,7 +5,7 @@ export const howItWorks: ServicePage = {
   audience: "general",
   h1: "How Our Tick & Mosquito Treatment Works",
   answer:
-    "Every Eco-Tick programme follows the same three stages: assess the property to find where pest pressure actually sits, treat those zones with a garlic-based solution, and return across the season as activity shifts. The assessment is what makes the treatment worth applying.",
+    "Every Eco-Tick program follows the same three stages: assess the property to find where pest pressure actually sits, treat those zones with a garlic-based solution, and return across the season as activity shifts. The assessment helps us apply treatment where it is needed most.",
   metaTitle: "How It Works",
   metaDescription:
     "What happens on an Eco-Tick visit: property assessment, zone mapping, targeted treatment and seasonal scheduling.",
@@ -36,7 +36,7 @@ export const howItWorks: ServicePage = {
         {
           n: "03",
           title: "Maintain",
-          body: "Return visits are scheduled across the season. Tick activity peaks in spring and fall, mosquito pressure peaks in midsummer, and a programme is built around both curves.",
+          body: "Return visits are scheduled across the season. Tick activity peaks in spring and fall, mosquito pressure peaks in midsummer, and a program is built around both curves.",
         },
       ],
     },
@@ -59,8 +59,8 @@ export const howItWorks: ServicePage = {
       type: "prose",
       heading: "What you should expect from us",
       body: [
-        "You should know which zones are being treated and which are not before anything is applied. If a treatment happens and you cannot describe where it went, that is a failure on our part, not a detail you were not entitled to.",
-        "You should also get straight answers about limits. No outdoor treatment eliminates a tick or mosquito population permanently, because both arrive from surrounding land. What a programme does is reduce pressure in the areas you use, across the months you use them.",
+        "You should know which zones are being treated and which are not before anything is applied. Before treatment begins, we explain the areas to be treated and any exclusions so you know what to expect.",
+        "You should also get straight answers about limits. No outdoor treatment eliminates a tick or mosquito population permanently, because both arrive from surrounding land. What a program does is reduce pressure in the areas you use, across the months you use them.",
       ],
     },
     {
@@ -81,7 +81,7 @@ export const howItWorks: ServicePage = {
         },
         {
           q: "What happens if it rains on the day?",
-          a: "We do not spray in heavy rain or high wind. If weather closes in we reschedule, and if rain arrives shortly after an application we will assess whether it needs repeating.",
+          a: "We do not spray in heavy rain or high wind. If the weather changes, we will reschedule. If rain arrives shortly after treatment, we will assess whether another application is needed.",
         },
       ],
     },
@@ -98,7 +98,7 @@ export const whoWeServe: ServicePage = {
   metaDescription:
     "Homeowners, cottage owners, property managers, campgrounds, resorts, golf courses, sports facilities, farms and large properties across Ontario.",
   ctaHeading: "Not sure where you fit?",
-  ctaBody: "Tell us about the property and we will point you at the right programme.",
+  ctaBody: "Tell us about your property, and we will recommend the right program.",
   ctaLabel: "Get your free quote",
   related: [
     { label: "Residential tick control", href: "/residential-tick-control" },
@@ -110,7 +110,7 @@ export const whoWeServe: ServicePage = {
     {
       type: "list",
       heading: "Residential",
-      intro: "Where the outdoor space is somewhere a household lives rather than a place of business.",
+      intro: "For homeowners and families who want to enjoy their outdoor spaces.",
       columns: 2,
       items: [
         "Homeowners with wooded or bordered lots",
@@ -170,7 +170,7 @@ export const about: ServicePage = {
   audience: "general",
   h1: "About Eco-Tick Solutions",
   answer:
-    "Eco-Tick Solutions is a Kingston-based outdoor pest control company founded by Edward Chodowski. It provides garlic-based tick and mosquito treatment for residential, commercial and large properties across Ontario.",
+    "Eco-Tick Solutions is an Ontario outdoor pest control company founded by Edward Chodowski. It provides garlic-based tick and mosquito treatment for residential, commercial and large properties across Ontario.",
   metaTitle: "About Eco-Tick Solutions",
   metaDescription:
     "How Eco-Tick Solutions began: founder Edward Chodowski, a childhood memory of garlic spray, and why the company treats outdoor properties the way it does.",
@@ -189,7 +189,7 @@ export const about: ServicePage = {
       heading: "It started with one backyard",
       body: [
         "In 2010, Edward Chodowski got tired of being driven indoors. Canadian summers are short, and his own yard had become somewhere the family retreated from rather than spent time in.",
-        "He worked through what was available: retail repellents, and treatments from conventional pest control companies. None of it gave him what he was after.",
+        "He tried the available options, including retail repellents and treatments from conventional pest control companies. None of it gave him what he was after.",
         "What eventually changed the direction was a memory rather than a product. He recalled his mother going round their backyard with a misting bottle when he was a child, and how the whole garden ended up smelling faintly of barbecue. Asking around the family produced a few different versions of the story, but they all came back to the same ingredient: garlic.",
         "He started treating his own property with a garlic-based product. Neighbours began asking what he was doing, and their reasons echoed his own. They wanted to be outside, and they wanted it to work around their children, their pets and their gardens. That question, asked often enough, turned into a business.",
       ],
@@ -199,7 +199,7 @@ export const about: ServicePage = {
       imageKey: "founderAtWork",
       maxWidth: 330,
       caption:
-        "Edward on a spring application, on a property backing onto open water. Eco-Tick runs truck-mounted spray equipment rather than backpack units, which is what lets a single visit reach treelines and woodland edges instead of stopping at the lawn.",
+        "Edward on a spring application, on a property backing onto open water. Eco-Tick runs truck-mounted spray equipment rather than backpack units, which is what lets a single visit reach tree lines and woodland edges instead of stopping at the lawn.",
     },
     {
       type: "callout",
@@ -211,8 +211,8 @@ export const about: ServicePage = {
       heading: "Why garlic",
       body: [
         "Garlic is not a new idea in outdoor pest management. Farmers and gardeners have used garlic preparations for generations, and the practice long predates the product Eco-Tick uses today.",
-        "The strain in our formulation is considerably more potent than culinary garlic. Applications go onto the grassy and vegetated areas where ticks and mosquitoes shelter: yards, parks, athletic fields, cottage grounds and trails.",
-        "Full product detail, including registration and label information, is set out on our natural solution page.",
+        "Our treatment uses a concentrated garlic-based formulation designed for outdoor pest control. Applications go onto the grassy and vegetated areas where ticks and mosquitoes shelter: yards, parks, athletic fields, cottage grounds and trails.",
+        "More about the product and how it is applied is on our natural solution page.",
       ],
     },
     {
@@ -225,15 +225,15 @@ export const about: ServicePage = {
         "Commercial and hospitality grounds",
         "Campgrounds, parks and athletic fields",
         "Large properties, farms and estates",
-        "Seasonal programmes across spring, summer and fall",
+        "Seasonal programs across spring, summer and fall",
       ],
     },
     {
       type: "prose",
       heading: "How we work now",
       body: [
-        "What began with one backyard in Kingston is now a seasonal operation running truck-mounted spray equipment across Ontario. Homes, cottages, farms, athletic fields, commercial grounds, and campgrounds with cabins set well back in the trees.",
-        "The product is registered with Health Canada. Applications are carried out by licensed technicians. Eco-Tick is fully insured. And Edward still runs the equipment himself, which is not something most companies this side of a franchise can say.",
+        "What began with one backyard is now a seasonal operation running truck-mounted spray equipment across Ontario. We serve homes, cottages, farms, athletic fields, commercial grounds and wooded campgrounds.",
+        "The product is registered with Health Canada. Applications are carried out by licensed technicians. Eco-Tick is fully insured. Edward remains directly involved in delivering our spray services.",
         "The part he is proudest of is the repeat business. Customers describe a fourth and fifth season with us, and the reason they give is rarely the chemistry — it is that when they call between scheduled visits because something has come back, someone turns up.",
       ],
     },
@@ -246,81 +246,10 @@ export const about: ServicePage = {
         "Straight answers about what treatment does and does not do",
         "Treatment applied to habitat, not blanketed across a lawn",
         "Exclusion zones agreed before the first visit",
-        "A four-to-six week cycle across the active season",
+        "A four-to-six-week cycle across the active season",
         "A return visit between applications if pressure comes back",
         "The same person on the phone as on the property",
         "No pressure and no lock-in to find out what it would cost",
-      ],
-    },
-  ],
-};
-
-export const serviceAreas: ServicePage = {
-  slug: "service-areas",
-  audience: "general",
-  h1: "Service Areas",
-  answer:
-    "Eco-Tick Solutions operates from 3192 Creekford Road in Kingston, Ontario, and treats residential, commercial and large properties across Ontario.",
-  metaTitle: "Service Areas Across Ontario",
-  metaDescription:
-    "Eco-Tick Solutions is based in Kingston and treats residential, commercial and large properties across Ontario. Check whether your address is covered.",
-  ctaHeading: "Not sure if you are in range?",
-  ctaBody: "Send us the address and we will tell you straight away.",
-  ctaLabel: "Check my address",
-  related: [
-    { label: "Residential tick control", href: "/residential-tick-control" },
-    { label: "Commercial tick control", href: "/commercial-tick-control" },
-    { label: "Contact", href: "/contact" },
-  ],
-  blocks: [
-    {
-      type: "prose",
-      heading: "Based in Kingston",
-      body: [
-        "Our base is 3192 Creekford Road, Kingston, Ontario K7P 2Z6. From there we treat residential, commercial and large properties across Ontario.",
-        "Ontario is a good fit for this work. Much of the province has exactly the mix that produces tick pressure: mixed woodland, shoreline along the Great Lakes and inland waterways, farmland edges, and a great deal of cottage and rural property where the treeline sits close to where people actually spend their time.",
-      ],
-    },
-    {
-      type: "prose",
-      heading: "Where our customers are",
-      body: [
-        "We work across Ontario. Among the customers who have reviewed us are a homeowner in South Frontenac and the KOA campground at Ivy Lea on the St. Lawrence, where we treat cabins and tent sites set well back in the trees.",
-        "Those are places with named customers rather than a radius drawn on a map. If your property is somewhere between or beyond them, ask — the answer is usually yes.",
-      ],
-    },
-    {
-      type: "list",
-      heading: "Property types we treat across the region",
-      columns: 2,
-      items: [
-        "City and suburban yards",
-        "Rural and acreage properties in the surrounding townships",
-        "Waterfront and cottage properties",
-        "Campgrounds, parks and trail networks",
-        "Athletic fields and recreational grounds",
-        "Commercial grounds and hospitality patios",
-        "Farms and large estates",
-        "Municipal and institutional properties",
-      ],
-    },
-    {
-      type: "map",
-      heading: "Where we are based",
-      intro:
-        "Our base is in the west end of Kingston. Wherever in Ontario your property is, send us the address and we will confirm coverage rather than leave you guessing from a map.",
-    },
-    {
-      type: "callout",
-      heading: "Not sure whether you are in range?",
-      body: "Call 1-888-912-5152 or send us the address through the quote form. We will tell you straight away rather than leaving you to guess from a map.",
-    },
-    {
-      type: "prose",
-      heading: "Further afield?",
-      body: [
-        "We travel for the right job, particularly acreage and commercial sites where a single visit covers a lot of ground. Cottage country, rural properties and sites far from Kingston are a regular part of the season rather than an exception.",
-        "The fastest way to find out is to ask. Call 1-888-912-5152 or send the address through the quote form and we will tell you straight away whether it works, rather than leaving you to guess from a radius on a map.",
       ],
     },
   ],

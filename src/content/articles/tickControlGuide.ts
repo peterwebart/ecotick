@@ -114,7 +114,7 @@ export const tickControlGuide: Article = {
       body: [
         "The single most useful correction to make is that tick season is not summer. It is roughly March through November, and the driver is temperature rather than calendar date. Adults will quest whenever the air is above approximately 4°C and the ground is not under snow.",
         "This produces a two-peak pattern. Adults peak in spring as they resume from overwintering, and again in fall as the year's nymphs mature. Nymphs fill the middle, peaking from late spring through summer. The result is that there is no month between March and November where a property owner in a risk area can reasonably assume ticks are absent.",
-        "The fall peak is the one that catches households out. By late September the mental link between ticks and summer has faded, but the ticks have not. A dog running a treeline in October is doing exactly what it was doing in May, into a population that is just as active.",
+        "The fall peak is the one that catches households out. By late September the mental link between ticks and summer has faded, but the ticks have not. A dog running a tree line in October is doing exactly what it was doing in May, into a population that is just as active.",
       ],
     },
     {
@@ -153,14 +153,14 @@ export const tickControlGuide: Article = {
         "Ticks do not travel far under their own power. A questing tick moves metres in its lifetime, not kilometres. Everything else is transport.",
         "Deer are the host most associated with adult blacklegged ticks and are a significant factor in how populations spread across a landscape. But the more relevant hosts for a residential property are often smaller: mice, voles, chipmunks, squirrels and ground-feeding birds, which are the primary hosts for larvae and nymphs.",
         "This is why woodpiles and bird feeders matter more than people expect. A woodpile stacked against the back of the house is rodent habitat placed directly against the area the family uses most. Moving it thirty metres away and into the sun removes the shelter and relocates the associated tick pressure at the same time.",
-        "Pets are the other significant vector, and the one that brings ticks indoors. A dog that patrols the treeline twice a day is sampling exactly the habitat ticks prefer, then carrying the results into the house.",
+        "Pets are the other significant vector, and the one that brings ticks indoors. A dog that patrols the tree line twice a day is sampling exactly the habitat ticks prefer, then carrying the results into the house.",
       ],
     },
     {
       type: "checklist",
       heading: "Landscaping changes that reduce tick habitat",
       intro:
-        "Roughly ordered by value for effort. None of these eliminates ticks, and together they will not make a property tick-free. What they do is make it materially less hospitable, for free.",
+        "Roughly ordered by value for effort. None of these eliminates ticks, and together they will not make a property tick-free. These changes can make your property less suitable for ticks, and many can be done at little or no cost.",
       items: [
         "Mow regularly and keep grass short, especially along edges and fence lines",
         "Clear leaf litter from beds, fence lines and anywhere near used areas",
@@ -200,7 +200,7 @@ export const tickControlGuide: Article = {
         "Lyme disease is the tick-borne illness most people in Ontario have heard of. It is transmitted by blacklegged ticks, not by dog ticks, and not every blacklegged tick carries it. Transmission risk is also related to how long a tick has been attached, which is the practical reason prompt removal matters.",
         "Reported symptoms can include an expanding rash, fever, headache, fatigue and joint or muscle pain, though presentation varies considerably and a rash is not always present. Blacklegged ticks in Ontario can also carry other pathogens beyond the Lyme bacterium.",
         "We are a pest control company, not a medical provider, and this section is education rather than advice. If you have been bitten, develop symptoms, or are uncertain, contact a health care provider or your local public health unit and tell them about the bite and the date. Public Health Ontario and the Government of Canada publish current risk-area information, which is more useful for your specific address than any general statement we could make.",
-        "One thing we will not claim, here or anywhere on this site, is that treating a property prevents Lyme disease. Reducing tick pressure in the areas you use is a real and worthwhile outcome. Disease prevention is a medical claim, and not one a treatment programme is in a position to make.",
+        "One thing we will not claim, here or anywhere on this site, is that treating a property prevents Lyme disease. Reducing tick pressure in the areas you use is a real and worthwhile outcome. Disease prevention is a medical claim, and not one a treatment program is in a position to make.",
       ],
     },
     {
@@ -228,7 +228,7 @@ export const tickControlGuide: Article = {
         [
           "Professional treatment",
           "Placement informed by an assessment, equipment that reaches the litter layer, scheduling across the season.",
-          "Higher cost per visit, and it does not eliminate a population that is continually resupplied from surrounding land.",
+          "Higher cost per visit, and it cannot permanently eliminate ticks that keep arriving from surrounding land.",
         ],
       ],
     },
@@ -236,17 +236,17 @@ export const tickControlGuide: Article = {
       type: "prose",
       heading: "Natural and garlic-based treatment",
       body: [
-        "Garlic-based formulations are a recognised category within outdoor pest management, and they are the basis of Eco-Tick's programmes. Interest in them generally comes from property owners who want treatment but would prefer a natural-oriented approach over a conventional broad-spectrum product.",
-        "The specifics of what is applied, at what rate, how long it lasts and under what conditions belong on the product page rather than in a general guide, because they come from the product label rather than from anything we should be paraphrasing. Our natural solution page carries that detail.",
+        "Garlic-based formulations are a recognised category within outdoor pest management, and they are the basis of Eco-Tick's programs. Interest in them generally comes from property owners who want treatment but would prefer a garlic-based approach over a conventional broad-spectrum product.",
+        "Visit our natural-solution page for product information. Application rates, precautions and directions are governed by the product label.",
         "What is worth saying here is a caution that applies to any treatment, natural or otherwise: be sceptical of anyone describing an outdoor pest product as completely safe, non-toxic or guaranteed. Products applied to control pests have labels, and those labels have directions and precautions for a reason.",
       ],
     },
     {
       type: "prose",
-      heading: "Why programmes are seasonal rather than single visits",
+      heading: "Why programs are seasonal rather than single visits",
       body: [
         "If tick pressure were confined to a single month, one well-timed treatment would be a defensible strategy. Because activity has two adult peaks separated by a nymph peak, a single visit necessarily leaves most of the season unaddressed.",
-        "A seasonal programme starts in early spring, targeting the first adult peak before it produces the next generation. It continues through the summer nymph period, when outdoor use is highest and the ticks are hardest to spot. It finishes in fall, covering the peak most households have stopped thinking about.",
+        "A seasonal program starts in early spring, targeting the first adult peak before it produces the next generation. It continues through the summer nymph period, when outdoor use is highest and the ticks are hardest to spot. It finishes in fall, covering the peak most households have stopped thinking about.",
         "This is also why timing matters more than most property owners assume. A treatment applied in July to a property where the spring peak went unaddressed is doing catch-up work.",
       ],
     },
@@ -290,7 +290,7 @@ export const tickControlGuide: Article = {
         },
         {
           q: "Will professional treatment make my property tick-free?",
-          a: "No, and anyone promising that is overselling. Ticks arrive on hosts crossing property lines, so any property near woodland, field or an untreated neighbour is continually resupplied. Treatment reduces pressure in the areas you use; checks and habitat work handle the rest.",
+          a: "No. Outdoor treatment cannot permanently eliminate every tick. Ticks arrive on animals that cross property lines, so properties near woodland, fields or untreated neighbouring land will always see some new activity. Treatment reduces pressure in the areas you use; checks and habitat work handle the rest.",
         },
         {
           q: "When should I start treatment for the season?",

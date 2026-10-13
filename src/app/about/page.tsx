@@ -29,7 +29,7 @@ export default function Page() {
       aside={
         <QuoteAside
           heading="Get in touch"
-          body="Happy to talk through what a programme would look like."
+          body="Happy to talk through what a program would look like."
           label={page.ctaLabel}
           source={page.slug}
         />

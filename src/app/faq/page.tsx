@@ -56,8 +56,7 @@ export default function FaqPage() {
       <Container className="py-12 lg:py-16">
         <h1 className="text-h1 font-display">Frequently asked questions</h1>
         <p className="mt-6 max-w-2xl border-l-2 border-moss-600 pl-5 text-lead text-ink-700">
-          Answers pulled from across the site. If yours is not here, call us or
-          send it through the quote form and we will answer it directly.
+          Find answers to common questions about our services. If you do not see your question here, call us or send it through the quote form.
         </p>
       </Container>
 

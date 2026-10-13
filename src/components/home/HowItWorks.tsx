@@ -19,8 +19,7 @@ export function HowItWorks() {
             Assess. Treat. Maintain.
           </h2>
           <p className="mt-4 max-w-md text-ink-700">
-            Tick and mosquito pressure is specific to a property. The programme
-            starts by finding where yours actually is.
+            Every property has different tick and mosquito activity. We begin by identifying the areas that need attention.
           </p>
 
           {/* Numbered because this genuinely is a sequence, not decoration. */}

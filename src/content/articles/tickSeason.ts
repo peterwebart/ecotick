@@ -14,7 +14,7 @@ export const tickSeason: Article = {
   author: "The Eco-Tick team",
   takeaways: [
     "Ticks are active whenever it is above roughly 4°C, not only in summer.",
-    "There are two peaks: adults in spring and again in fall, nymphs through late spring and summer.",
+    "Adult blacklegged ticks have activity peaks in spring and fall, while nymphs are active from late spring through summer.",
     "Nymphs are the stage most likely to go unnoticed, and they peak when people are outdoors most.",
     "Ticks do not die off over winter; they shelter in leaf litter beneath the snow.",
   ],
@@ -43,7 +43,7 @@ export const tickSeason: Article = {
       type: "prose",
       heading: "The short answer",
       body: [
-        "In most of southern and eastern Ontario, blacklegged ticks can be active from roughly March through November, and on mild days outside that window too. The commonly held idea that ticks are a July problem is the single most useful thing to correct, because it is wrong in both directions: activity starts far earlier and finishes far later than the peak of summer.",
+        "In most of southern Ontario, blacklegged ticks can be active from roughly March through November, and on mild days outside that window too. The commonly held idea that ticks are a July problem is the single most useful thing to correct, because it is wrong in both directions: activity starts far earlier and finishes far later than the peak of summer.",
         "The threshold that matters is temperature, not date. Adult blacklegged ticks will quest whenever the air is above approximately 4°C and the ground is not snow-covered. A warm week in March produces active ticks. So does a mild stretch in November.",
       ],
     },
@@ -82,7 +82,7 @@ export const tickSeason: Article = {
       body: [
         "The two-peak pattern confuses people, and it is worth understanding because it drives when treatment and vigilance actually matter.",
         "Adult blacklegged ticks that did not find a host before winter resume questing as soon as spring temperatures allow. That is the first peak. Those adults feed and lay eggs, larvae hatch in late summer, and the nymphs that emerge the following late spring produce the mid-season activity that most people experience.",
-        "The second adult peak arrives in fall, when the current year's nymphs have moulted into adults and begin questing before winter. This autumn peak is the one that catches people out. By late September the mental association between ticks and summer has faded, dogs are still running the treeline, and the ticks are as active as they were in May.",
+        "The second adult peak arrives in fall, when the current year's nymphs have moulted into adults and begin questing before winter. This autumn peak is the one that catches people out. By late September the mental association between ticks and summer has faded, dogs are still running the tree line, and the ticks are as active as they were in May.",
       ],
     },
     {
@@ -90,7 +90,7 @@ export const tickSeason: Article = {
       heading: "What this means for a property",
       body: [
         "If tick pressure were confined to July, a single well-timed treatment would be a reasonable strategy. Because it is not, a one-visit approach leaves the two adult peaks essentially unaddressed.",
-        "The practical implication is that timing matters as much as treatment. Starting in early spring targets the first adult peak before it produces the next generation. Continuing into fall covers the peak most households forget about. This is the entire reason our programmes are seasonal rather than sold as single visits.",
+        "The practical implication is that timing matters as much as treatment. Starting in early spring targets the first adult peak before it produces the next generation. Continuing into fall covers the peak most households forget about. This is the entire reason our programs are seasonal rather than sold as single visits.",
       ],
     },
     {

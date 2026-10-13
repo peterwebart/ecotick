@@ -15,18 +15,18 @@ export default function PrivacyPage() {
     <Container className="max-w-3xl py-14 lg:py-20">
       <h1 className="text-h1 font-display">Privacy policy</h1>
       <p className="mt-6 text-lead text-ink-700">
-        Short version: we collect what we need to quote and schedule your
-        treatment, we use it for that, and we do not sell it to anyone.
+        We collect information to prepare quotes and schedule treatments. We use it for those purposes and do not sell your personal information.
       </p>
 
       <div className="mt-12 space-y-10">
         <section>
           <h2 className="text-h2 font-display">What we collect</h2>
           <p className="mt-4 leading-relaxed text-ink-700">
-            When you use our quote form we ask for your name, email address,
-            phone number, the town or city your property is in, the property
-            type and size, when you would like service to start, and anything
-            you choose to tell us in the notes field. Commercial and
+            When you use our quote form we ask for your first and last name,
+            email address, phone number, property address, property type and
+            size, when you would like service to start, how you prefer to be
+            contacted, your consent to receive communications from us, and
+            anything you choose to tell us in the notes field. Commercial and
             large-property enquiries also ask for approximate acreage, number of
             buildings and typical number of people on site.
           </p>
@@ -93,7 +93,7 @@ export default function PrivacyPage() {
             <a href={site.phoneHref} className="underline underline-offset-2">
               {site.phone}
             </a>{" "}
-            and we will deal with it.
+            to submit a privacy request.
           </p>
         </section>
 

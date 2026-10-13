@@ -19,12 +19,10 @@ export function ServiceTiers() {
         <div className="max-w-xl">
           <Eyebrow>Who we serve</Eyebrow>
           <h2 id="tiers-heading" className="mt-3 text-h2 font-display">
-            Three properties, three programmes.
+            Three property types. Tailored seasonal programs.
           </h2>
           <p className="mt-4 text-ink-700">
-            A quarter-acre backyard and a hundred-acre campus have almost
-            nothing in common except the pests. The programmes are built
-            accordingly.
+            From a quarter-acre backyard to a hundred-acre campus, we tailor each program to the property and how it is used.
           </p>
         </div>
 
@@ -62,7 +60,7 @@ export function ServiceTiers() {
                   href={tier.href}
                   className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-cta hover:underline"
                 >
-                  {tier.title} solutions
+                  {tier.linkLabel}
                   <span aria-hidden="true">&rarr;</span>
                 </Link>
               </div>

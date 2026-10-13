@@ -49,7 +49,7 @@ export const liveBadges: readonly Badge[] = [
     icon: "truck-mounted",
     title: "Truck-mounted spray system",
     detail:
-      "Reaches treelines and deep woodland a backpack unit cannot, so coverage does not stop at the lawn edge.",
+      "Reaches tree lines and deep woodland a backpack unit cannot, so coverage does not stop at the lawn edge.",
   },
   {
     icon: "garlic",
@@ -59,7 +59,7 @@ export const liveBadges: readonly Badge[] = [
   },
   {
     icon: "seasonal",
-    title: "Spring to fall programmes",
+    title: "Spring to fall programs",
     detail:
       "Scheduled across the season, because tick activity peaks twice and mosquito pressure peaks between.",
   },
@@ -67,7 +67,7 @@ export const liveBadges: readonly Badge[] = [
     icon: "service-area",
     title: "Across Ontario",
     detail:
-      "Based in Kingston, treating properties across Ontario.",
+      "Treating residential, commercial and large properties across Ontario.",
   },
   {
     icon: "established",

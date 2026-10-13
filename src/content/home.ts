@@ -15,6 +15,8 @@ export type ServiceTier = {
   promise: string;
   items: readonly string[];
   href: string;
+  /** Link text — explicit, because "Large Properties solutions" read badly. */
+  linkLabel: string;
   accent: "forest" | "moss" | "clay";
 };
 
@@ -32,6 +34,7 @@ export const serviceTiers: readonly ServiceTier[] = [
       "Seasonal programs",
     ],
     href: "/residential-tick-control",
+    linkLabel: "Residential solutions",
     accent: "forest",
   },
   {
@@ -47,6 +50,7 @@ export const serviceTiers: readonly ServiceTier[] = [
       "Recurring seasonal service",
     ],
     href: "/commercial-tick-control",
+    linkLabel: "Commercial solutions",
     accent: "moss",
   },
   {
@@ -62,6 +66,7 @@ export const serviceTiers: readonly ServiceTier[] = [
       "Custom program design",
     ],
     href: "/large-property-tick-control",
+    linkLabel: "Large-property solutions",
     accent: "clay",
   },
 ];
@@ -78,12 +83,12 @@ export const processSteps = [
   {
     n: "01",
     title: "Assess",
-    body: "We walk the property and identify where ticks and mosquitoes are most likely to be active: treelines, tall grass, leaf litter, shaded borders and standing water.",
+    body: "We walk the property and identify where ticks and mosquitoes are most likely to be active: tree lines, tall grass, leaf litter, shaded borders and standing water.",
   },
   {
     n: "02",
     title: "Treat",
-    body: "We apply our garlic-based solution to the targeted areas using truck-mounted spray equipment, which reaches treelines and woodland edges a backpack sprayer cannot, following the product label.",
+    body: "Following the product label, we apply our garlic-based solution to targeted areas using truck-mounted spray equipment designed to reach tree lines and woodland edges.",
   },
   {
     n: "03",
@@ -101,7 +106,7 @@ export const seasons = [
   {
     season: "Summer",
     label: "Peak season",
-    body: "Mosquito pressure peaks and outdoor use is highest. Applications focus on the areas your property actually gets used.",
+    body: "Mosquito activity peaks as people spend more time outdoors. Applications focus on the areas of your property you use most.",
   },
   {
     season: "Fall",
@@ -144,7 +149,7 @@ export const homeFaqs = [
   },
   {
     q: "How often should treatments be applied?",
-    a: "Programmes run on a four-to-six-week cycle across the active season, with return visits between scheduled applications if pressure returns sooner.",
+    a: "Programs run on a four-to-six-week cycle across the active season, with return visits between scheduled applications if pressure returns sooner.",
   },
   {
     q: "When should I start treatment?",

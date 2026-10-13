@@ -37,9 +37,7 @@ export default function Page() {
               Large-property assessment request
             </h2>
             <p className="mt-4 max-w-md text-ink-700">
-              Acreage, how the land is used, and what you are seeing at the
-              moment. That is usually enough for us to come back with a zoned
-              plan and a number.
+              Tell us the acreage, how the land is used and any current pest concerns. We will use these details to prepare a zoned treatment plan and a quote.
             </p>
           </div>
           <QuoteWizard initialPropertyType="Large property" />

@@ -24,7 +24,7 @@ export default function Page() {
       aside={
         <QuoteAside
           heading="Commercial assessment"
-          body="Send us the site details and we will design a programme around your operating calendar."
+          body="Send us the site details and we will design a program around your operating calendar."
           label={page.ctaLabel}
           source={page.slug}
         />

@@ -4,7 +4,7 @@ import { commercial } from "./commercial";
 import { largeProperty } from "./largeProperty";
 import { garlicSolution, safetyEnvironment } from "./trust";
 import { mosquitoControl, tickMosquito } from "./mosquito";
-import { about, howItWorks, serviceAreas, whoWeServe } from "./company";
+import { about, howItWorks, whoWeServe } from "./company";
 
 export {
   residential,
@@ -17,7 +17,6 @@ export {
   howItWorks,
   whoWeServe,
   about,
-  serviceAreas,
 };
 
 export const allServicePages: readonly ServicePage[] = [
@@ -31,7 +30,6 @@ export const allServicePages: readonly ServicePage[] = [
   howItWorks,
   whoWeServe,
   about,
-  serviceAreas,
 ];
 
 /** Routes safe to advertise in the sitemap: everything not flagged noindex. */

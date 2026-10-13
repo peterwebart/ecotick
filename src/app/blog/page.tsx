@@ -36,12 +36,11 @@ export default function BlogIndex() {
       <Container className="py-12 lg:py-16">
         <h1 className="text-h1 font-display">Blog</h1>
         <p className="mt-5 max-w-2xl text-lead text-ink-700">
-          Practical writing on ticks, mosquitoes and Ontario properties. For the
-          longer evergreen guides, see{" "}
+          Practical articles on ticks, mosquitoes and Ontario properties. Visit our{" "}
           <Link href="/resources" className="underline underline-offset-2">
-            resources
-          </Link>
-          .
+            knowledge centre
+          </Link>{" "}
+          for in-depth guides.
         </p>
 
         <ul className="mt-12 space-y-px border-y border-border">
@@ -66,7 +65,7 @@ export default function BlogIndex() {
       </Container>
 
       <CtaBand
-        heading="Ready to take back your outdoors?"
+        heading="Ready to take back the outdoors?"
         body="A free quote is the fastest way to find out what treatment would cost for your property."
         source="blog_index"
       />

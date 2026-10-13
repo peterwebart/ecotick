@@ -58,13 +58,13 @@ export default function TermsPage() {
           <h2 className="text-h2 font-display">Our content</h2>
           <p className="mt-4 leading-relaxed text-ink-700">
             The text, photographs and branding on this site belong to{" "}
-            {site.legalName}. You are welcome to link to any page. Please ask
+            {site.legalName.replace(/\.$/, "")}. You are welcome to link to any page. Please ask
             before republishing content elsewhere.
           </p>
         </section>
 
         <section>
-          <h2 className="text-h2 font-display">Links out</h2>
+          <h2 className="text-h2 font-display">External links</h2>
           <p className="mt-4 leading-relaxed text-ink-700">
             Where we link to public health sources or embed a Google Map, those
             services have their own terms and we do not control their content.

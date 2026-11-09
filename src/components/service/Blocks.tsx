@@ -2,8 +2,9 @@ import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import Image from "next/image";
 import { images } from "@/content/images";
 import { MapEmbed } from "@/components/ui/MapEmbed";
+import { RichText } from "@/components/ui/RichText";
 import { slugify } from "@/lib/slug";
-import type { Block } from "@/content/types";
+import type { Block, SectionNode } from "@/content/types";
 
 /** Headings that can be linked to from a table of contents. */
 export function blockHeadings(
@@ -32,8 +33,90 @@ export function Blocks({ blocks }: { blocks: readonly Block[] }) {
   );
 }
 
+/** One piece of a free-form section. Lists keep their semantic element. */
+function SectionNodeView({ node }: { node: SectionNode }) {
+  switch (node.kind) {
+    case "p":
+      return (
+        <p className="max-w-2xl leading-relaxed text-ink-700">
+          <RichText text={node.text} />
+        </p>
+      );
+
+    case "h3":
+      return <h3 className="pt-3 text-h3 font-display">{node.text}</h3>;
+
+    case "ul":
+      return (
+        <ul className="max-w-2xl space-y-2.5 py-1">
+          {node.items.map((item) => (
+            <li key={item} className="flex gap-3 text-ink-700">
+              <span
+                aria-hidden="true"
+                className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-sage-500"
+              />
+              <span className="leading-relaxed">
+                <RichText text={item} />
+              </span>
+            </li>
+          ))}
+        </ul>
+      );
+
+    case "ol":
+      return (
+        <ol className="max-w-2xl space-y-3 py-1">
+          {node.items.map((item, i) => (
+            <li key={item} className="flex gap-4 text-ink-700">
+              <span
+                aria-hidden="true"
+                className="w-6 shrink-0 pt-px font-display text-lg leading-snug text-clay-600 tabular-nums"
+              >
+                {i + 1}.
+              </span>
+              <span className="leading-relaxed">
+                <RichText text={item} />
+              </span>
+            </li>
+          ))}
+        </ol>
+      );
+
+    case "checklist":
+      return (
+        <ul className="max-w-2xl space-y-3 rounded-card bg-surface-alt p-6">
+          {node.items.map((item) => (
+            <li key={item} className="flex gap-3 text-ink-900">
+              <span
+                aria-hidden="true"
+                className="mt-1 h-4 w-4 shrink-0 rounded-[3px] border-2 border-moss-600 bg-white"
+              />
+              <span className="leading-relaxed">
+                <RichText text={item} />
+              </span>
+            </li>
+          ))}
+        </ul>
+      );
+  }
+}
+
 function BlockRenderer({ block }: { block: Block }) {
   switch (block.type) {
+    case "section":
+      return (
+        <section>
+          <h2 id={slugify(block.heading)} className="scroll-mt-24 text-h2 font-display">
+            {block.heading}
+          </h2>
+          <div className="mt-5 space-y-4">
+            {block.content.map((node, i) => (
+              <SectionNodeView key={`${node.kind}-${i}`} node={node} />
+            ))}
+          </div>
+        </section>
+      );
+
     case "prose":
       return (
         <section>
@@ -43,7 +126,7 @@ function BlockRenderer({ block }: { block: Block }) {
           <div className="mt-4 space-y-4">
             {block.body.map((p) => (
               <p key={p.slice(0, 40)} className="max-w-2xl leading-relaxed text-ink-700">
-                {p}
+                <RichText text={p} />
               </p>
             ))}
           </div>
@@ -70,7 +153,9 @@ function BlockRenderer({ block }: { block: Block }) {
                   aria-hidden="true"
                   className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-sage-500"
                 />
-                <span className="leading-relaxed">{item}</span>
+                <span className="leading-relaxed">
+                  <RichText text={item} />
+                </span>
               </li>
             ))}
           </ul>

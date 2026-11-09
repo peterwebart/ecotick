@@ -119,9 +119,7 @@ export async function POST(request: Request) {
   // 1. The office copy. Reply-to is the customer, so Reply in Gmail goes to them.
   void sendMail(
     {
-      to: notifyRecipients(
-        "info@eco-ticksolutions.ca,shawn@eco-ticksolutions.ca,admin@eco-ticksolutions.ca",
-      ),
+      to: notifyRecipients(),
       from,
       replyTo: email,
       subject: `Quote request ${reference} — ${firstName} ${lastName}, ${propertyType}`,

@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/Container";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { CtaBand } from "@/components/ui/CtaBand";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { blogArticles, guides } from "@/content/articles";
+import { articlesInCategory, blogCategories, categoryPath, guides } from "@/content/articles";
 import { buildMetadata } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/schema";
 
@@ -69,24 +69,38 @@ export default function ResourcesPage() {
           <h2 id="articles-heading" className="mt-2 text-h2 font-display">
             From the blog
           </h2>
-          <ul className="mt-8 grid gap-6 md:grid-cols-2">
-            {blogArticles.map((a) => (
-              <li key={a.slug}>
-                <Link
-                  href={a.path}
-                  className="flex h-full flex-col rounded-card border border-border bg-white p-7 transition-shadow hover:shadow-card"
-                >
-                  <h3 className="text-h3 font-display">{a.h1}</h3>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-700">
-                    {a.excerpt}
-                  </p>
-                  <span className="mt-5 text-sm font-semibold text-cta">
-                    Read more <span aria-hidden="true">&rarr;</span>
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {blogCategories.map((c) => {
+              const articles = articlesInCategory(c.slug);
+              if (articles.length === 0) return null;
+              return (
+                <div key={c.slug} className="rounded-card border border-border bg-white p-7">
+                  <h3 className="text-h3 font-display">
+                    <Link href={categoryPath(c.slug)} className="hover:underline">
+                      {c.title}
+                    </Link>
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-700">{c.intro}</p>
+                  <ul className="mt-5 space-y-2.5">
+                    {articles.map((a) => (
+                      <li key={a.slug} className="flex gap-3 text-sm">
+                        <span
+                          aria-hidden="true"
+                          className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-sage-500"
+                        />
+                        <Link
+                          href={a.path}
+                          className="font-medium text-ink-700 hover:text-brand hover:underline"
+                        >
+                          {a.h1}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
           <Link
             href="/blog"
             className="mt-8 inline-block text-sm font-semibold text-cta hover:underline"

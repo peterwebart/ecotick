@@ -25,6 +25,13 @@ export function organizationSchema(): Json {
     name: site.name,
     legalName: site.legalName,
     url: site.url,
+    // Publisher logo for Article/BlogPosting results. The real brand mark.
+    logo: {
+      "@type": "ImageObject",
+      url: new URL(site.logo.path, site.url).toString(),
+      width: site.logo.width,
+      height: site.logo.height,
+    },
     description: site.description,
     telephone: site.phone,
     email: site.email,
@@ -124,24 +131,46 @@ export function breadcrumbSchema(
   };
 }
 
+/**
+ * Article or BlogPosting. The author is the company byline shown on the page
+ * ("The Eco-Tick team"), linked to the About page; the publisher is the
+ * sitewide Organization node. Images are listed only when they exist on disk.
+ */
 export function articleSchema(input: {
+  type?: "Article" | "BlogPosting";
   headline: string;
   description: string;
   path: string;
   publishedAt: string;
   updatedAt?: string;
   author: string;
+  /** Blog category name, emitted as articleSection. */
+  section?: string;
+  /** Root-relative paths of images that share `imageSize`. */
+  images?: readonly string[];
+  imageSize?: { width: number; height: number };
 }): Json {
+  const url = new URL(input.path, site.url).toString();
+  const images = (input.images ?? []).map((p) => ({
+    "@type": "ImageObject",
+    url: new URL(p, site.url).toString(),
+    ...(input.imageSize ?? {}),
+  }));
+
   return {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": input.type ?? "Article",
+    "@id": `${url}#article`,
     headline: input.headline,
     description: input.description,
-    mainEntityOfPage: new URL(input.path, site.url).toString(),
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    url,
     datePublished: input.publishedAt,
     dateModified: input.updatedAt ?? input.publishedAt,
-    author: { "@type": "Organization", name: input.author },
+    author: { "@type": "Organization", name: input.author, url: `${site.url}/about` },
     publisher: { "@id": `${site.url}/#organization` },
+    ...(images.length > 0 ? { image: images } : {}),
+    ...(input.section ? { articleSection: input.section } : {}),
     inLanguage: "en-CA",
   };
 }

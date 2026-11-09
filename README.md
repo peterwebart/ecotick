@@ -19,6 +19,8 @@ hub, blog architecture, aggregated FAQ, contact, and two evergreen guides.
 **Phase 4 (partial)** — the pillar guide at `/tick-control-guide`, an
 auto-derived table of contents for long-form, and env-gated GA4.
 **Phase 6 (partial)** — a post-build audit script, plus the fixes it surfaced.
+**Blog library (November 2026)** — 15 articles in four categories with
+category pages, BlogPosting schema and social cards. See `BLOG.md`.
 
 ## Post-build audit
 

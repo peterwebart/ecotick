@@ -12,6 +12,14 @@ export const professionalSpraying: Article = {
     "What happens during a professional tick treatment: assessment, zone mapping, targeted application, and why timing matters more than product choice.",
   publishedAt: "2026-04-06",
   author: "The Eco-Tick team",
+  category: "ticks",
+  topic: "Professional treatment",
+  imageKey: "reachWoodland",
+  relatedArticles: [
+    "when-to-start-tick-protection",
+    "where-do-ticks-live-around-property",
+    "tick-control-large-properties",
+  ],
   takeaways: [
     "Treatment is applied to habitat zones, not sprayed uniformly across a property.",
     "The assessment helps identify where treatment will be most useful.",

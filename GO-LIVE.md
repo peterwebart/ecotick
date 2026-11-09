@@ -12,14 +12,14 @@ In Coolify → Environment Variables:
 | Key | Value | Build variable? |
 |---|---|---|
 | `NEXT_PUBLIC_SITE_URL` | `https://eco-ticksolutions.ca` — **no www** | **Yes** |
-| `NEXT_PUBLIC_GTM_ID` | `GTM-5G97FBRL` (defaults to this) | **Yes** |
+| `NEXT_PUBLIC_GTM_ID` | `GTM-KRP32ZRK` (defaults to this) | **Yes** |
 | `NEXT_PUBLIC_GA4_ID` | **leave blank if GA4 lives inside GTM** | **Yes** |
 | `GOOGLE_PLACES_API_KEY` | Places API (New) key, IP-restricted | No |
 | `SMTP_HOST` | `smtp.gmail.com` | No |
 | `SMTP_PORT` | `465` | No |
 | `SMTP_USER` | `info@eco-ticksolutions.ca` | No |
 | `SMTP_PASS` | Google **App Password** — see below | No |
-| `QUOTE_NOTIFY_EMAIL` | `info@…,shawn@…,admin@eco-ticksolutions.ca` | No |
+| `QUOTE_NOTIFY_EMAIL` | leave unset — the office list is in `src/lib/mail.ts` | No |
 | `QUOTE_FROM_EMAIL` | `info@eco-ticksolutions.ca` | No |
 
 `NEXT_PUBLIC_*` must be ticked as build variables or every canonical URL and
@@ -103,9 +103,13 @@ rather than assume.
 
 ## 4. Known items, none blocking
 
-**Quote emails go to three mailboxes** — `info@`, `shawn@` and `admin@` — set in
-`QUOTE_NOTIFY_EMAIL` as a comma-separated list. Reply-to is the customer, so
-Reply in Gmail addresses them.
+**Quote emails go to four mailboxes** — `info@`, `shawn@`, `admin@` and
+`edward@eco-ticksolutions.ca` — listed in `QUOTE_OFFICE_RECIPIENTS` in
+`src/lib/mail.ts`. To add or remove someone, edit that list and redeploy.
+`QUOTE_NOTIFY_EMAIL` is only for redirecting leads (a staging test inbox); if it
+still holds the old three-address list, it is treated as out of date and all
+four mailboxes receive the lead. Reply-to is the customer, so Reply in Gmail
+addresses them.
 
 **Use Resend, not SMTP.** Hetzner blocks outbound SMTP ports (25, 465, 587) by
 default, which is why an App Password produced `Connection timeout` rather than
@@ -172,8 +176,11 @@ ten minutes of your lawyer's time before launch.
 
 ## 4a. Google Tag Manager
 
-Container `GTM-5G97FBRL` is live on all 25 prerendered pages: the loader in
-`<head>`, the noscript iframe at the top of `<body>`.
+Container `GTM-KRP32ZRK` loads on every page using Google's current install
+snippet: one block in `<head>`, no noscript iframe. It replaced `GTM-5G97FBRL`
+in November 2026; only one container loads per page, and the old ID is ignored
+even if Coolify still has it in `NEXT_PUBLIC_GTM_ID`. See `GTM-SETUP.md` for
+moving the old container's tags across.
 
 **Do not also set `NEXT_PUBLIC_GA4_ID` if your GTM container holds a GA4 tag.**
 That is two libraries reporting to the same property, and every pageview counted

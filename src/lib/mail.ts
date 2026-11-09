@@ -136,11 +136,35 @@ async function viaSmtp(msg: Message): Promise<MailResult> {
   return "failed";
 }
 
-/** Recipients from QUOTE_NOTIFY_EMAIL, comma or semicolon separated. */
-export function notifyRecipients(fallback: string): string[] {
-  const list = (process.env.QUOTE_NOTIFY_EMAIL ?? fallback)
+/**
+ * The office mailboxes that receive every quote request. This list is the
+ * source of truth: to add or remove a person, edit it here.
+ */
+export const QUOTE_OFFICE_RECIPIENTS: readonly string[] = [
+  "info@eco-ticksolutions.ca",
+  "shawn@eco-ticksolutions.ca",
+  "admin@eco-ticksolutions.ca",
+  "edward@eco-ticksolutions.ca",
+];
+
+/**
+ * Who receives the office copy of a quote request.
+ *
+ * QUOTE_NOTIFY_EMAIL (comma or semicolon separated) exists to redirect leads,
+ * for example to a test inbox on staging. Coolify may still hold an older copy
+ * of the office list from before a mailbox was added; a value made up only of
+ * office addresses is treated as exactly that, so a stale environment variable
+ * can never silently drop someone who should be getting the leads. A value
+ * containing any other address is a deliberate override and is used as is.
+ */
+export function notifyRecipients(): string[] {
+  const configured = (process.env.QUOTE_NOTIFY_EMAIL ?? "")
     .split(/[,;]/)
-    .map((s) => s.trim())
+    .map((s) => s.trim().toLowerCase())
     .filter((s) => s.includes("@"));
-  return list.length > 0 ? list : [fallback];
+
+  const office = new Set(QUOTE_OFFICE_RECIPIENTS);
+  const officeOnly = configured.every((address) => office.has(address));
+
+  return configured.length > 0 && !officeOnly ? configured : [...QUOTE_OFFICE_RECIPIENTS];
 }

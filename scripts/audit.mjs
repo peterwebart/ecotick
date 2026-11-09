@@ -11,7 +11,7 @@
  * "… | Eco-Tick Solutions | Eco-Tick Solutions", because the content strings
  * carried the suffix and the layout title template appended it again.
  */
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { glob } from "node:fs/promises";
 import { sep } from "node:path";
 import * as cheerio from "cheerio";
@@ -28,7 +28,7 @@ const DIR = ".next/server/app";
 const TITLE_MAX = 62;
 const DESC_MIN = 110;
 const DESC_MAX = 165;
-const RICH_TYPES = new Set(["Article", "Service", "FAQPage"]);
+const RICH_TYPES = new Set(["Article", "BlogPosting", "Service", "FAQPage"]);
 const VAGUE_LINKS = new Set(["click here", "here", "read more", "learn more", "more"]);
 
 // A 404 serves HTTP 404 and is never indexed, so metadata rules do not apply.
@@ -36,6 +36,7 @@ const SKIP_META = new Set(["/_not-found"]);
 
 const REQUIRED = {
   Article: ["headline", "datePublished", "author"],
+  BlogPosting: ["headline", "datePublished", "author", "image", "publisher"],
   Service: ["name", "provider"],
   FAQPage: ["mainEntity"],
   BreadcrumbList: ["itemListElement"],
@@ -61,12 +62,25 @@ const files = [];
 for await (const f of glob(`${DIR}/**/*.html`)) files.push(toPosix(f));
 files.sort();
 
+const routeOf = (file) =>
+  file.replace(DIR, "").replace(/\.html$/, "").replace(/^\/index$/, "/") || "/";
+
+/**
+ * Internal links must land on something that exists: a prerendered page, a
+ * file in public/, or one of the few routes that render on demand. Content
+ * now carries inline links, so a typo in a path would otherwise ship as a 404.
+ */
+const ROUTES = new Set(files.map(routeOf));
+const ON_DEMAND = new Set(["/thank-you", "/sitemap.xml", "/robots.txt"]);
+const linkTargetExists = (path) =>
+  ROUTES.has(path) || ON_DEMAND.has(path) || existsSync(`public${decodeURIComponent(path)}`);
+const SITE_ORIGIN = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://eco-ticksolutions.ca").replace(/\/$/, "");
+
 const titles = new Map();
 const descs = new Map();
 
 for (const file of files) {
-  const route =
-    file.replace(DIR, "").replace(/\.html$/, "").replace(/^\/index$/, "/") || "/";
+  const route = routeOf(file);
   const $ = cheerio.load(readFileSync(file, "utf8"));
 
   const title = $("title").first().text().trim();
@@ -99,6 +113,22 @@ for (const file of files) {
 
   $("img").each((_, el) => {
     if ($(el).attr("alt") === undefined) add(route, "a11y", "img without alt");
+  });
+
+  const brokenLinks = new Set();
+  $('a[href^="/"]').each((_, el) => {
+    const path = ($(el).attr("href") ?? "").split(/[?#]/)[0];
+    if (path && !path.startsWith("//") && !linkTargetExists(path)) brokenLinks.add(path);
+  });
+  for (const path of brokenLinks) add(route, "links", `internal link to missing page ${path}`);
+
+  // Social preview images are referenced by absolute URL and never requested
+  // during the build, so a missing file would only show up as a blank card.
+  $('meta[property="og:image"], meta[name="twitter:image"]').each((_, el) => {
+    const content = $(el).attr("content") ?? "";
+    if (!content.startsWith(SITE_ORIGIN)) return;
+    const path = content.slice(SITE_ORIGIN.length).split(/[?#]/)[0];
+    if (!existsSync(`public${path}`)) add(route, "links", `social image not in public/: ${path}`);
   });
 
   $("input,select,textarea").each((_, el) => {
@@ -179,7 +209,7 @@ for (const [label, map] of [["title", titles], ["description", descs]])
       add(routes.join(", "), "meta", `duplicate ${label}: ${value.slice(0, 48)}…`);
 
 console.log(`audited ${files.length} prerendered pages\n`);
-for (const cat of ["a11y", "meta", "schema", "content"]) {
+for (const cat of ["a11y", "meta", "schema", "content", "links"]) {
   const found = issues.filter((i) => i.cat === cat);
   console.log(`${cat.toUpperCase()}: ${found.length} issue(s)`);
   for (const i of found) console.log(`  ${i.route}: ${i.msg}`);

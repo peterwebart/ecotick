@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { ArticleTemplate } from "@/components/article/ArticleTemplate";
-import { blogArticles, getBlogArticle } from "@/content/articles";
+import { blogArticles, categoryOf, categoryPath, getBlogArticle } from "@/content/articles";
+import { SOCIAL_CARD_SIZE, socialCardPath } from "@/content/blogImages";
 import { buildMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
@@ -27,9 +28,16 @@ export async function generateMetadata({
   if (!article) return {};
   return buildMetadata({
     title: article.metaTitle,
+    absoluteTitle: article.absoluteTitle,
     description: article.metaDescription,
     path: article.path,
     noindex: article.noindex,
+    article: {
+      publishedTime: article.publishedAt,
+      modifiedTime: article.updatedAt,
+      section: categoryOf(article)?.name,
+    },
+    image: { url: socialCardPath(article.slug), ...SOCIAL_CARD_SIZE, alt: article.h1 },
   });
 }
 
@@ -42,12 +50,17 @@ export default async function BlogArticlePage({
   const article = getBlogArticle(slug);
   if (!article) notFound();
 
+  // Blog -> Category -> Article. Every blog article has a category; the
+  // fallback only keeps an uncategorised draft from losing its breadcrumb.
+  const category = categoryOf(article);
+
   return (
     <ArticleTemplate
       article={article}
       crumbs={[
         { name: "Home", path: "/" },
         { name: "Blog", path: "/blog" },
+        ...(category ? [{ name: category.name, path: categoryPath(category.slug) }] : []),
         { name: article.h1, path: article.path },
       ]}
     />

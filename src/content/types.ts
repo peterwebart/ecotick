@@ -8,7 +8,27 @@
 
 export type Faq = { q: string; a: string };
 
+/**
+ * One piece of a free-form section, rendered in order. Text may carry inline
+ * links written as [label](/path); see components/ui/RichText.tsx.
+ */
+export type SectionNode =
+  | { kind: "p"; text: string }
+  | { kind: "h3"; text: string }
+  | { kind: "ul"; items: readonly string[] }
+  | { kind: "ol"; items: readonly string[] }
+  | { kind: "checklist"; items: readonly string[] };
+
 export type Block =
+  | {
+      /**
+       * A heading followed by any mix of paragraphs, sub-headings and lists.
+       * Used for long-form articles whose sections do not fit one fixed shape.
+       */
+      type: "section";
+      heading: string;
+      content: readonly SectionNode[];
+    }
   | { type: "prose"; heading: string; body: readonly string[] }
   | {
       type: "list";
@@ -98,8 +118,44 @@ export type Article = {
   /**
    * Source organisations for the factual claims in this article.
    * VERIFY EVERY ONE before publishing - exact page URLs must be checked by
-   * hand, not taken on trust.
+   * hand, not taken on trust. `href` is only set once the page has been read.
    */
-  references?: readonly { label: string; note: string }[];
+  references?: readonly { label: string; note: string; href?: string }[];
   noindex?: boolean;
+
+  /* ---- Blog library fields. Optional so the evergreen guides are unaffected. */
+
+  /** Blog category. Drives the Blog -> Category -> Article breadcrumb. */
+  category?: BlogCategorySlug;
+  /** Topic label shown above the headline, e.g. "Tick prevention". */
+  topic?: string;
+  /** Opening paragraphs between the standfirst and the key points. */
+  intro?: readonly string[];
+  /** Heading for the key-points box. Defaults to "The short version". */
+  takeawaysHeading?: string;
+  /**
+   * The service page this article supports. Must be a route that exists today;
+   * when the ideal page does not exist yet, point at the closest one.
+   */
+  service?: ServiceLink;
+  /** Slugs of 2-3 related blog articles, shown as cards after the body. */
+  relatedArticles?: readonly string[];
+  /** Key into the blog image manifest, or into the real-photo manifest. */
+  imageKey?: string;
+  /** Closing call to action. Falls back to the site-wide wording. */
+  cta?: { heading: string; body: string; label: string };
+  /**
+   * Render metaTitle exactly as written instead of passing it through the
+   * "%s | Eco-Tick Solutions" template. Used where the SEO title was supplied
+   * complete, some with a short brand suffix and some deliberately without.
+   */
+  absoluteTitle?: boolean;
+};
+
+export type BlogCategorySlug = "ticks" | "mosquitoes" | "commercial" | "large-properties";
+
+export type ServiceLink = {
+  label: string;
+  href: string;
+  description: string;
 };

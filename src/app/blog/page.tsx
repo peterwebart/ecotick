@@ -2,7 +2,9 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { CtaBand } from "@/components/ui/CtaBand";
-import { blogArticles } from "@/content/articles";
+import { ArticleCard } from "@/components/article/ArticleCard";
+import { BlogCategoryNav } from "@/components/article/BlogCategoryNav";
+import { articlesInCategory, blogArticles, blogCategories, categoryPath } from "@/content/articles";
 import { buildMetadata } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/schema";
 
@@ -18,13 +20,11 @@ const crumbs = [
   { name: "Blog", path: "/blog" },
 ];
 
-const dateFmt = new Intl.DateTimeFormat("en-CA", {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-});
-
 export default function BlogIndex() {
+  // Every blog article belongs to a category; anything that does not still
+  // gets listed rather than silently disappearing from the index.
+  const uncategorised = blogArticles.filter((a) => !a.category);
+
   return (
     <>
       <script
@@ -42,26 +42,54 @@ export default function BlogIndex() {
           </Link>{" "}
           for in-depth guides.
         </p>
+        <BlogCategoryNav className="mt-8" />
+      </Container>
 
-        <ul className="mt-12 space-y-px border-y border-border">
-          {blogArticles.map((a) => (
-            <li key={a.slug} className="border-b border-border last:border-0">
-              <Link href={a.path} className="group block py-7">
-                <p className="text-sm text-ink-500">
-                  <time dateTime={a.publishedAt}>
-                    {dateFmt.format(new Date(a.publishedAt))}
-                  </time>
-                </p>
-                <h2 className="mt-2 text-h2 font-display group-hover:underline">
-                  {a.h1}
-                </h2>
-                <p className="mt-3 max-w-2xl leading-relaxed text-ink-700">
-                  {a.excerpt}
-                </p>
-              </Link>
-            </li>
-          ))}
-        </ul>
+      <Container className="space-y-16 pb-16">
+        {blogCategories.map((c) => {
+          const articles = articlesInCategory(c.slug);
+          if (articles.length === 0) return null;
+          return (
+            <section key={c.slug} aria-labelledby={`blog-${c.slug}`}>
+              <div className="flex flex-wrap items-end justify-between gap-4 border-b border-border pb-4">
+                <div>
+                  <h2 id={`blog-${c.slug}`} className="text-h2 font-display">
+                    {c.title}
+                  </h2>
+                  <p className="mt-2 max-w-2xl text-ink-700">{c.intro}</p>
+                </div>
+                <Link
+                  href={categoryPath(c.slug)}
+                  className="text-sm font-semibold text-cta hover:underline"
+                >
+                  All articles in {c.name} <span aria-hidden="true">&rarr;</span>
+                </Link>
+              </div>
+              <ul className="mt-6 grid gap-5 md:grid-cols-2">
+                {articles.map((a) => (
+                  <li key={a.slug}>
+                    <ArticleCard article={a} />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          );
+        })}
+
+        {uncategorised.length > 0 && (
+          <section aria-labelledby="blog-more">
+            <h2 id="blog-more" className="border-b border-border pb-4 text-h2 font-display">
+              More articles
+            </h2>
+            <ul className="mt-6 grid gap-5 md:grid-cols-2">
+              {uncategorised.map((a) => (
+                <li key={a.slug}>
+                  <ArticleCard article={a} />
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
       </Container>
 
       <CtaBand

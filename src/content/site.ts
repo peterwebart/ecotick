@@ -41,6 +41,13 @@ export const site = {
 
   serviceArea: "Ontario",
 
+  /** Public path of the brand mark, for Organization structured data. */
+  logo: {
+    path: "/images/eco-tick/brand/eco-tick-solutions-logo.png",
+    width: 640,
+    height: 497,
+  },
+
   founder: {
     name: "Edward Chodowski",
     role: "CEO & Founder",

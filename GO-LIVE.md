@@ -12,7 +12,7 @@ In Coolify → Environment Variables:
 | Key | Value | Build variable? |
 |---|---|---|
 | `NEXT_PUBLIC_SITE_URL` | `https://eco-ticksolutions.ca` — **no www** | **Yes** |
-| `NEXT_PUBLIC_GTM_ID` | `GTM-KRP32ZRK` (defaults to this) | **Yes** |
+| `NEXT_PUBLIC_GTM_ID` | `GTM-5G97FBRL` (defaults to this) | **Yes** |
 | `NEXT_PUBLIC_GA4_ID` | **leave blank if GA4 lives inside GTM** | **Yes** |
 | `GOOGLE_PLACES_API_KEY` | Places API (New) key, IP-restricted | No |
 | `SMTP_HOST` | `smtp.gmail.com` | No |
@@ -176,11 +176,10 @@ ten minutes of your lawyer's time before launch.
 
 ## 4a. Google Tag Manager
 
-Container `GTM-KRP32ZRK` loads on every page using Google's current install
-snippet: one block in `<head>`, no noscript iframe. It replaced `GTM-5G97FBRL`
-in November 2026; only one container loads per page, and the old ID is ignored
-even if Coolify still has it in `NEXT_PUBLIC_GTM_ID`. See `GTM-SETUP.md` for
-moving the old container's tags across.
+Container `GTM-5G97FBRL` is live on every prerendered page: the loader in
+`<head>`, the noscript iframe at the top of `<body>`. It is the site's only
+container and already holds the GA4 and Google Ads tags; do not add a second
+Google tag or container alongside it.
 
 **Do not also set `NEXT_PUBLIC_GA4_ID` if your GTM container holds a GA4 tag.**
 That is two libraries reporting to the same property, and every pageview counted

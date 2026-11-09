@@ -10,7 +10,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MobileBar } from "@/components/layout/MobileBar";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
-import { GtmHead } from "@/components/analytics/GoogleTagManager";
+import { GtmBody, GtmHead } from "@/components/analytics/GoogleTagManager";
 import { RouteChangeTracker } from "@/components/analytics/RouteChangeTracker";
 import { localBusinessSchema, organizationSchema, websiteSchema } from "@/lib/schema";
 import { site } from "@/content/site";
@@ -60,6 +60,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         />
       </head>
       <body className="pb-14 lg:pb-0">
+        <GtmBody />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[60] focus:rounded-card focus:bg-cta focus:px-4 focus:py-2 focus:text-white"

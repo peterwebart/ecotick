@@ -1,5 +1,4 @@
 import Script from "next/script";
-import { GTM_ID } from "@/components/analytics/GoogleTagManager";
 
 /**
  * Loads GA4 only when NEXT_PUBLIC_GA4_ID is set, so local, preview and CI
@@ -20,7 +19,7 @@ export function GoogleAnalytics() {
    * go unnoticed for months. Pick one: either leave NEXT_PUBLIC_GA4_ID unset and
    * add a GA4 tag in the GTM container, or leave GA4 out of GTM and keep this.
    */
-  if (GTM_ID !== "") {
+  if (process.env.NEXT_PUBLIC_GTM_ID !== "" && process.env.NEXT_PUBLIC_GTM_ID !== undefined) {
     console.warn(
       "[analytics] Both NEXT_PUBLIC_GA4_ID and GTM are configured. If the GTM " +
         "container also holds a GA4 tag, every pageview is being counted twice. " +

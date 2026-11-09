@@ -2,31 +2,7 @@
 
 Code alone does not fix conversion tracking. This is the container side.
 
-Container `GTM-KRP32ZRK`.
-
----
-
-## 0. Switching from GTM-5G97FBRL
-
-In November 2026 the site moved to container `GTM-KRP32ZRK`, installed with
-Google's current snippet (one block in `<head>`, no `<noscript>` iframe). Only
-one container loads per page, so nothing in the old container fires once the
-new build is live. Before or straight after deploying:
-
-1. In the **old** container: **Admin → Export Container**, choose the latest
-   published version, and download the JSON.
-2. In the **new** container: **Admin → Import Container**, choose that file,
-   pick an existing or new workspace, and select **Merge → Rename conflicting
-   tags, triggers and variables**. Review the changes, then **Submit → Publish**.
-3. Work through sections 1–6 below in the new container. Anything already
-   imported in step 2 only needs checking.
-4. Open **Preview** against the live site and confirm `GTM-KRP32ZRK` appears.
-   Tag Assistant should show no other container on the page.
-5. Keep the old container as a record. Once this build is live, no page loads
-   it, so it receives no traffic.
-
-The site ignores `GTM-5G97FBRL` even if Coolify still holds it in
-`NEXT_PUBLIC_GTM_ID`, so a stale variable cannot load both containers.
+Container `GTM-5G97FBRL`.
 
 ---
 
